@@ -1,0 +1,38 @@
+/**index.wxss**/
+.userinfo {
+  margin: 20px;
+}
+.block1 {
+  margin: 20px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
+.tittle {
+  color: #333;
+  margin-bottom: 10px;
+}
+.text {
+  color: #666;
+   margin-bottom: 10px;
+}
+.login-btn {
+  width: 100%;
+  margin-top: 10rpx;
+  color: #327BF8 !important;
+  border-radius: 98rpx; 
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-color: #327BF8 !important;
+  background-color: rgb(245, 245, 245) !important;
+}
+.login-btn::after {
+  border-radius: 98rpx; 
+  border-color: #327BF8 !important;
+}
+.btnImg {
+  margin-right: 8rpx;
+  width: 46rpx;
+  height: 46rpx;
+}

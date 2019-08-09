@@ -1,0 +1,67 @@
+<!-- index.wxml -->
+<wxs src="../../components/utils/time.wxs" module="time" />
+<view class="bill">
+  <view class="block-blue" style="padding-top:{{statusBarHeight}}px;">
+    <view class="top-button-view">
+      <view class="top-button  {{iscomplete == 0?'select':''}}" bindtap="clickTab" data-iscomplete="0">
+        应收
+        <view class='line'></view>
+      </view>
+      <view class="top-button {{iscomplete == 1?'select':''}}" bindtap="clickTab" data-iscomplete="1">
+        应付
+        <view class='line'></view>
+      </view>
+    </view>
+    <picker mode="date" id="birthday" bindchange="birthdayChange" class="picker-date" style="top:{{statusBarHeight + 8}}px">
+      <view class='picker-body'>2001-01-01</view>
+    </picker>
+  </view>
+  <view class="block money">
+     <view class="money-item">
+        <view class="money-item-1">1</view>
+        <view class="money-item-2">账单数量</view>
+      </view>
+      <view class="money-item">
+        <view class="money-item-1">￥1</view>
+        <view class="money-item-2">剩余应付</view>
+      </view>
+      <view class="money-item">
+        <view class="money-item-1">￥1</view>
+        <view class="money-item-2">剩余应收</view>
+      </view>
+  </view>
+  <view class="block">
+    <view class="top-button-view">
+      <view class="top-button  {{iscomplete == 0?'select':''}}" bindtap="clickTab" data-iscomplete="0">
+        应收
+        <view class='line'></view>
+      </view>
+      <view class="top-button {{iscomplete == 1?'select':''}}" bindtap="clickTab" data-iscomplete="1">
+        应付
+        <view class='line'></view>
+      </view>
+    </view>
+    <view class="bill-list">
+      <navigator url="../bill-detail/index?id={{item.bid}}" wx:for="{{bills}}">
+        <view class="list-item">
+          <view class='item-right'>
+            <view class='item-value2'>总金额</view>
+            <view class='item-pirce'>￥{{item.money}}</view>
+            <view>
+              <view class='item-button' data-bid="{{item.bid}}" catchtap="confrimBill" wx:if="{{item.state==0 && item.type == 0}}">
+                确认账单
+              </view>
+            </view>
+          </view>
+          <view class='item-mid'>
+            <view class='item-name'>
+              {{item.sellerName}}
+              <view class="item-state">{{item.stateText}}</view>
+            </view>
+            <view class='item-value'>创建日期：{{time.format(item.createTime)}}</view>
+          </view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+</view>

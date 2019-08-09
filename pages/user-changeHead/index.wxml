@@ -1,0 +1,9 @@
+<!-- index.wxml -->
+<view class="userHeader">
+  <view class="userinfo">
+    <image class="header-img" src="{{image}}" mode="widthFix" />
+  </view>
+  <view class="bottom-banner">
+    <button type="default" bindtap="default" class="other-button-hover" bindtap="changeheader">编辑</button>
+  </view>
+</view>

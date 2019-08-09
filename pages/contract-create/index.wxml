@@ -1,0 +1,106 @@
+<!-- index.wxml -->
+<view class="contract-create" bindtap="boxclick">
+  <view class="block">
+   <view class='contract-item'>
+      <view class='item-left' wx:if="{{contractType==0}}">甲方：</view>
+      <view class='item-left' wx:else>授权方：</view>
+      <view class='item-right'>
+        <view wx:if="{{update}}">{{first}}</view>
+        <input wx:else placeholder='请输入对方手机号码或企业名称' value="{{searchtext}}"  bindinput="getfirstParty" />
+        <view class="firstPartysearch" wx:if="{{searchShow}}">
+          <view class="search-item" wx:for="{{firstPartySearch}}" bindtap="selectfirstParty" data-index="{{index}}">{{item.name}}</view>
+          <view class="search-item" wx:if="{{firstPartySearch.length < 1}}">无匹配结果</view>
+        </view>
+      </view>
+    </view>
+    <view class='contract-item'>
+      <view class='item-left' wx:if="{{contractType==0}}">乙方：</view>
+      <view class='item-left' wx:else>被授权方：</view>
+      <view class='item-right'>
+        <view wx:if="{{update}}">{{second}}</view>
+        <picker wx:else range="{{secondPartyArr}}" value="{{index}}" bindchange="getsecondParty">
+          <view class='picker-view'>{{secondPartyArr[secondPartyIndex]? secondPartyArr[secondPartyIndex]: '请选择'}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class='contract-item' wx:if="{{update}}">
+      <view class='item-left'>创建日期：</view>
+      <view class='item-right'>
+        <view>{{createTime}}</view>
+      </view>
+    </view>
+  </view>
+
+  
+  <view class='block'>
+    <label for='startTime'>
+      <view class="attr" >
+        <view class="attr-name" wx:if="{{contractType==0}}">合同开始日期：</view>
+        <view class='attr-name' wx:else>授权开始日期：</view>
+        <view class="attr-value">
+          <picker mode="date" id="startTime" bindchange="startTimeChange" class="picker">
+            <image class="sanjiao-img" src="../../assets/images/aboutme_ic_enter.png" mode="aspectFit" />
+            <view class='picker-body'>{{startTime}}</view>
+          </picker>
+        </view>
+      </view>
+    </label>
+  </view>
+  <view class='block'>
+    <label for='endTime'>
+      <view class="attr" >
+        <view class="attr-name" wx:if="{{contractType==0}}">合同结束日期：</view>
+        <view class='attr-name' wx:else>授权结束日期：</view>
+        <view class="attr-value">
+          <picker mode="date" id="endTime" bindchange="endTimeChange" class="picker">
+            <image class="sanjiao-img" src="../../assets/images/aboutme_ic_enter.png" mode="aspectFit" />
+            <view class='picker-body'>{{endTime}}</view>
+          </picker>
+        </view>
+      </view>
+    </label>
+  </view>
+  <view class='block block-month'  wx:if="{{contractType==0}}">
+    <view class='contract-item'>
+      <view class='item-left'>合同约定账期：</view>
+      <view class='item-right'>
+        <input placeholder='' type="number" bindinput="getmonth" class='month' value='{{month}}' maxlength="3" /><view class="month-danwei">月</view>
+      </view>
+    </view>
+  </view>
+  
+
+  <navigator class="history-list" url="../contract-detail-h5/index?url={{url}}">
+    <view class="block">
+      <view class="attr" >
+        <view class="attr-name">查看合同模板</view>
+        <view class="attr-value"></view>
+        <image class="sanjiao-img" src="../../assets/images/aboutme_ic_enter.png" mode="aspectFit" />
+      </view>
+    </view>
+  </navigator>
+  <view class="block"  wx:if="{{contractType==0}}">
+    <view class="attr">
+      <view class="title-name">单据图片</view>
+      <view class='img-view'>
+        <view class='img-item' wx:for="{{imgs}}">
+          <view class="img-del" bindtap="delimg" data-index="{{index}}">x</view>
+          <image class="img" src="{{item}}" />
+        </view>
+        <view class='img-item img-add' bindtap="addimg" wx:if="{{imgs.length < 9}}">
+          <image class="img" src="../../assets/images/icon_addphoto.png" />
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="block" wx:if="{{update}}">
+    <view class="title-name">备注信息</view>
+    <textarea class='textare1' placeholder="选填，限200个字" value="{{remark}}" bindinput="getRemark" />
+  </view>
+  <view class="bottom-banner">
+    <button type="default" bindtap="default" class="other-button-hover" bindtap="submitForm">
+      保存并提交
+    </button>
+  </view>
+  <view class='bottom-view'></view>
+</view>

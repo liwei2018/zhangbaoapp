@@ -1,0 +1,43 @@
+/**index.wxss**/
+.container {
+  padding: 15px;
+}
+.title {
+  font-weight: 700;
+  width: 100%;
+}
+.input-view {
+  border-bottom: 1px solid #eee;
+  width: 100%;
+  padding: 15px 0;
+}
+.userinfo {
+  width: 100%;
+}
+.input-icon {
+  height: 20px;
+  width: 20px;
+}
+.user-input  {
+  color: #333;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+.next-btn {
+  width: 100%;
+  margin-top: 30rpx;
+  background-color: #327BF8;
+  color: white;
+  border-radius: 98rpx;
+  justify-content: center;
+}
+page{
+  background-color: rgb(255,255,255)
+}
+.input-icon {
+  float: left;
+  margin-right: 5px;
+  margin-top: 3px;
+}

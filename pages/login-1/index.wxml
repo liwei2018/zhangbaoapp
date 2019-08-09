@@ -1,0 +1,27 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="title">请正确填写如下信息</view>
+  <view class="userinfo">
+    <view class="input-view">
+      <image class="input-icon" src="../../assets/images/info_ic_name.png" />
+      <input class="user-input" placeholder="真实姓名" bindinput="getName" />
+    </view>
+    <view class="input-view">
+      <image class="input-icon" src="../../assets/images/info_ic_idcode.png" />
+      <input class="user-input" placeholder="身份证号码" type="idcard"  bindinput="getIdentityCard"  />
+    </view>
+    <view class="input-view">
+      <view class='img-item img-add' bindtap="addimg" wx:if="{{image == ''}}">
+        <image class="img" src="../../assets/images/icon_addphoto.png" mode='widthFix' />
+        <view class='img-text'>上传正脸照片</view>
+      </view>
+      <image src="{{image}}" wx:else  bindtap="addimg" mode='widthFix' class='img-header' />
+    </view>
+   
+    <view class="input-view">
+      <image class="input-icon" src="../../assets/images/binding_ic_code.png"  />
+      <input class="user-input" placeholder="邀请码，选填" bindinput="getCode" />
+    </view>
+  </view>
+  <button class="next-btn" bindtap="nextFun">下一步（人脸识别）</button>
+</view>

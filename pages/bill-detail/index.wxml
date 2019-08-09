@@ -1,0 +1,88 @@
+<!-- index.wxml -->
+<wxs src="../../components/utils/time.wxs" module="time" />
+<view class="bill-create">
+  <view class="bill-block">
+    <view class='bill-item'>
+      <view class='item-left'>卖方：</view>
+      <view class='item-right'>{{bill.sellerName}}</view>
+    </view>
+    <view class='bill-item'>
+      <view class='item-left'>买方：</view>
+      <view class='item-right'>{{bill.buyerName}}</view>
+    </view>
+    <view class='bill-item'>
+      <view class='item-left'>创建账单日期：</view>
+      <view class='item-right'>{{time.format(bill.createTime)}}</view>
+    </view>
+    <view class='bill-item'>
+      <view class='item-left'>账单状态：</view>
+      <view class='item-right'>{{bill.stateText}}</view>
+    </view>
+    <view class='bill-item'>
+      <view class='item-left'>账单金额：</view>
+      <view class='item-right red'>￥{{bill.money}}</view>
+    </view>
+    <image class='sellerSeal' src="{{bill.sellerSeal}}"  mode="widthFix" />
+    <image class='buyerSeal' src="{{bill.buyerSeal}}"  mode="widthFix" />
+  </view>
+  <view class="bill-block">
+    <view class="contract-title">关联合同</view>
+    <view wx:for="{{contracts}}" class="contract">
+      <view class="bill-item">
+        <view class="attr-name">{{item.contractTypeText}}</view>
+        <view class="attr-value">{{item.stateText}}</view>
+      </view>
+      <view class='bill-item'>
+        <view class='item-left'>甲方：</view>
+        <view class='item-right'>{{item.first}}</view>
+      </view>
+      <view class='bill-item'>
+        <view class='item-left'>乙方：</view>
+        <view class='item-right'>{{item.second}}</view>
+      </view>
+      <view class='bill-item'>
+        <view class='item-left'>合同创建日期：</view>
+        <view class='item-right'>{{item.createTime}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="bill-block" wx:if="{{bill.history.length > 0}}">
+    <view class='bill-item'>
+      <view class='item-left'>日期：</view>
+      <view class='item-right'>{{bill.history[0].operationTime}}</view>
+    </view>
+    <view class='histroy-item'>
+      <view class='item-left'>{{historytype[bill.history[0].type]}}</view>
+      <view class='item-right'>{{bill.history[0].content}}</view>
+    </view>
+    <navigator class="history-list" url="../bill-history/index?bid={{bill.bid}}">查看历次明细 ></navigator>
+  </view>
+  <view class="bill-block">
+    <view class="attr">
+      <view class="title-name">单据图片</view>
+      <view class='img-view'>
+        <view class='img-item' wx:for="{{bill.pictures}}" data-list="{{bill.pictures}}" data-src="{{item}}" bindtap="imgYu"  >
+          <image class="img" src="{{item}}"   mode="widthFix" />
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="bottom-banner" wx:if="{{(bill.state==1 && bill.type==0) || bill.state==0}}">
+    <navigator url='../bill-create/index?bid={{bill.bid}}'>
+      <button class="other-button-hover {{bill.state==1?'other-button-hover-2':''}}" wx:if="{{bill.state==1 && bill.type == 1}}" >修改账单</button>
+    </navigator>
+    <button  bindtap="default" wx:if="{{(bill.state==1 || bill.state==0) && bill.type == 1}}" class="other-button-hover {{bill.state==1?'other-button-hover-2 blue-btn':''}}" bindtap="cancelBill">
+      取消账单
+    </button>
+    <button  catchtap="confrimBill"  wx:if="{{bill.state==0 && bill.type == 0}}" class="other-button-hover" bindtap="confrimBill">
+      确认账单
+    </button>
+  </view>
+
+  <view class='bottom-view'></view>
+   <dialog visible="{{jujuedialog}}" title="拒绝原因" opacity="0.5"  show-footer="true" close-on-click-modal="{{options.closeonclickmodal}}" bindclose="jujuedialogClose" bindopen="handleOpen" bindconfirm="refuse" confirmText="确认提交">
+    <view class='textare1-view'>
+      <textarea class='textare1' placeholder="填写拒绝理由" bindinput='getremark' />
+    </view>
+  </dialog>
+</view>

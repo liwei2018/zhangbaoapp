@@ -1,0 +1,58 @@
+<!-- index.wxml -->
+<wxs src="../../components/utils/time.wxs" module="time" />
+<view class="statement-create">
+  <view class="statement-block">
+    <view class='statement-item'>
+      <view class='item-left'>卖方：</view>
+      <view class='item-right'>{{statement.sellerName}}</view>
+    </view>
+    <view class='statement-item'>
+      <view class='item-left'>买方：</view>
+      <view class='item-right'>{{statement.buyerName}}</view>
+    </view>
+    <view class="clear">
+      <view class='statement-item2'>
+        <view class='item-left'>账单总金额：</view>
+        <view class='item-right'>￥{{statement.total}}</view>
+      </view>
+      <view class='statement-item2'>
+        <view class='item-left'>账单笔数：</view>
+        <view class='item-right'>{{statement.bills}}</view>
+      </view>
+      <view class='statement-item2'>
+        <view class='item-left'>欠款金额：</view>
+        <view class='item-right'>￥{{statement.debts}}</view>
+      </view>
+      <view class='statement-item2'>
+        <view class='item-left'>收款金额：</view>
+        <view class='item-right'>￥{{statement.money}}</view>
+      </view>
+      <view class='statement-item2'>
+        <view class='item-left'>本次结余：</view>
+        <view class='item-right'>￥{{statement.thisSurplus}}</view>
+      </view>
+      <view class='statement-item2'>
+        <view class='item-left'>历次结余：</view>
+        <view class='item-right'>￥{{statement.surplus}}</view>
+      </view>
+    </view>
+    <view class='statement-item'>
+      <view class='item-left'>账单状态：</view>
+      <view class='item-right yellow'>{{statement.stateText}}</view>
+    </view>
+    <view class='statement-item'>
+      <view class='item-left'>对账单创建日期：</view>
+      <view class='item-right'>{{time.format(statement.createTime)}}</view>
+    </view>
+   </view>
+  <view class="statement-block" wx:for="{{statement.history}}">
+    <view class='statement-item'>
+      <view class='item-left'>日期：</view>
+      <view class='item-right'>{{item.operationTime}}</view>
+    </view>
+    <view class='statement-item'>
+      <view class='item-left'>{{historytype[item.type]}}</view>
+      <view class='item-right'>{{item.content}}</view>
+    </view>
+  </view>
+</view>

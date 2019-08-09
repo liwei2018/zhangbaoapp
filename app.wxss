@@ -1,0 +1,117 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+}
+
+page {
+  background-color: rgb(245, 245, 245)
+}
+
+view {
+  font-size: 28rpx;
+}
+
+
+.other-button-hover {
+  margin: 0 2.5%;
+  margin-top: 20rpx;
+  background-color: #fff;
+  color: #666;
+  border-radius: 98rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.other-button-hover::after {
+  border-radius: 50px;
+}
+.other-button-hover-2 {
+  width: 45%;
+  float: left;
+}
+.bottom-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 65px;
+  background: #fff;
+  box-shadow: 0 -6rpx 20rpx 0 rgba(71, 71, 71, 0.04);
+  z-index: 20;
+}
+
+.bottom-view {
+  height: 65px;
+}
+
+.red {
+  color: red;
+}
+
+.blue {
+  color: #327BF8;
+}
+.block {
+  margin: 0 15px 15px;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.05);
+}
+.fixed-btn {
+  position: fixed;
+  bottom: 2%;
+  width: 51%;
+  left: 25%;
+  margin-top: 30rpx;
+  background-color: #327BF8;
+  color: white;
+  border-radius: 98rpx;
+    display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.fixed-btn-image {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+.blue-btn {
+  background-color: #327BF8 !important;
+  color: white !important;
+}
+.item-value {
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  overflow: hidden;
+}
+.nothing {
+  width: 100%;
+}
+.nothing-img {
+  width: 100px;
+  margin: 100px auto 0;
+  display: block;
+}
+.nothing-text {
+  text-align: center;
+  width: 100%;
+}
+.histroy-item{
+  overflow: hidden;
+}
+.line-item {
+  height: 60px;
+  border-bottom: 1px solid #DCDCDC;
+  line-height: 60px;
+}

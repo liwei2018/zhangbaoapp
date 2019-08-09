@@ -1,0 +1,83 @@
+<!-- index.wxml -->
+<view class="user">
+  <view class="block1">
+    <navigator url="../user/index">
+      <image src="{{user.avatar}}" class="head-img" />
+    </navigator>
+    <view class="user-name">{{user.nickname}}</view>
+  </view>
+  <view class="block2">
+    <navigator url="../user-wallet/index">
+    <view class="userinfo money">
+      <view class="money-item">
+        <view class="money-item-1">{{surplus}}</view>
+        <view class="money-item-1">剩余次数</view>
+      </view>
+      <view class="money-item">
+        <view class="money-item-1">￥{{recharge}}</view>
+        <view class="money-item-1">累积充值</view>
+      </view>
+      <view class="money-item">
+        <button type="default" plain="true" catchtap="showchongzhi" class="chongzhi-button">充值</button>
+      </view>
+    </view>
+    </navigator>
+    <view class="userinfo">
+      <navigator url="../user-signature/index">
+        <view class="attr">
+          <view class="attr-name">
+            <image class="icon-img" src="../../assets/images/aboutme_ic_autograph.png" mode="aspectFit" />
+            我的电子签名
+          </view>
+          <image class="sanjiao-img" src="../../assets/images/aboutme_ic_enter.png" mode="aspectFit" />
+        </view>
+      </navigator>
+      <navigator url="../user-company/index">
+        <view class="attr">
+          <view class="attr-name">
+            <image class="icon-img" src="../../assets/images/aboutme_ic_enterprise.png" mode="aspectFit" />
+            我的企业
+          </view>
+          <image class="sanjiao-img" src="../../assets/images/aboutme_ic_enter.png" mode="aspectFit" />
+        </view>
+      </navigator>
+      <navigator url="../user-authorize/index">
+        <view class="attr last-child">
+          <view class="attr-name">
+            <image class="icon-img" src="../../assets/images/aboutme_ic_authorization.png" mode="aspectFit" />
+            我的授权
+          </view>
+          <image class="sanjiao-img" src="../../assets/images/aboutme_ic_enter.png" mode="aspectFit" />
+        </view>
+      </navigator>
+    </view>
+    <view class="userinfo">
+      <navigator url="../user-feedback/index">
+        <view class="attr">
+          <view class="attr-name">
+            <image class="icon-img" src="../../assets/images/aboutme_ic_feedback.png" mode="aspectFit" />
+            意见反馈
+          </view>
+          <image class="sanjiao-img" src="../../assets/images/aboutme_ic_enter.png" mode="aspectFit" />
+        </view>
+      </navigator>
+    </view>
+  </view>
+  <dialog visible="{{chongzhi}}" width="90" position='bottom' opacity="0.5" 
+    show-footer="true" 
+    bindclose="packageClose" bindconfirm="packageConfirm">
+    <view class='package-view'>
+      <view class="package-title">充值套餐</view>
+      <view wx:for="{{package}}">
+        <view data-index="{{index}}" bindtap="seletedpackage" class="package-item {{selectIndex == index ? 'selected' : ''}}">
+          {{item.title}}
+        </view>
+      </view>
+      <view class="package-title">支付方式</view>
+      <view class="pay">
+        <image src="../../assets/images/ic_wechat.png" class="pay-icon" />
+        使用微信支付
+      </view>
+    </view>
+  </dialog>
+</view>

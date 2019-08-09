@@ -1,0 +1,16 @@
+<!--index.wxml-->
+<view >
+  <view class="block1">
+    <view class='tittle'>通过实名认证</view>
+    <view class='text'>真实姓名：{{user.name}}</view>
+    <view class='text'>身份证号：{{user.identityCard}}</view>
+  </view>
+  <view class="userinfo">
+    <navigator  open-type="switchTab" url="../bill/index">
+      <button  class='login-btn'  >我是个体，开始体验</button>
+    </navigator>
+    <navigator  open-type="redirect" url="../user-company-add/index?login=true">
+      <button  class='login-btn'  >我是企业，录入信息</button>
+    </navigator>
+  </view>
+</view>

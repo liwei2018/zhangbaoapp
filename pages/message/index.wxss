@@ -1,0 +1,54 @@
+.info{
+  padding: 10px;
+}
+.info-item {
+  background: #fff;
+  border-radius: 4px;
+  padding: 5px;
+  position: relative;
+  overflow: hidden;
+  height: auto;
+  margin-bottom: 10px;
+}
+.table{
+  display: flex;
+  flex-direction: row;
+  
+  align-items: center;
+  justify-content: center;
+}
+.time {
+  vertical-align: middle;
+  text-align: center;
+  width: 60px;
+  height: 100% !important;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.check {
+  vertical-align: middle;
+  width: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.dian {
+  height: 5px;
+  width: 5px;
+  background: rgb(68,137,245);
+  border-radius: 3px;
+  margin-left: 8px;
+}
+.message{
+  white-space:normal;
+  vertical-align: middle;
+  word-wrap: break-word;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  width: 200px;
+}

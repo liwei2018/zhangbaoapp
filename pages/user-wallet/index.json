@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "充值消费",
+  "usingComponents": {
+    "dialog": "/components/dialog/dialog"
+  }
+}

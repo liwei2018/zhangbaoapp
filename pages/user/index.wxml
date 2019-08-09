@@ -1,0 +1,47 @@
+<!--index.wxml-->
+<view class="user">
+  <view class="userinfo">
+    <navigator url="../user-changeHead/index">
+    <view class="attr">
+      <view class="attr-name">头像</view>
+      <image class="sanjiao-img" src="../../assets/images/aboutme_ic_enter.png" mode="aspectFit" />
+      <view class="attr-value">
+        <image class="header-img" src="{{user.avatar}}" />
+      </view>
+    </view>
+    </navigator>
+    <navigator url="../user-name/index">
+    <view class="attr">
+      <view class="attr-name">昵称</view>
+      <image class="sanjiao-img" src="../../assets/images/aboutme_ic_enter.png" mode="aspectFit" />
+      <view class="attr-value">
+        {{user.nickname}}
+      </view>
+    </view>
+    </navigator>
+    <view class="attr">
+      <view class="attr-name">真实姓名</view>
+      <view class="attr-value">{{user.name}}
+      </view>
+    </view>
+    <view class="attr">
+      <view class="attr-name">生日</view>
+      <image class="sanjiao-img" src="../../assets/images/aboutme_ic_enter.png" mode="aspectFit" />
+      <view class="attr-value">
+        <picker mode="date" value="{{user.birthday}}" id="birthday" bindchange="birthdayChange" class="picker">
+          <view class='picker-body'>{{user.birthday}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="attr">
+      <view class="attr-name">手机号码</view>
+      <view class="attr-value">{{user.mobile}}
+      </view>
+    </view>
+    <view class="attr attr-last-child">
+      <view class="attr-name">身份证号</view>
+      <view class="attr-value">{{user.identityCard}}
+      </view>
+    </view>
+  </view>
+</view>

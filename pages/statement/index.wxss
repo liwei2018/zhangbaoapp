@@ -1,0 +1,114 @@
+.top-button-view {
+  height: 40px;
+  box-shadow: 0 1px 10px 0 rgba(71,71,71,.04);
+  background: #fff;
+}
+.top-button {
+  height: 40px;
+  float: left;
+  width: 50%;
+  text-align: center;
+  color: #666;
+  font-size: 16px;
+  position: relative;
+  line-height: 40px;
+}
+.select {
+  color: #333;
+}
+.select .line {
+  position: absolute;
+  left: 50%;
+  bottom: 1px;
+
+  margin-left: -15px;
+  background-color: #333;
+  height: 2px;
+  border-radius: 2px;
+  width: 30px;
+}
+.search {
+  padding: 10px;
+}
+.search-input {
+  background-color: #eee;
+  border-radius: 15px;
+  height: 40px;
+  
+  padding-left: 20px;
+}
+.search-input-placeholder {
+  text-align: center;
+}
+.statement-list {
+  margin: 0 10px;
+
+}
+.list-item {
+  margin-bottom: 10px;
+  background-color: #fff;
+  overflow: hidden;
+  border-top: 1px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.item-mid {
+  position: relative;
+}
+.item-value {
+  height: 20px;
+}
+.item-value2 {
+  width: 50%;
+  float: left;
+  height: 20px;
+}
+.create-time {
+  color: #666;
+}
+.item-right .item-value {
+  text-align: right;
+}
+.pirce {
+  color: red;
+}
+.item-button {
+  width: 100px;
+  margin-top: 10rpx;
+  color: #666 !important;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  border-color: #666 !important;
+  font-size: 12px;
+}
+.item-button::after {
+  border-radius: 40px;
+}
+.textare1 {
+  border: 1rpx solid #E7E7E7;
+  display: block;
+  color: #999;
+  padding: 10px;
+  width: auto;
+}
+.textare1-view {
+  position: relative;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.fixed-btn {
+  position: fixed;
+  bottom: 2%;
+  width: 51%;
+  left: 25%;
+  margin-top: 30rpx;
+  background-color: #327BF8;
+  color: white;
+  border-radius: 98rpx;
+  justify-content: center;
+}

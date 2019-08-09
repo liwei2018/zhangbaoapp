@@ -1,0 +1,156 @@
+.contract-create {
+  margin-top: 10px;
+}
+.item-left {
+  float:left;
+  color: #333;
+}
+.contract-item {
+  height: 40px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.item-right {
+  flex:1;
+  position: relative;
+}
+.item-right > input {
+  background-color: #eee;
+  border-radius: 15px;
+  font-size: 14px;
+  height: 30px;
+  padding-left: 15px;
+}
+.item-right > picker {
+  background-color: #eee;
+  border-radius: 15px;
+  font-size: 14px;
+  height: 30px;
+  overflow: hidden;
+}
+.picker-view {
+  margin-top: 5px;
+  padding-left: 15px; 
+}
+.picker-body {
+  min-width: 150px;
+  text-align: right;
+  height: 20px;
+  float: right;
+}
+.attr-name {
+  float: left;
+  line-height: 20px;
+  height: 20px;
+  color: #333;
+}
+
+.attr-value {
+  float: right;
+  line-height: 20px;
+  height: 20px;
+  display: inline-block;
+}
+.attr {
+  overflow: hidden;
+}
+.sanjiao-img {
+  height: 20px;
+  display: inline-block;
+  width: 10px;
+  margin-left: 10px;
+  float: right;
+}
+.img-view {
+  margin-top: 10px;
+  border-top: 1px #eee solid;
+  overflow: hidden;
+  
+}
+.title-name {
+  display: block;
+}
+.img-item {
+  height: 70px;
+  width: 70px;
+  border-radius: 4px;
+  margin-right: 12px;
+  margin-top: 12px;
+  float: left;
+  position: relative;
+}
+.img {
+  height: 70px;
+  width: 70px;
+  border-radius: 4px;
+}
+.img-add .img {
+  height: 40px;
+  width: 40px;
+  margin: 15px;
+  border-radius: 4px;
+}
+.img-add {
+  background-color: #eee; 
+}
+.textare1 {
+    border: 1rpx solid #E7E7E7;
+  display: block;
+  color: #999;
+  padding: 10px;
+  width: auto;
+  margin-top: 10px;
+}
+
+.contract {
+  overflow: hidden;
+  margin-top: 10px;
+}
+.attr-money {
+  position:absolute;
+  right: 0;
+  top: 30px;
+}
+.contract-line {
+  margin: 10px 0;
+  border-top: 1px #eee solid;
+}
+
+.img-del {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  height: 20px;
+  width: 20px;
+  background: rgba(0,0,0,0.1);
+  text-align: center;
+  color: #fff;
+  line-height: 20px;
+  border-radius: 10px;
+}
+.firstPartysearch {
+  position: absolute;
+  background-color: #fff;
+  width: 100%;
+  z-index: 100;
+  box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+  border-radius: 4px;
+}
+.search-item {
+  height: 30px;
+  line-height: 30px;
+  padding: 5px 10px;
+}
+.month {
+  width: 70px;
+  float: left; 
+} 
+.month-danwei{
+  line-height: 30px;
+  margin-left: 5px;
+  float: left;
+}
+.block-month {
+  padding: 0 10px;
+}

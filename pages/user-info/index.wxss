@@ -1,0 +1,140 @@
+
+.block1 {
+  background-color: rgb(68,137,245);
+  height: 200px;
+  overflow: hidden;
+}
+.head-img {
+  width: 100px;
+  height: 100px;
+  display: block;
+  margin: 20px auto 10px;
+  border-radius: 50px;
+}
+.block2 {
+  margin-top: -50px;
+  padding: 0 20px;
+  overflow: hidden;
+}
+.user-name {
+  text-align: center;
+  color: #fff;
+}
+.userinfo {
+  background-color: #fff;
+  padding: 0 20px;
+  margin-top: 10px;
+  border-radius: 4px;
+}
+.money {
+  height: 50px;
+  padding: 20px 0;
+}
+.money-item {
+  width: 33%;
+  height: 60px;
+  float: left;
+}
+.money-item-1 {
+  text-align: center;
+}
+.attr {
+  height: 60px;
+  line-height: 60px;
+  border-bottom: 1px solid rgb(231,231,231)
+}
+.last-child
+{
+  border-bottom: 0px
+}
+.attr-name {
+  float: left;
+  line-height: 60px;
+  height: 60px;
+}
+
+.attr-value {
+  float: right;
+  line-height: 60px;
+  height: 60px;
+  display: inline-block;
+}
+.header-img {
+  height: 40px;
+  width: 40px;
+  display: inline-block;
+  margin: 10px 0;
+}
+.sanjiao-img {
+  height: 60px;
+  display: inline-block;
+  width: 10px;
+  margin-left: 10px;
+  float: right;
+}
+.icon-img {
+  height: 60px;
+  display: inline-block;
+  width: 20px;
+  margin-right: 10px;
+  float: left;
+
+}
+.picker {
+  display: inline-block;
+}
+
+.chongzhi-button{
+
+  width: 70%;
+  margin-top: 10rpx;
+  color: rgb(68,137,245) !important;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  border-color: rgb(68,137,245) !important;
+  font-size: 14px;
+}
+.chongzhi-button::after {
+  border-radius: 40px;
+}
+
+
+.shiyong {
+  float: left;
+}
+.package-view {
+  padding: 15px 15px 0px;
+  overflow: hidden;
+}
+.pay-icon {
+  float: left;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+.package-title {
+  font-weight: 700;
+  margin: 10px 0;
+}
+
+.package-item {
+  border: 1px solid #eee;
+  background: #eee;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+.selected {
+  color: #327BF8;
+  border: 1px solid #327BF8;
+}
+.pay {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20px;
+}
+.navigator-hover {
+  opacity: 1
+}

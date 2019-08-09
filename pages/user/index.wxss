@@ -1,0 +1,51 @@
+
+.userinfo {
+  background-color: #fff;
+  padding: 0 20px;
+  margin-top: 10px;
+}
+.attr {
+  height: 60px;
+  line-height: 60px;
+  border-bottom: 1px solid rgb(231,231,231)
+}
+.attr-last-child
+{
+  border-bottom: 0px
+}
+.attr-name {
+  float: left;
+  line-height: 60px;
+  height: 60px;
+  color: #333;
+}
+
+.attr-value {
+  float: right;
+  line-height: 60px;
+  height: 60px;
+  display: inline-block;
+}
+.header-img {
+  height: 40px;
+  width: 40px;
+  display: inline-block;
+  margin: 10px 0;
+  border-radius: 20px;
+}
+.sanjiao-img {
+  height: 60px;
+  display: inline-block;
+  width: 10px;
+  margin-left: 10px;
+  float: right;
+}
+.picker {
+  display: block;
+  width: 100%;
+  text-align: right;
+}
+.picker-body {
+  height: 60px;
+  min-width: 200px;
+}

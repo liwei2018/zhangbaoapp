@@ -1,0 +1,178 @@
+
+.statement-create {
+  margin: 10px;
+
+}
+.statement-block {
+  margin-bottom: 10px;
+  background-color: #fff;
+  overflow: hidden;
+  padding: 10px;
+  border-radius: 5px;
+  position: relative;
+}
+.item-left {
+  float:left;
+  color: #666;
+}
+.statement-item {
+  height: 30px;
+  position: relative;
+}
+.statement-item2 {
+  height: 30px;
+  position: relative;
+  float: left;
+  width: 50%;
+}
+.clear {
+  overflow: hidden;
+}
+.item-right {
+}
+.item-right > input {
+  background-color: #eee;
+  border-radius: 15px;
+  font-size: 14px;
+  height: 30px;
+  padding-left: 15px;
+}
+.item-right > picker {
+  background-color: #eee;
+  border-radius: 15px;
+  font-size: 14px;
+  height: 30px;
+  overflow: hidden;
+}
+.picker-view {
+  margin-top: 5px;
+  padding-left: 15px; 
+}
+.attr-name {
+  float: left;
+  line-height: 20px;
+  height: 20px;
+  color: #333;
+}
+
+.attr-value {
+  float: right;
+  line-height: 20px;
+  height: 20px;
+  display: inline-block;
+}
+.sanjiao-img {
+  height: 20px;
+  display: inline-block;
+  width: 10px;
+  margin-left: 10px;
+  float: right;
+}
+.img-view {
+  margin-top: 10px;
+  border-top: 1px #eee solid;
+  overflow: hidden;
+}
+.contract-title {
+  margin-top: 10px;
+  border-bottom: 1px #eee solid;
+  overflow: hidden;
+  height: 30px;
+}
+.title-name {
+  display: block;
+  height: 30px;
+}
+.img-item {
+  width: 100%;
+  border-radius: 4px;
+  margin-top: 12px;
+  float: left;
+}
+.img {
+  width: 100%;
+  border-radius: 4px;
+}
+.textare1 {
+  border: 1rpx solid #E7E7E7;
+  display: block;
+  color: #999;
+  padding: 10px;
+  width: auto;
+  margin-top: 10px;
+}
+.red {
+  color: red;
+}
+.contract {
+  overflow: hidden;
+  margin-top: 10px;
+}
+.attr-money {
+  position:absolute;
+  right: 0;
+  top: 30px;
+}
+.history-list {
+  text-align: center;
+  color: #327BF8;
+}
+
+.list-item {
+  height: 70px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  overflow: hidden;
+  border-top: 1px;
+  padding: 10px;
+  border-radius: 5px;
+}
+.list-item .item-left {
+  float:left;
+}
+.list-item .item-left .img {
+  height: 70px;
+  width: 70px;
+}
+.list-item .item-mid {
+  height: 70px;
+  margin-left: 80px;
+  margin-right: 80px;
+  position: relative;
+}
+.list-item .item-right {
+  float: right;
+  width: 80px;
+}
+.list-item .item-value {
+  height: 20px;
+}
+.list-item .create-time {
+  position: absolute;
+  bottom: 0;
+  color: #666;
+}
+.list-item .item-right .item-value {
+  text-align: right;
+}
+.list-item .pirce {
+  color: red;
+}
+
+.sellerSeal {
+  position: absolute;
+  width: 100px;
+  right: 10px;
+  top: 10px;
+}
+.buyerSeal {
+  position: absolute;
+  width: 100px;
+  right: 10px;
+  bottom: 10px;
+}
+.textare1-view {
+  position: relative;
+  padding: 20px;
+  box-sizing: border-box;
+}

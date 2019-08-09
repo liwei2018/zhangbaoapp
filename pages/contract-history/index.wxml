@@ -1,0 +1,38 @@
+<!-- index.wxml -->
+<wxs src="../../components/utils/time.wxs" module="time" />
+<view class="contract-create">
+  <view class="contract-block">
+    <view class='contract-item'>
+      <view class='item-right'>{{contract.contractTypeText}}</view>
+    </view>
+    <view class='contract-item'>
+      <view class='item-left' wx:if="{{contract.contractType==0}}">甲方：</view>
+      <view class='item-left' wx:else>授权方：</view>
+      <view class='item-right'>{{contract.first}}</view>
+    </view>
+    <view class='contract-item'>
+      <view class='item-left' wx:if="{{contract.contractType==0}}">乙方：</view>
+      <view class='item-left' wx:else>被授权方：</view>
+      <view class='item-right'>{{contract.second}}</view>
+    </view>
+    <view class='contract-item'>
+      <view class='item-left' wx:if="{{contract.contractType==0}}">创建合同日期：</view>
+      <view class='item-left' wx:else>创建授权日期：</view>
+      <view class='item-right'>{{time.format(contract.createTime)}}</view>
+    </view>
+    <view class='contract-item'>
+      <view class='item-left'>账单状态：</view>
+      <view class='item-right'>{{contract.stateText}}</view>
+    </view>
+  </view>
+  <view class="contract-block" wx:for="{{contract.history}}">
+    <view class='contract-item'>
+      <view class='item-left'>日期：</view>
+      <view class='item-right'>{{item.operationTime}}</view>
+    </view>
+    <view class='contract-item'>
+      <view class='item-left'>{{historytype[item.type]}}</view>
+      <view class='item-right'>{{item.content}}</view>
+    </view>
+  </view>
+</view>

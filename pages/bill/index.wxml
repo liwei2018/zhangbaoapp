@@ -1,0 +1,47 @@
+<!-- index.wxml -->
+<wxs src="../../components/utils/time.wxs" module="time" />
+<view class="bill">
+  <view class="top-button-view">
+    <view class="top-button  {{iscomplete == 0?'select':''}}" bindtap="clickTab" data-iscomplete="0">
+      未完成（{{unfinished}}）
+      <view class='line'></view>
+    </view>
+    <view class="top-button {{iscomplete == 1?'select':''}}" bindtap="clickTab" data-iscomplete="1">
+      已完成（{{complete}}）
+      <view class='line'></view>
+    </view>
+  </view>
+  <view class="bill-list">
+    <navigator url="../bill-detail/index?id={{item.bid}}" wx:for="{{bills}}">
+      <view class="list-item">
+        <view class='item-right'>
+          <view class='item-value2'>总金额</view>
+          <view class='item-pirce'>￥{{item.money}}</view>
+          <view>
+            <view class='item-button' data-bid="{{item.bid}}" catchtap="confrimBill" wx:if="{{item.state==0 && item.type == 0}}">
+              确认账单
+            </view>
+          </view>
+        </view>
+        <view class='item-mid'>
+          <view class='item-name'>
+            {{item.sellerName}}
+            <view class="item-state">{{item.stateText}}</view>
+          </view>
+          <view class='item-value'>{{item.buyerName}}</view>
+          <view class='item-value'>创建日期：{{time.format(item.createTime)}}</view>
+        </view>
+      </view>
+    </navigator>
+    <view wx:if="{{bills.length == 0}}" class='nothing'>
+      <image src="../../assets/images/img_blankpage_billrecord@3x.png" mode="widthFix" class='nothing-img' />
+      <view class='nothing-text'>暂无账单</view>
+    </view>
+  </view>
+  <navigator url="../bill-create/index">
+    <button class="fixed-btn" bindtap="create">
+      创建
+    </button>
+  </navigator>
+  <view class='bottom-view'></view>
+</view>
