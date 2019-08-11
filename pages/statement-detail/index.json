@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "对账单详情",
-  "usingComponents": {
-    "dialog": "/components/dialog/dialog"
-  }
-}

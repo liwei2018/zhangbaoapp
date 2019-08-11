@@ -1,0 +1,46 @@
+.buy {
+  margin: 15px;
+}
+.buy-item {
+  border: 1px solid #327BF8;
+  height: 80px;
+  width: 28%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #327BF8;
+  float: left;
+  margin: 15px 2% 0;
+}
+.name1 {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+.name2 {
+  font-size: 14px;
+}
+.list {
+  overflow: hidden;
+}
+.select {
+  color: #fff;
+  background-color: #327BF8;
+}
+.buy-btn {
+  margin-top: 50px;
+}
+.bottom-black{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+.buy-log {
+  color: #327BF8;
+  height: 30px;
+}
+.buy-msg{
+  color: #666;
+  height: 40px;
+}

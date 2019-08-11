@@ -1,4 +1,5 @@
 {
+  "backgroundColor": "#eee",
   "navigationBarTitleText": "账单管理",
   "usingComponents": {
     "dialog": "/components/dialog/dialog"

@@ -1,41 +1,23 @@
 {
   "pages": [
+    "pages/invoice/index",
+    "pages/invoice-log/index",
+    "pages/buy-log/index",
     "pages/finance/index",
+    "pages/pay/index",
+    "pages/buy/index",
     "pages/bill/index",
-    "pages/message/index",
-    "pages/contract/index",
+    "pages/user/index",
     "pages/login-2/index",
     "pages/login-1/index",
     "pages/login/index",
-    "pages/statement/index",
-    "pages/statement-create/index",
-    "pages/statement-bill/index",
-    "pages/statement-detail/index",
-    "pages/statement-detail-list/index",
     "pages/bill-history/index",
-    "pages/contract-create/index",
-    "pages/contract-detail/index",
-    "pages/contract-detail-h5/index",
-    "pages/contract-argee-create/index",
-    "pages/contract-history/index",
     "pages/bill-create/index",
-    "pages/user-info/index",
-    "pages/user-wallet/index",
-    "pages/user-feedback/index",
-    "pages/user-company-add/index",
-    "pages/user-signature/index",
-    "pages/user-authorize/index",
-    "pages/user-company/index",
-    "pages/user-useDetails/index",
     "pages/login-face/index",
-    "pages/user-name/index",
     "pages/bill-detail/index",
     "pages/bill-contract/index",
-    "pages/user-changeHead/index",
-    "pages/user/index",
     "pages/index/index",
-    "pages/aboutme/index",
-    "pages/logs/logs"
+    "pages/aboutme/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -59,7 +41,7 @@
       {
         "iconPath": "assets/images/ic_客户管理@2x.png",
         "selectedIconPath": "assets/images/ic_客户管理_pr@2x.png",
-        "pagePath": "pages/contract/index",
+        "pagePath": "pages/bill/index",
         "text": "客户管理"
       },
       {
@@ -71,7 +53,7 @@
       {
         "iconPath": "assets/images/ic_个人中心@2x.png",
         "selectedIconPath": "assets/images/ic_个人中心_pr@2x.png",
-        "pagePath": "pages/message/index",
+        "pagePath": "pages/user/index",
         "text": "个人中心"
       }
     ]

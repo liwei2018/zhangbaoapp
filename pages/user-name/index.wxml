@@ -1,9 +1,0 @@
-<!--index.wxml-->
-<view class="company">
-  <view class='search'>
-    <input class='search-input' placeholder='输入昵称' maxlength="12" placeholder-class='search-inpu-placeholder' bindinput="getnickname" value="{{nickname}}" />
-  </view>
-  <view class="bottom-banner">
-    <button type="default" bindtap="default" class="other-button-hover" bindtap="changenickname">提交并保存</button>
-  </view>
-</view>

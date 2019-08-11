@@ -9,9 +9,6 @@
   box-sizing: border-box;
 }
 
-page {
-  background-color: rgb(245, 245, 245)
-}
 
 view {
   font-size: 28rpx;
@@ -76,10 +73,35 @@ view {
   background-color: #327BF8;
   color: white;
   border-radius: 98rpx;
-    display: flex;
+  display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+}
+.blue-btn {
+  width: 100%;
+  background-color: #327BF8;
+  color: white;
+  border-radius: 98rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px 0 #BAD3FF;
+  
+  height: 50px;
+}
+.blue-btn-dis {
+  width: 100%;
+  height: 50px;
+  background-color: rgb(153, 189, 252);
+  color: white;
+  border-radius: 98rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px 0 #BAD3FF;
 }
 .fixed-btn-image {
   width: 20px;
@@ -114,4 +136,5 @@ view {
   height: 60px;
   border-bottom: 1px solid #DCDCDC;
   line-height: 60px;
+  
 }

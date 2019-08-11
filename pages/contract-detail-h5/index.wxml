@@ -1,4 +1,0 @@
-<!-- index.wxml -->
-<view class="contract-create" bindtap="boxclick">
-  <web-view src="{{url}}"></web-view>
-</view>

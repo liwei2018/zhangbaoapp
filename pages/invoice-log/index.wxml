@@ -1,0 +1,21 @@
+<view class="buy-list">
+  <navigator url="../bill-detail/index?id={{item.bid}}" wx:for="{{bills}}">
+    <view class="line-item">
+      <view class='item-right'>
+        <view class='item-pirce'>￥{{item.money}}</view>
+      </view>
+      <view class='item-mid'>
+        <view class='item-name'>
+          {{item.sellerName}}
+        </view>
+        <view class='time'>创建日期：{{time.format(item.createTime)}}</view>
+      </view>
+    </view>
+  </navigator>
+</view>
+<navigator url="../bill-create/index">
+  <button class="fixed-btn" bindtap="create">
+    申请发票
+  </button>
+</navigator>
+<view class='bottom-view'></view>

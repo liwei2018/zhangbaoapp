@@ -1,47 +1,75 @@
-<!--index.wxml-->
-<view class="user">
-  <view class="userinfo">
-    <navigator url="../user-changeHead/index">
-    <view class="attr">
-      <view class="attr-name">头像</view>
-      <image class="sanjiao-img" src="../../assets/images/aboutme_ic_enter.png" mode="aspectFit" />
-      <view class="attr-value">
-        <image class="header-img" src="{{user.avatar}}" />
+<!-- index.wxml -->
+<view class="bill">
+  <view class="block-blue" style="padding-top:{{statusBarHeight}}px;">
+    <view class="top-button-view">
+      <view class="top-button  {{iscomplete == 0?'select':''}}" bindtap="clickTab" data-iscomplete="0">
+        个人
+        <view class='line'></view>
+      </view>
+      <view class="top-button {{iscomplete == 1?'select':''}}" bindtap="clickTab" data-iscomplete="1">
+        企业
+        <view class='line'></view>
       </view>
     </view>
-    </navigator>
-    <navigator url="../user-name/index">
-    <view class="attr">
-      <view class="attr-name">昵称</view>
-      <image class="sanjiao-img" src="../../assets/images/aboutme_ic_enter.png" mode="aspectFit" />
-      <view class="attr-value">
-        {{user.nickname}}
+  </view>
+  
+  <view class="block money">
+  
+    <view class="user-header">
+      <view class="header-1">
+        <image class="user-photo" src="../../assets/images/个人中心/默认头像@2x.png"></image>
+      </view>
+      <view class="header-3">
+        <image src="../../assets/images/个人中心/ic_设置@2x.png" class="header-setting"></image>
+      </view>
+      
+      <view class="header-2">
+        <view class="header-name">aaa</view>
+        <view class="header-name2">bbb<view class="renzheng"><image class="renzheng-img" src="../../assets/images/个人中心/标签_已认证@2x.png"></image>已认证</view></view>
       </view>
     </view>
-    </navigator>
-    <view class="attr">
-      <view class="attr-name">真实姓名</view>
-      <view class="attr-value">{{user.name}}
+    <view>
+      <navigator url="../buy/index">
+        <view class="money-item">
+          <view class="money-item-1">1</view>
+          <view class="money-item-2">账单数量</view>
+        </view>
+      </navigator>
+      <view class="money-item">
+        <view class="money-item-1">￥1</view>
+        <view class="money-item-2">剩余应付</view>
+      </view>
+      <view class="money-item">
+        <view class="money-item-1">￥1</view>
+        <view class="money-item-2">剩余应收</view>
       </view>
     </view>
-    <view class="attr">
-      <view class="attr-name">生日</view>
-      <image class="sanjiao-img" src="../../assets/images/aboutme_ic_enter.png" mode="aspectFit" />
-      <view class="attr-value">
-        <picker mode="date" value="{{user.birthday}}" id="birthday" bindchange="birthdayChange" class="picker">
-          <view class='picker-body'>{{user.birthday}}</view>
-        </picker>
-      </view>
+  </view>
+  <view class="block">
+    
+    <view class=".line-item">
+      <image class="icon-img" src="../../assets/images/个人中心/ic_购买记录@2x.png"></image>购买使用记录
+      <image class="sanjiao-img" src="../../assets/images/账单管理/ic_箭头@2x.png" mode="aspectFit" />
     </view>
-    <view class="attr">
-      <view class="attr-name">手机号码</view>
-      <view class="attr-value">{{user.mobile}}
-      </view>
+    <view class=".line-item">
+      <image class="icon-img" src="../../assets/images/个人中心/ic_个人认证@2x.png"></image>个人认证
+      <image class="sanjiao-img" src="../../assets/images/账单管理/ic_箭头@2x.png" mode="aspectFit" />
     </view>
-    <view class="attr attr-last-child">
-      <view class="attr-name">身份证号</view>
-      <view class="attr-value">{{user.identityCard}}
-      </view>
+    <view class=".line-item">
+      <image class="icon-img" src="../../assets/images/个人中心/ic_企业管理@2x.png"></image>企业管理
+      <image class="sanjiao-img" src="../../assets/images/账单管理/ic_箭头@2x.png" mode="aspectFit" />
+    </view>
+    <view class=".line-item">
+      <image class="icon-img" src="../../assets/images/个人中心/ic_人员管理@2x.png"></image>人员管理
+      <image class="sanjiao-img" src="../../assets/images/账单管理/ic_箭头@2x.png" mode="aspectFit" />
+    </view>
+    <view class=".line-item">
+      <image class="icon-img" src="../../assets/images/个人中心/ic_授权委托书@2x.png"></image>我的授权委托书
+      <image class="sanjiao-img" src="../../assets/images/账单管理/ic_箭头@2x.png" mode="aspectFit" />
+    </view>
+    <view class=".line-item">
+      <image class="icon-img" src="../../assets/images/个人中心/ic_使用帮助@2x.png"></image>使用帮助
+      <image class="sanjiao-img" src="../../assets/images/账单管理/ic_箭头@2x.png" mode="aspectFit" />
     </view>
   </view>
 </view>
