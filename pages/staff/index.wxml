@@ -1,0 +1,19 @@
+<view class="company-list">
+  <view class="line-item">
+    <view class='item-right'>
+      <image class="tanhao" src="../../assets/images/个人中心/ic_详细信息@2x.png" />
+    </view>
+    <view class='item-mid'>
+      <view class='item-name'>
+        <view class="name">张总<view class="title">经理</view></view>
+      </view>
+      <view class='time'>
+        12312312312
+      </view>
+    </view>
+  </view>
+</view>
+<navigator url="../bill-create/index">
+  <button class="fixed-btn" bindtap="create">新建人员</button>
+</navigator>
+<view class='bottom-view'></view>

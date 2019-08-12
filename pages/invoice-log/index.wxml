@@ -1,5 +1,5 @@
 <view class="buy-list">
-  <navigator url="../bill-detail/index?id={{item.bid}}" wx:for="{{bills}}">
+  <navigator url="../invoice-detail/index?id={{item.bid}}" wx:for="{{bills}}">
     <view class="line-item">
       <view class='item-right'>
         <view class='item-pirce'>￥{{item.money}}</view>
@@ -13,7 +13,7 @@
     </view>
   </navigator>
 </view>
-<navigator url="../bill-create/index">
+<navigator url="../invoice-create/index">
   <button class="fixed-btn" bindtap="create">
     申请发票
   </button>

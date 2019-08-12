@@ -1,0 +1,15 @@
+.invoice-block {
+  padding: 0 20px;
+  background-color: #fff;
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+.item {
+  line-height: 40px;
+}
+.left{
+  float: left;
+}
+.right {
+  margin-left: 120px;
+}

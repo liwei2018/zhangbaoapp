@@ -1,0 +1,57 @@
+.invoice-block {
+  padding: 0 20px;
+  background-color: #fff;
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+
+.item {
+  margin-bottom: 20px;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  margin-left: 120px;
+}
+
+.line-item {
+
+  display: flex;
+  align-items: center;
+}
+
+.line-item:nth-of-type(5) {
+  border-top: 1px solid #DCDCDC;
+}
+
+.switch {
+  float: right;
+}
+
+.switch-left {
+  flex: 1;
+}
+
+.fixed-btn {
+  width: 90%;
+  left: 5%;
+}
+
+.logo {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 180px;
+}
+.logo-img{
+  width: 90px;
+  height: 90px;
+}
+.logo-btn {
+  margin-top: 20px;
+}

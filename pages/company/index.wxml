@@ -1,0 +1,27 @@
+<view class="company-list">
+  <view class="line-item">
+    <view class='item-left'>
+      <image class="company-icon" src="../../assets/images/个人中心/默认头像@2x.png" />
+    </view>
+    <view class='item-mid'>
+      <view class='item-name'>
+        <view class="name">创建期建日期：123创建日期：123</view>
+        <view class="moren">默认</view>
+      </view>
+      <view class='time'>
+        <view class="renzheng">
+          <image class="renzheng-img" src="../../assets/images/个人中心/标签_已认证@2x.png"></image>
+          已认证
+        </view>
+        <navigator url="../company-detail/index">
+          <image src="../../assets/images/个人中心/ic_编辑@2x.png" class="img-btn" />
+        </navigator>
+        <image src="../../assets/images/个人中心/ic_公章@2x.png" class="img-btn" />
+      </view>
+    </view>
+  </view>
+</view>
+<navigator url="../bill-create/index">
+  <button class="fixed-btn" bindtap="create">创建</button>
+</navigator>
+<view class='bottom-view'></view>

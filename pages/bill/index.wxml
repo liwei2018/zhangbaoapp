@@ -12,7 +12,7 @@
     </view>
   </view>
   <view class="bill-list">
-    <navigator url="../bill-detail/index?id={{item.bid}}" wx:for="{{bills}}">
+    <navigator url="../bill-detail/index?id={{item.bid}}" >
       <view class="list-item">
         <view class='item-right'>
           <view class='item-value2'>总金额</view>

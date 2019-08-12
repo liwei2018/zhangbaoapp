@@ -78,6 +78,21 @@ view {
   align-items: center;
   justify-content: center;
 }
+.fixed-btn-out {
+  position: fixed;
+  bottom: 2%;
+  width: 90%;
+  left: 5%;
+  margin-top: 30rpx;
+  border: 1px solid #327BF8;
+  background-color: #fff;
+  color: #327BF8;
+  border-radius: 98rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
 .blue-btn {
   width: 100%;
   background-color: #327BF8;

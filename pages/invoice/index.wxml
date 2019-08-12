@@ -1,38 +1,37 @@
 <view class="invoice-block">
   <view class="line-item">
-    <input  placeholder='请输入企业全称' value=""  bindinput="getbuyer" />
+    <input placeholder='请输入企业全称' value="" bindinput="getbuyer" />
   </view>
   <view class="line-item">
-    <input  placeholder='请输入企业识别码' value=""  bindinput="getbuyer" />
+    <input placeholder='请输入企业识别码' value="" bindinput="getbuyer" />
   </view>
   <view class="line-item">
-    <input  placeholder='请输入开户行信息' value=""  bindinput="getbuyer" />
+    <input placeholder='请输入开户行信息' value="" bindinput="getbuyer" />
   </view>
   <view class="line-item">
-    <input  placeholder='请输入开户行账号' value=""  bindinput="getbuyer" />
+    <input placeholder='请输入开户行账号' value="" bindinput="getbuyer" />
   </view>
   <view class="line-item">
-    <input  placeholder='请输入法人手机验证码' value=""  bindinput="getbuyer" />
+    <input placeholder='请输入法人手机验证码' value="" bindinput="getbuyer" />
   </view>
   <view class="line-item">
-    <input  placeholder='请输入申请金额' value=""  bindinput="getbuyer" />
+    <input placeholder='请输入申请金额' value="" bindinput="getbuyer" />
   </view>
 </view>
 <view class="invoice-block">
-<view class="line-item">
-    <input  placeholder='请输入收件人姓名' value=""  bindinput="getbuyer" />
+  <view class="line-item">
+    <input placeholder='请输入收件人姓名' value="" bindinput="getbuyer" />
   </view>
   <view class="line-item">
-    <input  placeholder='请输入收件人手机' value=""  bindinput="getbuyer" />
+    <input placeholder='请输入收件人手机' value="" bindinput="getbuyer" />
   </view>
   <view class="line-item">
-    <input  placeholder='请输入收件人地址' value=""  bindinput="getbuyer" />
+    <input placeholder='请输入收件人地址' value="" bindinput="getbuyer" />
   </view>
-  <button class="blue-btn" bindtap="create">
-    申请发票
-  </button>
+  <button class="blue-btn" bindtap="create">申请发票</button>
 </view>
-
-  <view class="bottom-black">
+<view class="bottom-black">
+  <navigator url="../invoice-log/index">
     <view class="invoice-log">申请发票记录</view>
-  </view>
+  </navigator>
+</view>
