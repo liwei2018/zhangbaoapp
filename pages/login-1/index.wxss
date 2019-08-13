@@ -1,61 +1,60 @@
-/**index.wxss**/
-.container {
-  padding: 15px;
-}
-.title {
-  font-weight: 700;
-  width: 100%;
-}
-.input-view {
-  border-bottom: 1px solid #eee;
-  width: 100%;
-  padding: 15px 0;
-}
-.userinfo {
-  width: 100%;
-}
-.input-icon {
-  height: 20px;
-  width: 20px;
-}
-.user-input  {
-  color: #333;
+.login {
+  padding: 20px;
 }
 
-.usermotto {
-  margin-top: 200px;
-}
-.next-btn {
-  width: 100%;
-  margin-top: 30rpx;
-  background-color: #327BF8;
-  color: white;
-  border-radius: 98rpx;
-  justify-content: center;
-}
-.input-icon {
-  float: left;
-  margin-right: 5px;
-  margin-top: 3px;
-}
-.img-add {
-  width: 100%;
-  background: #fff;
+.card {
+  height: 120px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 40px 0;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
 }
-.img {
-  width: 50px;
+
+.left {
+  float: left;
   display: block;
+  width: 40px;
 }
-.img-text {
-  width: 100%;
-  text-align: center;
-  margin-top: 20px;
+
+.left image {
+
+  width: 24px;
+  height: 24px;
 }
-.img-header {
-  width: 100%;
+
+.right {
+  float: right;
+  display: block;
+  width: 20px;
+}
+
+.right image {
+  width: 9px;
+  height: 16px;
+}
+
+.mid {
+  flex: 1;
+  color: #fff;
+}
+
+.card1 {
+  background-image: linear-gradient(to left, #FF9F83 0%, #FF5982 100%);
+}
+
+.card2 {
+  background-image: linear-gradient(to left, #73B6FF 0%, #2C7AFF 100%);
+}
+
+.card3 {
+  background-image: linear-gradient(to left, #25DCA8 0%, #13BF8D 100%);
+}
+
+.title {
+  font-size: 20px;
+}
+
+.title1 {
+  font-size: 12px;
 }

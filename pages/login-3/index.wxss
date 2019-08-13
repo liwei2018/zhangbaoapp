@@ -33,11 +33,34 @@
   border-radius: 98rpx;
   justify-content: center;
 }
-page{
-  background-color: rgb(255,255,255)
-}
 .input-icon {
   float: left;
   margin-right: 5px;
   margin-top: 3px;
+}
+.img-add {
+  width: 100%;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
+}
+.img {
+  width: 50px;
+  display: block;
+}
+.img-text {
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+}
+.img-header {
+  width: 100%;
+}
+
+.line-item {
+  display: flex;
+  align-items: center;
 }

@@ -1,0 +1,15 @@
+<view class="company-list">
+  <view class="line-item">
+    <view class='item-right'>
+      <view class="btn">去授权</view>
+    </view>
+    <view class='item-mid'>
+      <view class='item-name'>
+        按按
+      </view>
+      <view class='time'>
+        12312312312
+      </view>
+    </view>
+  </view>
+</view>

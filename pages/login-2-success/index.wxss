@@ -1,0 +1,14 @@
+.img {
+  width: 120px;
+  height: 120px;
+  margin: 40px auto;
+  display: block;
+}
+.title {
+  text-align: center;
+  font-size: 16px;
+}
+.blue-btn {
+  margin-top: 40px;
+  width: 50%;
+}

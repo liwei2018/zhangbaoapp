@@ -1,16 +1,19 @@
 <!--index.wxml-->
-<view >
-  <view class="block1">
-    <view class='tittle'>通过实名认证</view>
-    <view class='text'>真实姓名：{{user.name}}</view>
-    <view class='text'>身份证号：{{user.identityCard}}</view>
-  </view>
+<view class="container">
   <view class="userinfo">
-    <navigator  open-type="switchTab" url="../bill/index">
-      <button  class='login-btn'  >我是个体，开始体验</button>
-    </navigator>
-    <navigator  open-type="redirect" url="../user-company-add/index?login=true">
-      <button  class='login-btn'  >我是企业，录入信息</button>
-    </navigator>
+    <view class="line-item">
+      <input class="user-input" placeholder="请输入您的姓名" bindinput="getName" />
+    </view>
+    <view class="line-item">
+      <input class="user-input" placeholder="请输入18位身份证号" type="idcard"  bindinput="getIdentityCard"  />
+    </view>
+    <view class="input-view">
+      <view class='img-item img-add' bindtap="addimg" wx:if="{{image == ''}}">
+        <image class="img" src="../../assets/images/icon_addphoto.png" mode='widthFix' />
+        <view class='img-text'>上传正脸照片</view>
+      </view>
+      <image src="{{image}}" wx:else  bindtap="addimg" mode='widthFix' class='img-header' />
+    </view>
   </view>
+  <button class="next-btn" bindtap="nextFun">验证身份</button>
 </view>

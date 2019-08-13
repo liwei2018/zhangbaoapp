@@ -1,52 +1,27 @@
-/**index.wxss**/
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
+.login {
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
-
-.userinfo-nickname {
-  color: #aaa;
-}
-
-.usermotto {
-  margin-top: 200px;
 }
 .logo {
-  width: 80px;
-  height: 80px;
+  width: 72px;
+  height: 72px;
+  display: block;
+  margin: 60px auto;
 }
 .logo-text {
   text-align: center;
   margin: 10px auto 20px;
 }
-
-.login-btn {
-  width: 80%;
-  margin-top: 10rpx;
-  color: #327BF8 !important;
-  border-radius: 98rpx; 
+.userinfo {
+  padding: 0 20px;
+}
+.blue-btn {
+  margin-top: 25px;
+}
+.line-item {
   display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  border-color: #327BF8 !important;
-  background-color: rgb(245, 245, 245) !important;
 }
-.login-btn::after {
-  border-radius: 98rpx; 
-  border-color: #327BF8 !important;
-}
-.btnImg {
-  margin-right: 8rpx;
-  width: 46rpx;
-  height: 46rpx;
+.input-icon {
+  height: 20px;
+  width: 20px;
 }

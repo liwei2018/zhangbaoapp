@@ -1,9 +1,13 @@
-<!--index.wxml-->
-<view class="container">
+<!-- index.wxml -->
+<view class="login">
   <image src="../../assets/images/set_ic_logo@3x.png" class='logo' />
-  <view class='logo-text'>随意签电子账单系统</view>
   <view class="userinfo">
-    <button open-type="getUserInfo" class='login-btn' bindgetuserinfo="getUserInfo" wx:if="{{loginBtn}}"><image class='btnImg' src='../../assets/images/login-1.png'></image><view>微信登录</view> </button>
-    <button open-type="getPhoneNumber" class='login-btn'  bindgetphonenumber="getPhoneNumber" wx:if="{{!loginBtn}}"><image class='btnImg' src='../../assets/images/login-1.png'></image><view>绑定手机号</view></button>
+    <view class="line-item">
+      <image src="../../assets/images/注册登录认证/ic_手机@2x.png" class="input-icon" /><input placeholder="请输入手机号码" />
+    </view>
+    <view class="line-item">
+      <image src="../../assets/images/注册登录认证/ic_验证码@2x.png" class="input-icon" /><input placeholder="请输入验证码" />
+    </view>
+    <button class='blue-btn' bindgetphonenumber="getPhoneNumber">快速登录</button>
   </view>
 </view>

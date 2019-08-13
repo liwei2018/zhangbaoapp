@@ -1,0 +1,12 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <view class="item">
+      输入法人手机号，通过短信邀请法人进行认证
+    </view>
+    <view class="line-item">
+      <input class="user-input" placeholder="请输入法人手机号" bindinput="getName" />
+    </view>
+  </view>
+  <button class="next-btn" bindtap="nextFun">发送短信</button>
+</view>
