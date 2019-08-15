@@ -1,7 +1,59 @@
 
+page {
+  background-color: rgb(245,245,245);
+}
+.bill-block {
+  padding: 0 20px;
+  background-color: #fff;
+  margin-bottom: 10px;
+}
+.top-button-view {
+  height: 40px;
+  box-shadow: 0 1px 10px 0 rgba(71, 71, 71, .04);
+  background: #fff;
+  width: 100%;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+}
+.top-button {
+  height: 40px;
+  float: left;
+  width: 25%;
+  text-align: center;
+  color: #666;
+  font-size: 16px;
+  position: relative;
+  line-height: 40px;
+}
+.select {
+  color: #327BF8;
+}
+
+.select .line {
+  position: absolute;
+  left: 50%;
+  bottom: 1px;
+
+  margin-left: -10px;
+  background-color: #327BF8;
+  height: 3px;
+  border-radius: 2px;
+  width: 20px;
+}
+.subject {
+  height: 48px;
+  text-align: center;
+  line-height: 48px;
+}
+.line-item:last-child {
+  border-bottom-width: 0px;
+}
 .item-left {
   float:left;
   color: #333;
+  width: 80px;
 }
 .bill-item {
   height: 40px;
@@ -10,26 +62,14 @@
   align-items: center;
 }
 .item-right {
-  flex:1;
   position: relative;
+  margin-left: 100px;
 }
 .item-right > input {
-  background-color: #eee;
-  border-radius: 15px;
-  font-size: 14px;
-  height: 30px;
-  padding-left: 15px;
+  text-align: right;
+  height: 60px;
 }
-.item-right > picker {
-  background-color: #eee;
-  border-radius: 15px;
-  font-size: 14px;
-  height: 30px;
-  overflow: hidden;
-}
-.picker-view {
-  margin-top: 5px;
-  padding-left: 15px; 
+.item-right > .picker {
 }
 .attr-name {
   float: left;

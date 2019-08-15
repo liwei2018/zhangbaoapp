@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/bill-create/index",
+    "pages/login/index",
     "pages/login-auth-create/index",
     "pages/login-auth-list/index",
     "pages/invoice-log/index",
@@ -12,7 +14,6 @@
     "pages/login-3/index",
     "pages/login-2/index",
     "pages/login-1/index",
-    "pages/login/index",
     "pages/staff-detail/index",
     "pages/user/index",
     "pages/company-authorize/index",
@@ -25,7 +26,6 @@
     "pages/buy/index",
     "pages/bill/index",
     "pages/bill-history/index",
-    "pages/bill-create/index",
     "pages/login-face/index",
     "pages/bill-detail/index",
     "pages/bill-contract/index",

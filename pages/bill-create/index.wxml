@@ -1,64 +1,57 @@
 <!-- index.wxml -->
 <view class="bill-create" bindtap="boxclick">
-  <view class="block">
-    <view class='bill-item'>
-      <view class='item-left'>卖方：</view>
-      <view class='item-right'>
-        <view wx:if="{{update}}">{{sellerName}}</view>
-        <picker wx:else range="{{sellerArr}}" value="{{index}}" bindchange="getseller">
-          <view class='picker-view'>{{sellerArr[sellerIndex]? sellerArr[sellerIndex]: '请选择'}}</view>
-        </picker>
+  <view class="top-bannar" style="padding-top:{{statusBarHeight}}px">
+    <view class="top-button-view">
+      <view class="top-button  select" bindtap="clickTab" data-iscomplete="0">
+        个人
+        <view class='line'></view>
+      </view>
+      <view class="top-button {{iscomplete == 1?'select':''}}" bindtap="clickTab" data-iscomplete="1">
+        企业
+        <view class='line'></view>
       </view>
     </view>
-    <view class='bill-item'>
-      <view class='item-left'>买方：</view>
+  </view>
+  <view class="subject">213</view>
+  <view class="bill-block">
+    <view class='line-item'>
+      <view class='item-left'>客户选择</view>
       <view class='item-right'>
         <view wx:if="{{update}}">{{buyerName}}</view>
-        <input wx:else  placeholder='请输入对方手机号码或企业名称' value="{{searchtext}}"  bindinput="getbuyer" />
+        <input wx:else placeholder='请输入对方手机号码或企业名称' value="{{searchtext}}" bindinput="getbuyer" />
         <view class="buyersearch" wx:if="{{searchShow}}">
-          <view class="search-item" wx:for="{{buyerSearch}}" bindtap="selectbuyer" data-index="{{index}}">{{item.name}}</view>
+          <view class="search-item" wx:for="{{buyerSearch}}" bindtap="selectbuyer" data-index="{{index}}">
+            {{item.name}}
+          </view>
           <view class="search-item" wx:if="{{buyerSearch.length < 1}}">无匹配结果</view>
         </view>
       </view>
     </view>
-    <view class='bill-item' wx:if="{{update}}">
-      <view class='item-left'>账单创建日期：</view>
-      <view class='item-right'>
-        <view>{{createTime}}</view>
-      </view>
-    </view>
-    <view class='bill-item'>
-      <view class='item-left'>账单金额：</view>
-      <view class='item-right'>
-        <input placeholder='限输入数字和小数点' type="digit" value='{{money}}' bindinput="getmoney" />
-      </view>
-    </view>
   </view>
-  <view class="block">
-      <view class="attr" bindtap="contractFun">
-        <view class="attr-name">关联合同</view>
-        <view class="attr-value"></view>
-        <image class="sanjiao-img" src="../../assets/images/aboutme_ic_enter.png" mode="aspectFit" />
+  <view class="bill-block">
+    <view class='line-item'>
+      <view class='item-left'>账单类型</view>
+      <view class='item-right'>{{item.first}}</view>
+    </view>
+    <view class='line-item'>
+      <view class='item-left'>单据金额</view>
+      <view class='item-right'>
+        <input placeholder='0.00' bindinput="getbuyer" />
       </view>
-    <view class="contract-line" wx:if="{{contracts.length > 0}}">
-      <view wx:for="{{contracts}}" class="contract">
-        <view class="bill-item">
-          <view class="attr-name">{{item.contractTypeText}}</view>
-          <view class="attr-value">{{item.stateText}}</view>
-        </view>
-        <view class='bill-item'>
-          <view class='item-left'>甲方：</view>
-          <view class='item-right'>{{item.first}}</view>
-        </view>
-        <view class='bill-item'>
-          <view class='item-left'>乙方：</view>
-          <view class='item-right'>{{item.second}}</view>
-        </view>
-        <view class='bill-item'>
-          <view class='item-left'>合同创建日期：</view>
-          <view class='item-right'>{{item.createTime}}</view>
-        </view>
+    </view>
+    <view class='line-item'>
+      <view class='item-left'>收款状态</view>
+      <view class='item-right'>{{item.first}}</view>
+    </view>
+    <view class='line-item'>
+      <view class='item-left'>交易日期</view>
+      <view class='item-right'>
+        <picker mode="date" value="{{billTime}}" bindchange="getbillTime">
+          <view class="picker">{{billTime}}</view>
+        </picker>
       </view>
+    </view>
+    <view class='line-item'>
     </view>
   </view>
   <view class="block">
@@ -78,7 +71,9 @@
   <view class="block">
     <view class="title-name">备注信息</view>
     <textarea class='textare1' placeholder="选填，限200个字" value="{{remark}}" focus="{{focus}}" bindinput="getRemark" wx:if="{{textareaShow}}" bindconfirm="textareafun2" bindblur="textareafun2" />
-    <view class='textare1' placeholder="选填，限200个字" value="{{remark}}" bindtap="textareafun" wx:if="{{!textareaShow}}">{{remark == ''? '选填，限200个字':remark}}</view>
+    <view class='textare1' placeholder="选填，限200个字" value="{{remark}}" bindtap="textareafun" wx:if="{{!textareaShow}}">
+      {{remark == ''? '选填，限200个字':remark}}
+    </view>
   </view>
   <view class="bottom-banner">
     <button type="default" bindtap="default" class="other-button-hover" bindtap="submitForm">

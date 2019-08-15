@@ -1,4 +1,5 @@
 const $request = require('../../utils/request')
+const $util = require('../../utils/util')
 Page({
   data: {
     buyer: '',
@@ -25,7 +26,9 @@ Page({
     "buyerName": "",
     "sellerName": "",
     textareaShow: false,
-    focus: false
+    focus: false,
+    billTime: $util.formatDate(new Date()),
+    statusBarHeight: getApp().globalData.statusBarHeight,
   },
   onLoad(option) {
     if(option.bid){
@@ -80,6 +83,12 @@ Page({
           sellerIndex: 0
         })
       }
+    })
+  },
+  getbillTime(e) {
+
+    this.setData({
+      billTime: e.detail.value,
     })
   },
   getseller(e) {

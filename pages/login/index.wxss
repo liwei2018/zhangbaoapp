@@ -24,4 +24,13 @@
 .input-icon {
   height: 20px;
   width: 20px;
+  margin-right: 5px;
+}
+.sendCode {
+  flex: 1;
+  text-align: right;
+  color: #327BF8;
+}
+.disable {
+  color: #999;
 }
