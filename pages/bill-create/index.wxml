@@ -17,21 +17,17 @@
     <view class='line-item'>
       <view class='item-left'>客户选择</view>
       <view class='item-right'>
-        <view wx:if="{{update}}">{{buyerName}}</view>
-        <input wx:else placeholder='请输入对方手机号码或企业名称' value="{{searchtext}}" bindinput="getbuyer" />
-        <view class="buyersearch" wx:if="{{searchShow}}">
-          <view class="search-item" wx:for="{{buyerSearch}}" bindtap="selectbuyer" data-index="{{index}}">
-            {{item.name}}
-          </view>
-          <view class="search-item" wx:if="{{buyerSearch.length < 1}}">无匹配结果</view>
-        </view>
+        <image src="../../assets/images/账单管理/ic_箭头@2x.png" class="jiantou1" />
+        <text>请选择</text>
       </view>
     </view>
   </view>
   <view class="bill-block">
     <view class='line-item'>
       <view class='item-left'>账单类型</view>
-      <view class='item-right'>{{item.first}}</view>
+      <view class='item-right'>
+        <image src="../../assets/images/账单管理/ic_箭头@2x.png" class="jiantou" />
+      </view>
     </view>
     <view class='line-item'>
       <view class='item-left'>单据金额</view>
@@ -41,38 +37,35 @@
     </view>
     <view class='line-item'>
       <view class='item-left'>收款状态</view>
-      <view class='item-right'>{{item.first}}</view>
+      <view class='item-right'>
+        <image src="../../assets/images/账单管理/ic_箭头@2x.png" class="jiantou" />
+      </view>
     </view>
     <view class='line-item'>
       <view class='item-left'>交易日期</view>
       <view class='item-right'>
         <picker mode="date" value="{{billTime}}" bindchange="getbillTime">
-          <view class="picker">{{billTime}}</view>
+          <view class="picker">{{billTime}}
+            <image src="../../assets/images/账单管理/ic_箭头@2x.png" class="jiantou" />
+          </view>
         </picker>
       </view>
     </view>
     <view class='line-item'>
+      <textarea class='textare1' maxlength="200" placeholder="备注信息" value="{{remark}}" bindinput="getRemark"  bindconfirm="textareafun2" bindblur="textareafun2" />
+      <view class="remarkLength">{{remark.length}}/200</view>
     </view>
-  </view>
-  <view class="block">
-    <view class="attr">
-      <view class="title-name">单据图片</view>
+    <view class="line-item">
+      <view class="title-name">上传图片</view>
       <view class='img-view'>
         <view class='img-item' wx:for="{{imgs}}">
           <view class="img-del" bindtap="delimg" data-index="{{index}}">x</view>
           <image class="img" src="{{item}}" />
         </view>
         <view class='img-item img-add' bindtap="addimg" wx:if="{{imgs.length < 9}}">
-          <image class="img" src="../../assets/images/icon_addphoto.png" />
+          <image class="img" src="../../assets/images/账单管理/添加图片@2x.png" />
         </view>
       </view>
-    </view>
-  </view>
-  <view class="block">
-    <view class="title-name">备注信息</view>
-    <textarea class='textare1' placeholder="选填，限200个字" value="{{remark}}" focus="{{focus}}" bindinput="getRemark" wx:if="{{textareaShow}}" bindconfirm="textareafun2" bindblur="textareafun2" />
-    <view class='textare1' placeholder="选填，限200个字" value="{{remark}}" bindtap="textareafun" wx:if="{{!textareaShow}}">
-      {{remark == ''? '选填，限200个字':remark}}
     </view>
   </view>
   <view class="bottom-banner">

@@ -47,6 +47,10 @@ page {
   text-align: center;
   line-height: 48px;
 }
+.line-item {
+  height: auto;
+  min-height: 60px;
+}
 .line-item:last-child {
   border-bottom-width: 0px;
 }
@@ -64,12 +68,19 @@ page {
 .item-right {
   position: relative;
   margin-left: 100px;
+  text-align: right;
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  height: 60px;
 }
 .item-right > input {
   text-align: right;
   height: 60px;
 }
-.item-right > .picker {
+.picker {
+  display: flex;
+  align-items: center;
 }
 .attr-name {
   float: left;
@@ -95,17 +106,15 @@ page {
   float: right;
 }
 .img-view {
-  margin-top: 10px;
-  border-top: 1px #eee solid;
   overflow: hidden;
-  
+  padding-bottom: 10px;
 }
 .title-name {
   display: block;
 }
 .img-item {
-  height: 70px;
-  width: 70px;
+  height: 78px;
+  width: 78px;
   border-radius: 4px;
   margin-right: 12px;
   margin-top: 12px;
@@ -113,27 +122,22 @@ page {
   position: relative;
 }
 .img {
-  height: 70px;
-  width: 70px;
+  height: 78px;
+  width: 78px;
   border-radius: 4px;
 }
 .img-add .img {
-  height: 40px;
-  width: 40px;
-  margin: 15px;
-  border-radius: 4px;
+  height: 78px;
+  width: 78px;
 }
 .img-add {
   background-color: #eee; 
 }
 .textare1 {
-    border: 1rpx solid #E7E7E7;
   display: block;
   color: #999;
-  padding: 10px;
   width: auto;
   margin-top: 10px;
-  height: 100px;
 }
 
 .contract {
@@ -174,4 +178,21 @@ page {
   height: 30px;
   line-height: 30px;
   padding: 5px 10px;
+}
+.jiantou {
+  height: 12px;
+  width: 8px;
+  float: right;
+  margin-left: 5px;
+  transform: rotate(90deg);
+}
+.jiantou1 {
+  height: 12px;
+  width: 8px;
+  float: right;
+  margin-left: 5px;
+  transform: rotate(0deg);
+}
+.remarkLength{
+  text-align: right;
 }
