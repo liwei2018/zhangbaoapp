@@ -2,96 +2,51 @@ const $request = require('../../utils/request')
 const $util = require('../../utils/util')
 Page({
   data: {
-    billState: $util.billState,
-    historytype: $util.historytype,
-    bill: {
-    },
-    contracts: [],
-    contractType: $util.contractType,
-    bid: '',
-    jujuedialog: false,
-    remark: ''
+    company: {}
   },
-  onLoad: function (option) {
-    let that = this
-    $request.get('/v1/bills/info', {
-      bid: option.id
+  onLoad(option) {
+    $request.get('/v1/user/companyInfo', {
+      cid: option.cid
     }).then((res) => {
-      if (res.data.error == 0) {
+      if (res.data.result) {
+        res.data.result.cid = option.cid
         this.setData({
-          "bill": res.data.result,
-          bid: option.id
-        })
-      }
-    })
-    $request.get('/v1/bills/contract', {
-      bid: option.id
-    }).then((res) => {
-      if (res.data.error == 0) {
-        this.setData({
-          "contracts": res.data.result,
+          company: res.data.result
         })
       }
     })
   },
-  imgYu: function (event) {
-    var src = event.currentTarget.dataset.src;//获取data-src
-    var imgList = event.currentTarget.dataset.list;//获取data-list
-    //图片预览
-    wx.previewImage({
-      current: src, // 当前显示图片的http链接
-      urls: imgList // 需要预览的图片http链接列表
+  switchChange(e) {
+    console.log(e.detail.value)
+    if(e.detail.value) {
+      this.setData({
+        'company.isDefault': 1
+      })
+    } else {
+      this.setData({
+        'company.isDefault': 0
+      })
+    }
+  },
+  getphone(e) {
+    this.setData ({
+      'company.phone': e.detail.value
     })
   },
-  confrimBill(e) {
-    const that = this
-    wx.showModal({
-      title: '',
-      content: '确认该笔账单代表您接受电子账单上的信息描述，是否确认？',
-      cancelText: "拒绝",
-      confirmText: '确认',
-      success: (res) => {
-        if (res.confirm) {
-
-          $request.get('/v1/user/info', {
-          }).then((res) => {
-            if (res.data.error == 0) {
-              if (res.data.result.signature) {
-                this.confrimBill2()
-              } else {
-                this.userSignatur()
-              }
-            }
-          })
-        } else {
-          this.setData({
-            jujuedialog: true
-          })
-        }
-      }
+  getaddress(e) {
+    this.setData ({
+      'company.address': e.detail.value
     })
   },
-  userSignatur() {
-    wx.showModal({
-      title: '',
-      content: '您尚未录入个人电子签名，无法确认账单',
-      cancelText: "取消",
-      confirmText: '马上录入',
-      success: (res) => {
-        if (res.confirm) {
-          wx.navigateTo({
-            url: '../user-signature/index',
-          })
-        } else {
-        }
-      }
-    })
-  },
-  confrimBill2() {
-    const that = this
-    $request.post('/v1/bills/confirm', {
-      confirmType: 0,
-      bid: this.data.bid
+  submit(){
+    $request.post('/v1/user/companyUpdate', {
+      cid: this.data.company.cid,
+      phone: this.data.company.phone,
+      address: this.data.company.address,
+      bank: this.data.company.bank,
+      bankAccount: this.data.company.bankAccount,
+      isDefault: this.data.company.isDefault,
+      logo: this.data.company.logo
     }).then((res) => {
       if (res.data.error == 0) {
         wx.navigateBack({
@@ -100,69 +55,26 @@ Page({
       }
     })
   },
-  jujuedialogClose() {
-    this.setData({
-      jujuedialog: false,
-      remark: ''
-    })
-  },
-  clickTab(e) {
-    this.setData({
-      iscomplete: e.currentTarget.dataset.iscomplete
-    })
-    this.onPullDownRefresh()
-  },
-  create() {
-
-  },
-  search(e) {
-    this.setData({
-      search: e.detail.value
-    })
-    this.onPullDownRefresh()
-  },
-  refuse() {
-    $request.post('/v1/bills/refuse', {
-      remark: this.data.remark,
-      bid: this.data.bid
-    }).then((res) => {
-      if (res.data.error == 0) {
-        this.setData({
-          jujuedialog: false,
-          remark: ''
-        })
-        wx.navigateBack({
-          delta: 1
-        })
-      }
-    })
-  },
-  getremark(e) {
-    this.setData({
-      remark: e.detail.value
-    })
-  },
-  cancelBill(e) {
+  addimg() {
     const that = this
-    wx.showModal({
-      title: '',
-      content: '是否确认将该笔账单取消？',
-      cancelText: "否",
-      confirmText: '是',
-      success: (res) => {
-        if (res.confirm) {
-
-          $request.post('/v1/bills/cancel', {
-            bid: this.data.bid
-          }).then((res) => {
-            if (res.data.error == 0) {
-              wx.navigateBack({
-                delta: 1
+    wx.chooseImage({
+      count: 1,
+      success(res) {
+        const tempFilePaths = res.tempFilePaths
+        tempFilePaths.forEach(element => {
+          wx.uploadFile({
+            url: `${$request.config.protocol}://${$request.config.domain}/v1/common/imageUpload`, // 仅为示例，非真实的接口地址
+            filePath: element,
+            name: 'image',
+            success(res) {
+              let data = JSON.parse(res.data)
+              that.setData({
+                'company.logo': data.result.url
               })
             }
           })
-        } else {
-        }
+        });
+
       }
     })
   },

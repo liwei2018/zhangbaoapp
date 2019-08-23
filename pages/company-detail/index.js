@@ -2,164 +2,80 @@ const $request = require('../../utils/request')
 const $util = require('../../utils/util')
 Page({
   data: {
-    motto: 'Hello World',
-    billList: [],
-    hasUserInfo: false,
-    jujuedialog: false,
-    iscomplete: 0,
-    bills: [],
-    pageNum: 1,
-    billState:$util.billState,
-    unfinished: 0,
-    complete: 1,
-    search: '',
-    bid: '',
-    remark:'',
-    statusBarHeight: getApp().globalData.statusBarHeight,
+    company: {}
   },
-  onShow() {
-    $request.get('/v1/bills/total', {
+  onLoad(option) {
+    $request.get('/v1/user/companyInfo', {
+      cid: option.cid
     }).then((res) => {
       if (res.data.result) {
+        res.data.result.cid = option.cid
         this.setData({
-          "unfinished": res.data.result.unfinished,
-          "complete": res.data.result.complete
+          company: res.data.result
         })
       }
     })
-    this.setData({
-      pageNum: 1
-    })
-    this.getList()
   },
-  getList(up) {
-    $request.get('/v1/bills/list',{
-      pageNum: this.data.pageNum,
-      pageSize: 10,
-      search: this.data.search,
-      isComplete: this.data.iscomplete
+  switchChange(e) {
+    console.log(e.detail.value)
+    if(e.detail.value) {
+      this.setData({
+        'company.isDefault': 1
+      })
+    } else {
+      this.setData({
+        'company.isDefault': 0
+      })
+    }
+  },
+  getphone(e) {
+    this.setData ({
+      'company.phone': e.detail.value
+    })
+  },
+  getaddress(e) {
+    this.setData ({
+      'company.address': e.detail.value
+    })
+  },
+  submit(){
+    $request.post('/v1/user/companyUpdate', {
+      cid: this.data.company.cid,
+      phone: this.data.company.phone,
+      address: this.data.company.address,
+      bank: this.data.company.bank,
+      bankAccount: this.data.company.bankAccount,
+      isDefault: this.data.company.isDefault,
+      logo: this.data.company.logo
     }).then((res) => {
-      if (res.data.result) {
-        if(up) {
-          this.setData({
-            bills: this.data.bills.concat(res.data.result)
-          })
-        } else {
-          this.setData({
-            bills: res.data.result
-          })
-        }
+      if (res.data.error == 0) {
+        wx.navigateBack({
+          delta: 1
+        })
       }
     })
   },
-  onPullDownRefresh() {
-    this.setData({
-      pageNum: 1
-    })
-    this.getList() 
-  },
-  onReachBottom() {
-    this.setData({
-      pageNum: this.data.pageNum + 1
-    })
-    this.getList(true)
-  },
-  confrimBill(e) {
+  addimg() {
     const that = this
-    this.setData({
-      bid: e.currentTarget.dataset.bid
-    })
-    wx.showModal({
-      title: '',
-      content: '确认该笔账单代表您接受电子账单上的信息描述，是否确认？',
-      cancelText: "拒绝",
-      confirmText: '确认',
-      success: (res) => {
-        if (res.confirm) {
-          
-          $request.get('/v1/user/info', {
-          }).then((res) => {
-            if (res.data.error == 0) {
-              if (res.data.result.signature) {
-                this.confrimBill2()
-              } else {
-                this.userSignatur()
-              }
+    wx.chooseImage({
+      count: 1,
+      success(res) {
+        const tempFilePaths = res.tempFilePaths
+        tempFilePaths.forEach(element => {
+          wx.uploadFile({
+            url: `${$request.config.protocol}://${$request.config.domain}/v1/common/imageUpload`, // 仅为示例，非真实的接口地址
+            filePath: element,
+            name: 'image',
+            success(res) {
+              let data = JSON.parse(res.data)
+              that.setData({
+                'company.logo': data.result.url
+              })
             }
           })
-        } else {
-          this.setData({
-            jujuedialog: true
-          })
-        }
-      }
-    })
-  },
-  userSignatur() {
-    wx.showModal({
-      title: '',
-      content: '您尚未录入个人电子签名，无法确认账单',
-      cancelText: "取消",
-      confirmText: '马上录入',
-      success: (res) => {
-        if (res.confirm) {
-          wx.navigateTo({
-            url: '../user-signature/index',
-          })
-        } else {
-        }
-      }
-    })
-  },
-  confrimBill2() {
-    const that = this
-    $request.post('/v1/bills/confirm', {
-      confirmType: 0,
-      bid: this.data.bid
-    }).then((res) => {
-      if (res.data.error == 0) {
-        this.onShow()
-      }
-    })
-  },
-  jujuedialogClose() {
-    this.setData({
-      jujuedialog: false,
-      remark: ''
-    })
-  },
-  clickTab(e) {
-    this.setData({
-      iscomplete: e.currentTarget.dataset.iscomplete
-    })
-    this.onPullDownRefresh()
-  },
-  create() {
+        });
 
-  },
-  search(e){
-    this.setData({
-      search: e.detail.value
-    })
-    this.onPullDownRefresh()
-  },
-  refuse() {
-    $request.post('/v1/bills/refuse', {
-      remark: this.data.remark,
-      bid: this.data.bid
-    }).then((res) => {
-      if (res.data.error == 0) {
-        this.setData({
-          jujuedialog: false,
-          remark: ''
-        })
-        this.onShow()
       }
     })
   },
-  getremark(e) {
-    this.setData({
-      remark: e.detail.value
-    })
-  }
 })

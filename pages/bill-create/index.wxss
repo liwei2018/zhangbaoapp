@@ -7,6 +7,10 @@ page {
   background-color: #fff;
   margin-bottom: 10px;
 }
+.top-bannar {
+
+  background: #fff;
+}
 .top-button-view {
   height: 40px;
   box-shadow: 0 1px 10px 0 rgba(71, 71, 71, .04);
@@ -195,4 +199,8 @@ page {
 }
 .remarkLength{
   text-align: right;
+}
+.fixed-btn {
+  width: 90%;
+  left: 5%;
 }

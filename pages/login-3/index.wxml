@@ -2,7 +2,7 @@
 <view class="container">
   <view class="userinfo">
     <view class="line-item">
-      <input class="user-input" placeholder="请输入企业全称" bindinput="getName" />
+      <input class="user-input" placeholder="请输入客户公司名称" value="{{company}}" bindfocus="getcompany" />
     </view>
     <view class="line-item">
       <input class="user-input" placeholder="请输入您的姓名" bindinput="getName" />

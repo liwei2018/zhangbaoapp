@@ -2,73 +2,95 @@
 <view class="bill">
   <view class="block-blue" style="padding-top:{{statusBarHeight}}px;">
     <view class="top-button-view">
-      <view class="top-button  {{iscomplete == 0?'select':''}}" bindtap="clickTab" data-iscomplete="0">
+      <view class="top-button  {{iscompany == 0?'select':''}}" bindtap="clickTab" data-iscompany="0">
         个人
         <view class='line'></view>
       </view>
-      <view class="top-button {{iscomplete == 1?'select':''}}" bindtap="clickTab" data-iscomplete="1">
+      <view class="top-button {{iscompany == 1?'select':''}}" bindtap="clickTab" data-iscompany="1">
         企业
         <view class='line'></view>
       </view>
     </view>
   </view>
-  
   <view class="block money">
-  
     <view class="user-header">
       <view class="header-1">
-        <image class="user-photo" src="../../assets/images/个人中心/默认头像@2x.png"></image>
+        <image class="user-photo" wx:if="{{iscompany == 0}}" src="{{user.avatar == '' ? '../../assets/images/个人中心/默认头像@2x.png' : user.avatar}}"></image>
+        <image class="user-photo" wx:else src="{{user.logo == '' ? '../../assets/images/个人中心/默认头像@2x.png' : user.logo}}"></image>
       </view>
       <view class="header-3">
-        <image src="../../assets/images/个人中心/ic_设置@2x.png" class="header-setting"></image>
+        <navigator url="../user-detail/index">
+          <image src="../../assets/images/个人中心/ic_设置@2x.png" class="header-setting"></image>
+        </navigator>
       </view>
-      
       <view class="header-2">
-        <view class="header-name">aaa</view>
-        <view class="header-name2">bbb<view class="renzheng"><image class="renzheng-img" src="../../assets/images/个人中心/标签_已认证@2x.png"></image>已认证</view></view>
+        <view class="header-name">{{iscompany == 1?user.companyName:user.name}}</view>
+        <view class="header-name2">
+          <view class="renzheng" wx:if="{{user.isRealName == 1}}">
+            <image class="renzheng-img" src="../../assets/images/个人中心/标签_已认证@2x.png"></image>
+            已认证
+          </view>
+          <view class="renzheng renzheng2" wx:if="{{user.isRealName == 0}}">
+            <image class="renzheng-img" src="../../assets/images/账单管理/ic_未认证@2x@2x.png"></image>
+            已认证
+          </view>
+        </view>
       </view>
     </view>
     <view>
       <navigator url="../buy/index">
         <view class="money-item">
-          <view class="money-item-1">1</view>
-          <view class="money-item-2">账单数量</view>
+          <view class="money-item-1">{{user.surplus}}</view>
+          <view class="money-item-2">剩余套餐</view>
         </view>
       </navigator>
       <view class="money-item">
-        <view class="money-item-1">￥1</view>
+        <view class="money-item-1">￥{{iscompany == 1?user.company.payment:user.user.payment}}</view>
         <view class="money-item-2">剩余应付</view>
       </view>
       <view class="money-item">
-        <view class="money-item-1">￥1</view>
+        <view class="money-item-1">￥{{iscompany == 1?user.company.payment:user.user.payment}}</view>
         <view class="money-item-2">剩余应收</view>
       </view>
     </view>
   </view>
   <view class="block">
-    
+    <navigator url="../buy-log/index">
+      <view class=".line-item">
+        <image class="icon-img" src="../../assets/images/个人中心/ic_购买记录@2x.png"></image>
+        购买使用记录
+        <image class="sanjiao-img" src="../../assets/images/账单管理/ic_箭头@2x.png" mode="aspectFit" />
+      </view>
+    </navigator>
+    <navigator url="../logi/index" wx:if="{{iscompany == 0}}">
+      <view class=".line-item">
+        <image class="icon-img" src="../../assets/images/个人中心/ic_个人认证@2x.png"></image>
+        个人认证
+        <image class="sanjiao-img" src="../../assets/images/账单管理/ic_箭头@2x.png" mode="aspectFit" />
+      </view>
+    </navigator>
+    <navigator url="../company/index" wx:if="{{iscompany == 1}}">
+      <view class=".line-item">
+        <image class="icon-img" src="../../assets/images/个人中心/ic_企业管理@2x.png"></image>
+        企业管理
+        <image class="sanjiao-img" src="../../assets/images/账单管理/ic_箭头@2x.png" mode="aspectFit" />
+      </view>
+    </navigator>
+    <navigator url="../sraff/index" wx:if="{{iscompany == 1}}">
+      <view class=".line-item">
+        <image class="icon-img" src="../../assets/images/个人中心/ic_人员管理@2x.png"></image>
+        人员管理
+        <image class="sanjiao-img" src="../../assets/images/账单管理/ic_箭头@2x.png" mode="aspectFit" />
+      </view>
+    </navigator>
     <view class=".line-item">
-      <image class="icon-img" src="../../assets/images/个人中心/ic_购买记录@2x.png"></image>购买使用记录
+      <image class="icon-img" src="../../assets/images/个人中心/ic_授权委托书@2x.png"></image>
+      我的授权委托书
       <image class="sanjiao-img" src="../../assets/images/账单管理/ic_箭头@2x.png" mode="aspectFit" />
     </view>
     <view class=".line-item">
-      <image class="icon-img" src="../../assets/images/个人中心/ic_个人认证@2x.png"></image>个人认证
-      <image class="sanjiao-img" src="../../assets/images/账单管理/ic_箭头@2x.png" mode="aspectFit" />
-    </view>
-    <view class=".line-item">
-      <image class="icon-img" src="../../assets/images/个人中心/ic_企业管理@2x.png"></image>企业管理
-      <image class="sanjiao-img" src="../../assets/images/账单管理/ic_箭头@2x.png" mode="aspectFit" />
-    </view>
-    <view class=".line-item">
-      <image class="icon-img" src="../../assets/images/个人中心/ic_人员管理@2x.png"></image>人员管理
-      <image class="sanjiao-img" src="../../assets/images/账单管理/ic_箭头@2x.png" mode="aspectFit" />
-    </view>
-    <view class=".line-item">
-      <image class="icon-img" src="../../assets/images/个人中心/ic_授权委托书@2x.png"></image>我的授权委托书
-      <image class="sanjiao-img" src="../../assets/images/账单管理/ic_箭头@2x.png" mode="aspectFit" />
-    </view>
-    <view class=".line-item">
-      <image class="icon-img" src="../../assets/images/个人中心/ic_使用帮助@2x.png"></image>使用帮助
+      <image class="icon-img" src="../../assets/images/个人中心/ic_使用帮助@2x.png"></image>
+      使用帮助
       <image class="sanjiao-img" src="../../assets/images/账单管理/ic_箭头@2x.png" mode="aspectFit" />
     </view>
   </view>

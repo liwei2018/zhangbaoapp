@@ -35,3 +35,15 @@ page {
   color: #327BF8;
   height: 20px;
 }
+.sendCode {
+  text-align: right;
+  color: #327BF8;
+  position: absolute;
+  right: 20px;
+}
+.disable {
+  color: #999;
+}
+.sendCodeinput {
+  margin-right: 60px;
+}

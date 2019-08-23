@@ -1,0 +1,14 @@
+<view class="company-list">
+
+  <view class='search'>
+    <input class='search-input' placeholder='搜索' placeholder-class='search-inpu-placeholder' bindconfirm="search" bindblur="search"  />
+  </view>
+  <view class="line-item" wx:for="{{userList}}" data-index="{{index}}" bindtap="selected">
+
+    <view class='item-mid'>
+      <view class='item-name'>
+        {{item.enterprise}}
+      </view>
+    </view>
+  </view>
+</view>

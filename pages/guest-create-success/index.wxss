@@ -1,0 +1,44 @@
+.img {
+  width: 60px;
+  height: 60px;
+  margin: 40px auto;
+  display: block;
+}
+.title {
+  text-align: center;
+  font-size: 16px;
+}
+.blue-btn {
+  margin-top: 40px;
+  width: 50%;
+}
+.left{
+  float: left;
+  width: 60px;
+  font-size: 12px;
+color: #666666;
+}
+.right{
+  margin-left: 60px;
+  font-size: 12px;
+  text-align: right;
+}
+.user{
+  padding: 30px;
+}
+.user-item {
+  height: 20px;
+}
+.renzheng-item {
+  width: 33%;
+  float: left;
+}
+.icon {
+  width: 40px;
+  height: 40px;
+  display: block;
+  margin: 20px auto;
+}
+.text {
+  text-align: center;
+}

@@ -1,28 +1,17 @@
-
 <view class="buy">
   <view class="list">
-    <view class="buy-item select">
-      <view class="name1">50份</view>
-      <view class="name2">售价 49.98元</view>
-    </view>
-    <view class="buy-item">
-      <view class="name1">50份</view>
-      <view class="name2">售价 49.98元</view>
-    </view>
-    <view class="buy-item">
-      <view class="name1">50份</view>
-      <view class="name2">售价 49.98元</view>
-    </view>
-    <view class="buy-item">
-      <view class="name1">50份</view>
-      <view class="name2">售价 49.98元</view>
+    <view class="buy-item {{item.pid == pid? 'select': ''}}" wx:for="{{packages}}" data-pid="{{item.pid}}" bindtap="selected">
+      <view class="name1">{{item.title}}</view>
+      <view class="name2">售价 {{item.price}}元</view>
     </view>
   </view>
   <view>
-  <view class="blue-btn-dis buy-btn">购买</view>
+    <view class=" {{pid==''? 'blue-btn-dis': 'blue-btn'}} buy-btn" bindtap="submit">购买</view>
   </view>
   <view class="bottom-black">
-    <view class="buy-log">交易记录</view>
+    <navigator url="../buy-log/index">
+      <view class="buy-log">交易记录</view>
+    </navigator>
     <view class="buy-msg">最终解释权归宝账公司所有</view>
   </view>
 </view>

@@ -2,100 +2,105 @@ const $request = require('../../utils/request')
 const $util = require('../../utils/util')
 Page({
   data: {
+    user: {},
     buyer: '',
-    buyerType: '',
-    buyerIndex: '',
-    buyerSearch: [],
-    seller: '',
-    sellerType: '',
-    sellerIndex: '',
+    cid:'',
+    gid: '',
+    main: '0',
     money: '',
-    pictures: '',
-    remark: '',
-    cid: '',
-    mobile: '',
-    sellerObj: [],
-    sellerArr: [],
-    contracts: [],
-    bid: '',
-    bill: {},
+    status: '0',
+    billType: '0',
+    shopType: '',
+    money: '',
+    refundTime: $util.formatDate(new Date()),
+    payType: '0',
     imgs: [],
-    searchShow: false,
-    searchtext: '',
-    update: false,
-    "buyerName": "",
-    "sellerName": "",
-    textareaShow: false,
-    focus: false,
+    remark: '',
     billTime: $util.formatDate(new Date()),
     statusBarHeight: getApp().globalData.statusBarHeight,
+    company: {},
+    companyObj: [],
+    companyArr: [],
+    iscompany: 0,
+    mainOpt: [
+      '个人',
+      '公司',
+    ],
+    statusOpt: [
+      '未结算',
+      '已结算'
+    ],
+    billTypeOpt: [
+      '销售确认书',
+      '财务对账单',
+      '收款单',
+    ],
+    payTypeOpt: [
+      '现金', '微信', '支付宝', '折让单', '银行汇款', '其他'
+    ]
   },
   onLoad(option) {
-    if(option.bid){
-      wx.setNavigationBarTitle({
-        title: '修改账单'
-      })
+    if(option.gid) {
       this.setData({
-        update: true,
-        bid: option.bid
+        gid:option.gid
       })
-      $request.get('/v1/bills/info', {
-        bid: option.bid
+      
+      $request.get('/v1/user/guestInfo', {
+        gid: option.gid
       }).then((res) => {
         if (res.data.error == 0) {
           this.setData({
-            buyerName: res.data.result.buyerName,
-            sellerName: res.data.result.sellerName,
-            createTime: res.data.result.createTime,
-            money: res.data.result.money,
-            imgs: res.data.result.pictures,
-            remark: res.data.result.remark,
-          })
-        }
-      })
-
-      $request.get('/v1/bills/contract', {
-        bid: option.bid
-      }).then((res) => {
-        if (res.data.error == 0 && res.data.result[0]) {
-          this.setData({
-            contracts: res.data.result,
-            cid: res.data.result[0].cid
+            buyer: res.data.result,
           })
         }
       })
     }
+    $request.get('/v1/user/info',{
+    }).then((res) => {
+      if (res.data.result) {
+        this.setData({
+          user: res.data.result
+        })
+      }
+    })
   },
   onShow() {
-    $request.get('/v1/user/search', {}).then((res) => {
+    $request.get('/v1/bills/select', {}).then((res) => {
       if (res.data.error == 0) {
         var arr = []
         res.data.result.forEach(element => {
           arr.push(element.name)
         });
         this.setData({
-          sellerObj: res.data.result,
-          sellerArr: arr
-        })
-        this.setData({
-          seller: this.data.sellerObj[0].id,
-          sellerType: this.data.sellerObj[0].type,
-          sellerIndex: 0
+          companyObj: res.data.result,
+          companyArr: arr
         })
       }
     })
   },
-  getbillTime(e) {
-
+  clickTab(e) {
     this.setData({
-      billTime: e.detail.value,
+      iscompany: e.currentTarget.dataset['iscompany']
     })
   },
-  getseller(e) {
+  getcompany(e) {
     this.setData({
-      seller: this.data.sellerObj[e.detail.value].id,
-      sellerType: this.data.sellerObj[e.detail.value].type,
-      sellerIndex: e.detail.value
+      company: this.data.companyObj[e.detail.value],
+    })
+  },
+  getbillType(e) {
+    this.setData({
+      billType: e.detail.value,
+    })
+  },
+  getpayType(e) {
+    this.setData({
+      payType: e.detail.value,
+    })
+  },
+  getshopType(e) {
+    this.setData({
+      shopType: e.detail.value,
     })
   },
   delimg(e) {
@@ -103,6 +108,16 @@ Page({
     this.data.imgs.splice(index, 1);
     this.setData({
       imgs: this.data.imgs
+    })
+  },
+  getrefundTime(e) {
+    this.setData({
+      refundTime: e.detail.value,
+    })
+  },
+  getbillTime(e) {
+    this.setData({
+      billTime: e.detail.value,
     })
   },
   addimg() {
@@ -113,7 +128,7 @@ Page({
         const tempFilePaths = res.tempFilePaths
         tempFilePaths.forEach(element => {
           wx.uploadFile({
-            url: 'https://api.ublog.top/v1/common/imageUpload', // 仅为示例，非真实的接口地址
+            url: `${$request.config.protocol}://${$request.config.domain}/v1/common/imageUpload`,
             filePath: element,
             name: 'image',
             success(res) {
@@ -199,7 +214,7 @@ Page({
       })
       return;
     }
-    if(this.data.update) {
+    if (this.data.update) {
       $request.post('/v1/bills/update', {
         money: this.data.money,
         pictures: this.data.imgs.join(','),
@@ -222,15 +237,19 @@ Page({
     } else {
 
       $request.post('/v1/bills/create', {
-        buyer: this.data.buyer,
-        buyerType: this.data.buyerType,
-        seller: this.data.seller,
-        sellerType: this.data.sellerType,
+        gid: this.data.buyer.gid,
+        cid: this.data.buyer.cid,
+        main: this.data.main,
         money: this.data.money,
+        status: this.data.status,
+        billType: this.data.billType,
+        shopType: this.data.shopType,
+        money: this.data.money,
+        refundTime: this.data.refundTime,
+        payType: this.data.payType,
+        billTime: this.data.billTime,
         pictures: this.data.imgs.join(','),
         remark: this.data.remark,
-        cid: this.data.cid,
-        mobile: this.data.searchtext
       }).then((res) => {
         if (res.data.error == 0) {
           wx.showToast({
@@ -245,7 +264,7 @@ Page({
         }
       })
     }
-    
+
   },
   textareafun() {
     this.setData({

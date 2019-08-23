@@ -6,7 +6,7 @@ Page({
     billList: [],
     hasUserInfo: false,
     jujuedialog: false,
-    iscomplete: 0,
+    signed: 0,
     bills: [],
     pageNum: 1,
     billState:$util.billState,
@@ -17,15 +17,6 @@ Page({
     remark:''
   },
   onShow() {
-    $request.get('/v1/bills/total', {
-    }).then((res) => {
-      if (res.data.result) {
-        this.setData({
-          "unfinished": res.data.result.unfinished,
-          "complete": res.data.result.complete
-        })
-      }
-    })
     this.setData({
       pageNum: 1
     })
@@ -36,7 +27,7 @@ Page({
       pageNum: this.data.pageNum,
       pageSize: 10,
       search: this.data.search,
-      isComplete: this.data.iscomplete
+      signed: this.data.signed
     }).then((res) => {
       if (res.data.result) {
         if(up) {
@@ -129,7 +120,7 @@ Page({
   },
   clickTab(e) {
     this.setData({
-      iscomplete: e.currentTarget.dataset.iscomplete
+      signed: e.currentTarget.dataset.signed
     })
     this.onPullDownRefresh()
   },

@@ -3,12 +3,12 @@
 <view class="bill">
   <view class="block-blue" style="padding-top:{{statusBarHeight}}px;">
     <view class="top-button-view">
-      <view class="top-button  {{iscomplete == 0?'select':''}}" bindtap="clickTab" data-iscomplete="0">
-        应收
+      <view class="top-button  {{type == 0?'select':''}}" bindtap="clickTab" data-type="0">
+        个人
         <view class='line'></view>
       </view>
-      <view class="top-button {{iscomplete == 1?'select':''}}" bindtap="clickTab" data-iscomplete="1">
-        应付
+      <view class="top-button {{type == 1?'select':''}}" bindtap="clickTab" data-type="1">
+        公司
         <view class='line'></view>
       </view>
     </view>
@@ -32,11 +32,11 @@
   </view>
   <view class="block">
     <view class="top-button-view">
-      <view class="top-button  {{iscomplete == 0?'select':''}}" bindtap="clickTab" data-iscomplete="0">
+      <view class="top-button  {{collection == 0?'select':''}}" bindtap="clickTabcollection" data-collection="0">
         应收
         <view class='line'></view>
       </view>
-      <view class="top-button {{iscomplete == 1?'select':''}}" bindtap="clickTab" data-iscomplete="1">
+      <view class="top-button {{collection == 1?'select':''}}" bindtap="clickTabcollection" data-collection="1">
         应付
         <view class='line'></view>
       </view>

@@ -42,9 +42,9 @@ function all (opt) {
             mask:true,//是否显示透明蒙层，防止触摸穿透，默认：false  
             icon:'none', //图标，支持"success"、"loading"  
          })
-        //  wx.navigateTo({
-        //    url: '../login/index?redirect=/' + getCurrentPageUrl(),
-        //  })
+         wx.navigateTo({
+           url: '../login/index?redirect=/' + getCurrentPageUrl(),
+         })
         } else if (res.data.error === 1005) {
           reject(res)
           wx.showToast({
@@ -53,9 +53,9 @@ function all (opt) {
             mask: true,//是否显示透明蒙层，防止触摸穿透，默认：false  
             icon: 'none', //图标，支持"success"、"loading"  
           })
-          // wx.redirectTo({
-          //   url: '../login-1/index?redirect=/' + getCurrentPageUrl(),
-          // })
+          wx.redirectTo({
+            url: '../login-1/index?redirect=/' + getCurrentPageUrl(),
+          })
         } else  {
           reject(res)
           wx.showToast({

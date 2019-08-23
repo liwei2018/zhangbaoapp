@@ -1,32 +1,32 @@
 <view class="invoice-block">
   <view class="logo">
-    <image class="logo-img" src="../../assets/images/个人中心/默认头像@2x.png" />
-    <view class="logo-btn">设置logo</view>
+    <image class="logo-img" src="{{company.logo}}" />
+    <view class="logo-btn" bindtap="addimg">设置logo</view>
   </view>
   <view class="item">
     <view class="left">公司名称</view>
-    <view class="right">123</view>
+    <view class="right">{{company.company}}</view>
   </view>
   <view class="item">
     <view class="left">纳税人识别号</view>
-    <view class="right">123</view>
+    <view class="right">{{company.code}}</view>
   </view>
   <view class="item">
     <view class="left">开户行名称</view>
-    <view class="right">123</view>
+    <view class="right">{{company.bank}}</view>
   </view>
   <view class="item">
     <view class="left">开户行账号</view>
-    <view class="right">123</view>
+    <view class="right">{{company.bankAccount}}</view>
   </view>
   <view class="line-item">
-    <input placeholder='请输入企业电话' value="" bindinput="getbuyer" />
+    <input placeholder='请输入企业电话' value="{{company.phone}}" bindinput="getphone" />
   </view>
   <view class="line-item">
-    <input placeholder='请输入企业地址' value="" bindinput="getbuyer" />
+    <input placeholder='请输入企业地址' value="{{company.address}}" bindinput="getaddress" />
   </view>
   <view class="line-item">
-    <view class="switch-left">设置为默认签约企业</view><view class="switch"><switch color="#327BF8" checked bindchange="switch1Change" /></view>
+    <view class="switch-left">设置为默认签约企业</view><view class="switch"><switch color="#327BF8" checked="{{company.isDefault==1?true:false}}" bindchange="switchChange" /></view>
   </view>
-  <button class="fixed-btn" bindtap="create">保存</button>
+  <button class="fixed-btn" bindtap="submit">保存</button>
 </view>

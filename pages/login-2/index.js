@@ -60,7 +60,7 @@ Page({
 
       wx.hideLoading()
       wx.redirectTo({
-        url: '../login-2/index'
+        url: '../login-2-success/index'
       })
     }).catch(() => {
       this.setData({

@@ -3,15 +3,15 @@
   <view class="part1">
     <view class="item">
       <view class="left">订单号</view>
-      <view class="right">2019081764134</view>
+      <view class="right">{{orderNum}}</view>
     </view>
     <view class="item">
       <view class="left">购买套餐</view>
-      <view class="right">2019081764134</view>
+      <view class="right">{{packageInfo}}</view>
     </view>
     <view class="item">
       <view class="left">支付金额</view>
-      <view class="right">2019081764134</view>
+      <view class="right">{{price}}</view>
     </view>
   </view>
   <view class="part2">
@@ -23,8 +23,8 @@
     </view>
   </view>
   <view class="part3">
-    <view class="part3-pirce">合计金额：<text class="pirce">489.98元</text></view>
-    <view class="blue-btn pay-btn">去支付
+    <view class="part3-pirce">合计金额：<text class="pirce">{{price}}元</text></view>
+    <view class="blue-btn pay-btn" bindtap="submit">去支付
     </view>
   </view>
 </view>

@@ -9,7 +9,18 @@ Page({
     bizToken: '',
     inviteCode: '',
     image: '',
+    company: '',
+    code: '',
     loading: false,
+    companypage: false
+  },
+  onLoad(option) {
+    if (option.companypage) {
+      this.setData({
+        companypage: true
+      })
+    }
+
   },
   nextFun() {
     if (this.data.loading) {
@@ -18,6 +29,15 @@ Page({
     if (this.data.name.length == 0) {
       wx.showToast({
         title: "请输入真实姓名", //提示文字
+        duration: 2000, //显示时长
+        mask: true, //是否显示透明蒙层，防止触摸穿透，默认：false  
+        icon: 'none', //图标，支持"success"、"loading"  
+      })
+      return false;
+    }
+    if (this.data.company.length == 0) {
+      wx.showToast({
+        title: "请输入企业名称", //提示文字
         duration: 2000, //显示时长
         mask: true, //是否显示透明蒙层，防止触摸穿透，默认：false  
         icon: 'none', //图标，支持"success"、"loading"  
@@ -46,10 +66,14 @@ Page({
     this.setData({
       loading: true
     })
-    wx.showLoading({ title: '加载中…' })
+    wx.showLoading({
+      title: '加载中…'
+    })
     $request.post('/v1/user/realName', {
       'name': this.data.name,
       'identityCard': this.data.identityCard,
+      company: this.data.company,
+      code: this.data.code,
       inviteCode: this.data.inviteCode,
       image: this.data.image.replace('data:image/png;base64,', "")
     }).then((res) => {
@@ -59,9 +83,16 @@ Page({
       })
 
       wx.hideLoading()
-      wx.redirectTo({
-        url: '../login-2/index'
-      })
+      if (this.data.companypage) {
+        wx.navigateBack({
+          delta: 1
+        })
+      } else {
+
+        wx.redirectTo({
+          url: '../login-3-success/index'
+        })
+      }
     }).catch(() => {
       this.setData({
         loading: false
@@ -85,11 +116,16 @@ Page({
       inviteCode: e.detail.value
     })
   },
+  getcompany(e) {
+    wx.navigateTo({
+      url: "../guest-create-company/index"
+    })
+  },
   addimg() {
     const that = this
     wx.chooseImage({
       count: 1,
-      sourceType: [ 'camera'],
+      sourceType: ['camera'],
       success(res) {
         const tempFilePaths = res.tempFilePaths
         tempFilePaths.forEach(element => {
@@ -103,7 +139,7 @@ Page({
               })
             }
           })
-         
+
         });
 
       }

@@ -2,17 +2,17 @@
 <wxs src="../../components/utils/time.wxs" module="time" />
 <view class="bill">
   <view class="top-button-view">
-    <view class="top-button  {{iscomplete == 0?'select':''}}" bindtap="clickTab" data-iscomplete="0">
-      未完成（{{unfinished}}）
+    <view class="top-button  {{signed == 0?'select':''}}" bindtap="clickTab" data-signed="0">
+      未完成
       <view class='line'></view>
     </view>
-    <view class="top-button {{iscomplete == 1?'select':''}}" bindtap="clickTab" data-iscomplete="1">
-      已完成（{{complete}}）
+    <view class="top-button {{signed == 1?'select':''}}" bindtap="clickTab" data-signed="1">
+      已完成
       <view class='line'></view>
     </view>
   </view>
   <view class="bill-list">
-    <navigator url="../bill-detail/index?id={{item.bid}}" >
+    <navigator url="../bill-detail/index?id={{item.bid}}" wx:for="{{bills}}">
       <view class="list-item">
         <view class='item-right'>
           <view class='item-value2'>总金额</view>
@@ -25,10 +25,11 @@
         </view>
         <view class='item-mid'>
           <view class='item-name'>
-            {{item.sellerName}}
-            <view class="item-state">{{item.stateText}}</view>
+            {{item.first}}
+            <view class="item-state billType{{item.billType}}">{{item.billTypeText}}</view>
+            <!-- <view class="item-state">{{item.stateText}}</view> -->
           </view>
-          <view class='item-value'>{{item.buyerName}}</view>
+          <view class='item-value'>{{item.second}}</view>
           <view class='item-value'>创建日期：{{time.format(item.createTime)}}</view>
         </view>
       </view>

@@ -2,57 +2,107 @@
 <view class="bill-create" bindtap="boxclick">
   <view class="top-bannar" style="padding-top:{{statusBarHeight}}px">
     <view class="top-button-view">
-      <view class="top-button  select" bindtap="clickTab" data-iscomplete="0">
+      <view class="top-button {{iscompany == 0?'select':''}}" bindtap="clickTab" data-iscompany="0">
         个人
         <view class='line'></view>
       </view>
-      <view class="top-button {{iscomplete == 1?'select':''}}" bindtap="clickTab" data-iscomplete="1">
+      <view class="top-button {{iscompany == 1?'select':''}}" bindtap="clickTab" data-iscompany="1">
         企业
         <view class='line'></view>
       </view>
     </view>
   </view>
-  <view class="subject">213</view>
+  <view class="subject" wx:if="{{iscompany == 0}}">{{user.name}}</view>
+  <view class="subject" wx:else>
+    <picker range="{{companyArr}}" bindchange="getcompany">
+      <view class='picker-view'>{{company.name}}</view>
+    </picker>
+  </view>
   <view class="bill-block">
     <view class='line-item'>
       <view class='item-left'>客户选择</view>
-      <view class='item-right'>
-        <image src="../../assets/images/账单管理/ic_箭头@2x.png" class="jiantou1" />
-        <text>请选择</text>
-      </view>
+      <navigator url="../bill-create-user-list/index">
+        <view class='item-right'>
+          <image src="../../assets/images/账单管理/ic_箭头@2x.png" class="jiantou1" />
+          <text wx:if="{{buyer}}">{{main == 0?buyer.name:buyer.company}}</text>
+          <text wx:else>请选择</text>
+        </view>
+      </navigator>
     </view>
   </view>
   <view class="bill-block">
     <view class='line-item'>
       <view class='item-left'>账单类型</view>
       <view class='item-right'>
-        <image src="../../assets/images/账单管理/ic_箭头@2x.png" class="jiantou" />
+        <picker range="{{billTypeOpt}}" value="{{billType}}" bindchange="getbillType">
+          <view class="picker">
+            {{billTypeOpt[billType]}}<image src="../../assets/images/账单管理/ic_箭头@2x.png" class="jiantou" />
+          </view>
+        </picker>
       </view>
     </view>
     <view class='line-item'>
-      <view class='item-left'>单据金额</view>
+      <view class='item-left' wx:if="{{billType == 0}}">单据金额</view>
+      <view class='item-left' wx:if="{{billType == 1}}">实际应收款</view>
+      <view class='item-left' wx:if="{{billType == 2}}">收款金额</view>
       <view class='item-right'>
-        <input placeholder='0.00' bindinput="getbuyer" />
+        <input placeholder='0.00' bindinput="getmoney" />
       </view>
     </view>
-    <view class='line-item'>
+    <view class='line-item' wx:if="{{billType == 0}}">
       <view class='item-left'>收款状态</view>
       <view class='item-right'>
-        <image src="../../assets/images/账单管理/ic_箭头@2x.png" class="jiantou" />
+        <picker range="{{statusOpt}}" value="{{status}}" bindchange="getstatus">
+          <view class="picker">
+            {{statusOpt[status]}}
+            <image src="../../assets/images/账单管理/ic_箭头@2x.png" class="jiantou" />
+          </view>
+        </picker>
+      </view>
+    </view>
+    <view class='line-item' wx:if="{{billType == 2}}">
+      <view class='item-left'>收款类型</view>
+      <view class='item-right'>
+        <picker range="{{payTypeOpt}}" value="{{payType}}" bindchange="getpayType">
+          <view class="picker">
+            {{payTypeOpt[payType]}}
+            <image src="../../assets/images/账单管理/ic_箭头@2x.png" class="jiantou" />
+          </view>
+        </picker>
+      </view>
+    </view>
+    <view class='line-item' wx:if="{{billType == 1}}">
+      <view class='item-left'>商品类型</view>
+      <view class='item-right'>
+        <input placeholder='商品类型' bindinput="shopType" />
       </view>
     </view>
     <view class='line-item'>
-      <view class='item-left'>交易日期</view>
+      <view class='item-left' wx:if="{{billType == 0}}">交易日期</view>
+      <view class='item-left' wx:if="{{billType == 1}}">账单截止日期</view>
+      <view class='item-left' wx:if="{{billType == 2}}">收款时间</view>
       <view class='item-right'>
         <picker mode="date" value="{{billTime}}" bindchange="getbillTime">
-          <view class="picker">{{billTime}}
+          <view class="picker">
+            {{billTime}}
+            <image src="../../assets/images/账单管理/ic_箭头@2x.png" class="jiantou" />
+          </view>
+        </picker>
+      </view>
+    </view>
+    <view class='line-item' wx:if="{{billType == 1}}">
+      <view class='item-left'>约定还款日期</view>
+      <view class='item-right'>
+        <picker mode="date" value="{{refundTime}}" bindchange="getrefundTime">
+          <view class="picker">
+            {{refundTime}}
             <image src="../../assets/images/账单管理/ic_箭头@2x.png" class="jiantou" />
           </view>
         </picker>
       </view>
     </view>
     <view class='line-item'>
-      <textarea class='textare1' maxlength="200" placeholder="备注信息" value="{{remark}}" bindinput="getRemark"  bindconfirm="textareafun2" bindblur="textareafun2" />
+      <textarea class='textare1' maxlength="200" placeholder="备注信息" value="{{remark}}" bindinput="getRemark" bindconfirm="textareafun2" bindblur="textareafun2" />
       <view class="remarkLength">{{remark.length}}/200</view>
     </view>
     <view class="line-item">
@@ -68,10 +118,8 @@
       </view>
     </view>
   </view>
-  <view class="bottom-banner">
-    <button type="default" bindtap="default" class="other-button-hover" bindtap="submitForm">
+    <button class="fixed-btn" bindtap="submitForm">
       保存并提交
     </button>
-  </view>
   <view class='bottom-view'></view>
 </view>

@@ -23,6 +23,10 @@ const formatNumber = n => {
 module.exports = {
   formatTime: formatTime,
   formatDate,
+  main: [
+    '个人',
+    '公司',
+  ],
   billState: {
     "-1":"已取消",
     "0":"待确认",

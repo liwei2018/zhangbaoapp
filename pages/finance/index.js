@@ -2,24 +2,13 @@ const $request = require('../../utils/request')
 const $util = require('../../utils/util')
 Page({
   data: {
-    motto: 'Hello World',
-    billList: [],
-    hasUserInfo: false,
-    jujuedialog: false,
-    iscomplete: 0,
-    bills: [],
-    pageNum: 1,
-    billState:$util.billState,
-    unfinished: 0,
-    complete: 1,
-    search: '',
-    bid: '',
-    remark:'',
+    number: '',
+    "payment": 0,
+    "collection": 0,
     statusBarHeight: getApp().globalData.statusBarHeight,
   },
   onShow() {
-    $request.get('/v1/bills/total', {
-    }).then((res) => {
+    $request.get('/v1/bills/total', {}).then((res) => {
       if (res.data.result) {
         this.setData({
           "unfinished": res.data.result.unfinished,
@@ -33,14 +22,14 @@ Page({
     this.getList()
   },
   getList(up) {
-    $request.get('/v1/bills/list',{
+    $request.get('/v1/bills/list', {
       pageNum: this.data.pageNum,
       pageSize: 10,
       search: this.data.search,
-      isComplete: this.data.iscomplete
+      type: this.data.type
     }).then((res) => {
       if (res.data.result) {
-        if(up) {
+        if (up) {
           this.setData({
             bills: this.data.bills.concat(res.data.result)
           })
@@ -56,7 +45,7 @@ Page({
     this.setData({
       pageNum: 1
     })
-    this.getList() 
+    this.getList()
   },
   onReachBottom() {
     this.setData({
@@ -76,9 +65,8 @@ Page({
       confirmText: '确认',
       success: (res) => {
         if (res.confirm) {
-          
-          $request.get('/v1/user/info', {
-          }).then((res) => {
+
+          $request.get('/v1/user/info', {}).then((res) => {
             if (res.data.error == 0) {
               if (res.data.result.signature) {
                 this.confrimBill2()
@@ -106,8 +94,7 @@ Page({
           wx.navigateTo({
             url: '../user-signature/index',
           })
-        } else {
-        }
+        } else {}
       }
     })
   },
@@ -130,14 +117,20 @@ Page({
   },
   clickTab(e) {
     this.setData({
-      iscomplete: e.currentTarget.dataset.iscomplete
+      type: e.currentTarget.dataset.type
+    })
+    this.onPullDownRefresh()
+  },
+  clickTabcollection(e) {
+    this.setData({
+      collection: e.currentTarget.dataset.collection
     })
     this.onPullDownRefresh()
   },
   create() {
 
   },
-  search(e){
+  search(e) {
     this.setData({
       search: e.detail.value
     })

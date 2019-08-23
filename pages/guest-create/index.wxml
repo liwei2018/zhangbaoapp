@@ -1,0 +1,24 @@
+<!-- index.wxml -->
+<view class="container">
+  <view class="userinfo">
+    <view class="line-item">
+      <view class="left">客户简称</view>
+      <view class="right">
+        <input class="user-input" placeholder="请输入客户简称" value="{{name}}" bindinput="getname" />
+      </view>
+    </view>
+    <view class="line-item">
+      <view class="left">客户手机</view>
+      <view class="right">
+        <input class="user-input" placeholder="请输入客户手机" value="{{mobile}}" bindinput="getmobile" />
+      </view>
+    </view>
+    <view class="line-item">
+      <view class="left">公司名称</view>
+      <view class="right">
+        <input class="user-input" placeholder="请输入客户公司名称" value="{{company}}" bindfocus="getcompany" />
+      </view>
+    </view>
+  </view>
+  <button class="fixed-btn" bindtap="submit">创建</button>
+</view>
