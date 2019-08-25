@@ -1,10 +1,34 @@
-.invoice-block {
-  padding: 0 20px;
+.bill-block {
   background-color: #fff;
-  margin-bottom: 8px;
+}
+.header{
+  background-image: linear-gradient(-269deg, #696F7F 0%, #444957 100%);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+.header-pirce {
+  width: 100px;
+  font-size: 20px;
+}
+.header-left{
+  flex: 1;
+  font-size: 14px;
+}
+.header-status {
+  font-size: 16px;
+  margin-top: 5px;
+}
+.info {
+  padding: 20px;
   overflow: hidden;
 }
-
+.title-info {
+  font-size: 18px;
+  
+  margin-bottom: 20px;
+}
 .item {
   margin-bottom: 20px;
 
@@ -25,35 +49,41 @@
   align-items: center;
 }
 
-.line-item:nth-of-type(5) {
-  border-top: 1px solid #DCDCDC;
+.img-item {
+  width: 78px;
+  height: 78px;
+  margin-right: 5px;
+  float: left;
+}
+.img {
+  width: 100%;
+  border-radius: 4px;
 }
 
-.switch {
-  float: right;
+.blue-btn {
+  width: 47%;
+  float: left;
 }
-
-.switch-left {
-  flex: 1;
+.btn1{
+  border: 1px solid #327BF8;
+  color: #327BF8;
+  background-color: #fff;
+  margin-right: 5%;
 }
-
-.fixed-btn {
-  width: 90%;
-  left: 5%;
+.btn2 {
+  width: 30%;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  margin-right: 0;
 }
-
-.logo {
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  height: 180px;
+.btn3 {
+  width: 40%;
+  margin-right: 0;
+  border-radius: 0;
 }
-.logo-img{
-  width: 90px;
-  height: 90px;
-}
-.logo-btn {
-  margin-top: 20px;
+.btn4 {
+  width: 30%;
+  margin-right: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0px;
 }

@@ -124,8 +124,8 @@ view {
   margin-right: 10px;
 }
 .blue-btn {
-  background-color: #327BF8 !important;
-  color: white !important;
+  background-color: #327BF8;
+  color: white;
 }
 .item-value {
   text-overflow:ellipsis;

@@ -39,7 +39,7 @@ Component({
     },
     showFooter: {
       type: Boolean,
-      value: true
+      value: false
     },
     closeOnClickModal: {
       type: Boolean,

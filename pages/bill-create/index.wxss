@@ -20,6 +20,7 @@ page {
   z-index: 1;
   display: flex;
   justify-content: center;
+  position: relative;
 }
 .top-button {
   height: 40px;
@@ -160,15 +161,10 @@ page {
 
 .img-del {
   position: absolute;
-  right: 5px;
-  top: 5px;
+  right: -5px;
+  top: -5px;
   height: 20px;
   width: 20px;
-  background: rgba(0,0,0,0.1);
-  text-align: center;
-  color: #fff;
-  line-height: 20px;
-  border-radius: 10px;
 }
 .buyersearch {
   position: absolute;
@@ -203,4 +199,11 @@ page {
 .fixed-btn {
   width: 90%;
   left: 5%;
+}
+.back{
+  height: 20px;
+  position: absolute;
+  left: 5px;
+  width: 20px;
+  top: 10px;
 }

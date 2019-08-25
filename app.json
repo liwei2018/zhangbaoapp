@@ -1,13 +1,14 @@
 {
   "pages": [
     "pages/bill/index",
+    "pages/bill-detail/index",
+    "pages/bill-create/index",
     "pages/user/index",
     "pages/user-detail/index",
     "pages/company/index",
     "pages/invoice-log/index",
     "pages/invoice/index",
     "pages/buy/index",
-    "pages/bill-create/index",
     "pages/bill-create-user-list/index",
     "pages/guest/index",
     "pages/guest-create/index",
@@ -31,7 +32,6 @@
     "pages/finance/index",
     "pages/bill-history/index",
     "pages/login-face/index",
-    "pages/bill-detail/index",
     "pages/bill-contract/index",
     "pages/index/index",
     "pages/aboutme/index"

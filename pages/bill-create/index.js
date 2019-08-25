@@ -195,6 +195,11 @@ Page({
       remark: e.detail.value,
     })
   },
+  back() {
+    wx.navigateBack({
+      delta: 1
+    })
+  },
   submitForm() {
     if (!this.data.money) {
       wx.showToast({

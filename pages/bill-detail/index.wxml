@@ -1,32 +1,84 @@
-<view class="invoice-block">
-  <view class="logo">
-    <image class="logo-img" src="{{company.logo}}" />
-    <view class="logo-btn" bindtap="addimg">设置logo</view>
+<view class="bill-block">
+  <view class="header">
+  
+    <view class="header-left">
+      <view class="header-item">订单ID：{{bill.orderNum}}</view>
+      <view class="header-item">创建时间：{{bill.createTime}}</view>
+      <view class="header-status">状态：{{bill.stateText}}</view>
+    </view>
+    <view class="header-pirce">￥{{bill.money}}</view>
   </view>
-  <view class="item">
-    <view class="left">公司名称</view>
-    <view class="right">{{company.company}}</view>
+  <view class="info">
+    <view class="title-info">合约信息</view>
+    <view class="item">
+      <view class="left">甲方</view>
+      <view class="right">{{bill.first}}</view>
+    </view>
+    <view class="item">
+      <view class="left">甲方签约人 </view>
+      <view class="right">{{bill.firstUser}}</view>
+    </view>
+    <view class="item">
+      <view class="left">乙方</view>
+      <view class="right">{{bill.second}}</view>
+    </view>
+    <view class="item">
+      <view class="left">乙方签约人</view>
+      <view class="right">{{bill.secondUser}}</view>
+    </view>
+    <view class="item">
+      <view class="left" wx:if="{{bill.billType==0}}">销售金额</view>
+      <view class="left" wx:if="{{bill.billType==1}}">实际应收款</view>
+      <view class="left" wx:if="{{bill.billType==2}}">收款金额</view>
+      <view class="right">{{bill.money}}</view>
+    </view>
+    <view class="item" wx:if="{{bill.billType==0}}">
+      <view class="left">结算状态</view>
+      <view class="right">{{bill.status}}</view>
+    </view>
+    <view class="item" wx:if="{{bill.billType==2}}">
+      <view class="left">款项性质</view>
+      <view class="right">{{bill.shopType}}</view>
+    </view>
+    <view class="item" wx:if="{{bill.billType==2}}">
+      <view class="left">支付方式</view>
+      <view class="right">{{bill.payType}}</view>
+    </view>
+    <view class="item" wx:if="{{bill.billType==1}}">
+      <view class="left">商品类型</view>
+      <view class="right">{{bill.shopType}}</view>
+    </view>
+    <view class="item">
+      <view class="left">账单截止日期</view>
+      <view class="right">{{bill.billTime}}</view>
+    </view>
+    <view class="item" wx:if="{{bill.billType==1}}">
+      <view class="left">约定还款日期</view>
+      <view class="right">{{bill.refundTime}}</view>
+    </view>
+    <view class="item">
+      <view class="left">备注信息</view>
+      <view class="right">{{bill.remark}}</view>
+    </view>
+    <view class="item">
+      <view class="left">凭证图片</view>
+      <view class="right"><view class='img-item' wx:for="{{bill.pictures}}" data-list="{{bill.pictures}}" data-src="{{item}}" bindtap="imgYu">
+          <image class="img" src="{{item}}"  mode="widthFix" />
+        </view></view>
+    </view>
   </view>
-  <view class="item">
-    <view class="left">纳税人识别号</view>
-    <view class="right">{{company.code}}</view>
+  
+  <view class="info"  wx:if="{{bill.userType==0 && (bill.state == 0||bill.state == 2)}}">
+    <button class="blue-btn btn1" bindtap="submit" data-operation="0">申请撤回单据</button> 
+    <button class="blue-btn" bindtap="submit">查看线上协议</button>
   </view>
-  <view class="item">
-    <view class="left">开户行名称</view>
-    <view class="right">{{company.bank}}</view>
+  <view class="info"  wx:if="{{bill.userType==1 && bill.state == 1}}">
+    <button class="blue-btn btn1 btn2 " bindtap="submit" data-operation="1">拒绝撤回</button> 
+    <button class="blue-btn btn1 btn3" bindtap="submit">查看线上协议</button>
+    <button class="blue-btn btn4 " bindtap="submit" data-operation="2">同意撤回</button> 
   </view>
-  <view class="item">
-    <view class="left">开户行账号</view>
-    <view class="right">{{company.bankAccount}}</view>
+  <view class="info"  wx:else>
+    <button class="blue-btn" bindtap="submit">查看线上协议</button>
   </view>
-  <view class="line-item">
-    <input placeholder='请输入企业电话' value="{{company.phone}}" bindinput="getphone" />
-  </view>
-  <view class="line-item">
-    <input placeholder='请输入企业地址' value="{{company.address}}" bindinput="getaddress" />
-  </view>
-  <view class="line-item">
-    <view class="switch-left">设置为默认签约企业</view><view class="switch"><switch color="#327BF8" checked="{{company.isDefault==1?true:false}}" bindchange="switchChange" /></view>
-  </view>
-  <button class="fixed-btn" bindtap="submit">保存</button>
+  
 </view>

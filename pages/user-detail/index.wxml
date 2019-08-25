@@ -15,5 +15,5 @@
     <view class="left">手机号</view>
     <view class="right">{{user.mobile}}<image class="mobile-img" src="../../assets/images/个人中心/ic_手机号编辑@2x.png" /></view>
   </view>
-  <button class="fixed-btn-out" bindtap="create">安全退出</button>
+  <button class="fixed-btn-out" bindtap="logout">安全退出</button>
 </view>

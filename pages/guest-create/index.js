@@ -54,7 +54,7 @@ Page({
     }).then((res) => {
       if (res.data.error == 0) {
         wx.navigateTo({
-          url: `../guest-create/success?name=${this.data.name}&company=${this.data.company}&mobile=${this.data.mobile}&isReg=${res.data.result.isReg}`
+          url: `../guest-create-success/index?name=${this.data.name}&company=${this.data.company}&mobile=${this.data.mobile}&isReg=${res.data.result.isReg}`
         })
       }
     })

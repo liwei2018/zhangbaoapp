@@ -1,5 +1,6 @@
 const $request = require('../../utils/request')
 const $util = require('../../utils/util')
+const $auth = require('../../utils/auth.js')
 Page({
   data: {
     user: {},
@@ -45,6 +46,12 @@ Page({
         });
 
       }
+    })
+  },
+  logout() {
+    $auth.clearInfo()
+    wx.redirectTo({
+      url: '../login/index',
     })
   }
 })

@@ -1,7 +1,9 @@
 <!-- index.wxml -->
 <view class="bill-create" bindtap="boxclick">
   <view class="top-bannar" style="padding-top:{{statusBarHeight}}px">
+  
     <view class="top-button-view">
+      <image src="../../assets/images/title_ic_back.png" class="back" bindtap="back" mode="aspectFit"></image>
       <view class="top-button {{iscompany == 0?'select':''}}" bindtap="clickTab" data-iscompany="0">
         个人
         <view class='line'></view>
@@ -109,7 +111,7 @@
       <view class="title-name">上传图片</view>
       <view class='img-view'>
         <view class='img-item' wx:for="{{imgs}}">
-          <view class="img-del" bindtap="delimg" data-index="{{index}}">x</view>
+          <image class="img-del" bindtap="delimg" data-index="{{index}}" src="../../assets/images/账单管理/ic_删除照片@2x.png" />
           <image class="img" src="{{item}}" />
         </view>
         <view class='img-item img-add' bindtap="addimg" wx:if="{{imgs.length < 9}}">

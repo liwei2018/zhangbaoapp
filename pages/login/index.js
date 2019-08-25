@@ -39,7 +39,7 @@ Page({
     }).then((res) => {
       
       this.setData({
-        second: 3
+        second: 60
       })
       setInterval(()=>{
         if(this.data.second == 0) {

@@ -3,22 +3,22 @@
 <view class="bill">
   <view class="top-button-view">
     <view class="top-button  {{signed == 0?'select':''}}" bindtap="clickTab" data-signed="0">
-      未完成
+      待对方签
       <view class='line'></view>
     </view>
     <view class="top-button {{signed == 1?'select':''}}" bindtap="clickTab" data-signed="1">
-      已完成
+      待我签署
       <view class='line'></view>
     </view>
   </view>
   <view class="bill-list">
-    <navigator url="../bill-detail/index?id={{item.bid}}" wx:for="{{bills}}">
+    <navigator url="../bill-detail/index?bid={{item.bid}}" wx:for="{{bills}}">
       <view class="list-item">
         <view class='item-right'>
-          <view class='item-value2'>总金额</view>
-          <view class='item-pirce'>￥{{item.money}}</view>
+          <view class='item-value2' wx:if="{{item.state!=0}}">总金额</view>
+          <view class='item-pirce' wx:if="{{item.state!=0}}">￥{{item.money}}</view>
           <view>
-            <view class='item-button' data-bid="{{item.bid}}" catchtap="confrimBill" wx:if="{{item.state==0 && item.type == 0}}">
+            <view class='item-button' data-bid="{{item.bid}}" catchtap="confrimBill" wx:if="{{item.state==0}}">
               确认账单
             </view>
           </view>
@@ -27,7 +27,7 @@
           <view class='item-name'>
             {{item.first}}
             <view class="item-state billType{{item.billType}}">{{item.billTypeText}}</view>
-            <!-- <view class="item-state">{{item.stateText}}</view> -->
+            <view class="item-state state{{item.state}}">{{item.stateText}}</view>
           </view>
           <view class='item-value'>{{item.second}}</view>
           <view class='item-value'>创建日期：{{time.format(item.createTime)}}</view>
@@ -39,6 +39,15 @@
       <view class='nothing-text'>暂无账单</view>
     </view>
   </view>
+  <dialog visible="{{jujuedialog}}" title="" opacity="0.5"  close-on-click-modal="{{options.closeonclickmodal}}" bindclose="jujuedialogClose" bindopen="handleOpen" bindconfirm="refuse" confirmText="确认提交">
+    <view class='codeinput-view'>
+      <view class="dialog-close" bindtap="jujuedialogClose">×</view>
+      <view class="dialog-title">已发送验证码至{{user.mobile}}</view>
+      <view class="sendCode {{second > 0 ?'disable': ''}}" bindtap="sendCode" >重新发送<text wx:if="{{second > 0}}">({{second}})</text></view>
+      <input class="codeinput" placeholder="请输入手机验证码" bindinput="getcode"></input>
+    </view>
+    <view class="sendCode-btn" bindtap="confrimBill2">确定</view>
+  </dialog>
   <navigator url="../bill-create/index">
     <button class="fixed-btn" bindtap="create">
       创建

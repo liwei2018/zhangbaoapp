@@ -14,13 +14,46 @@ Page({
     complete: 1,
     search: '',
     bid: '',
-    remark:''
+    remark:'',
+    second: 0,
+    fun: null,
+    user: {},
+    code: ''
   },
   onShow() {
     this.setData({
       pageNum: 1
     })
     this.getList()
+    $request.get('/v1/user/info', {}).then((res) => {
+      if (res.data.result) {
+        this.setData({
+          user: res.data.result,
+        })
+      }
+    })
+  },
+  sendCode() {
+    if (this.data.second > 0) {
+      return;
+    }
+    $request.get('/v1/bills/confirmSms', {
+      bid: this.data.bid,
+    }).then((res) => {
+
+      this.setData({
+        second: 60
+      })
+      setInterval(() => {
+        if (this.data.second == 0) {
+          clearInterval(this.data.fun)
+          return;
+        }
+        this.setData({
+          second: this.data.second - 1
+        })
+      }, 1000);
+    })
   },
   getList(up) {
     $request.get('/v1/bills/list',{
@@ -59,55 +92,20 @@ Page({
     this.setData({
       bid: e.currentTarget.dataset.bid
     })
-    wx.showModal({
-      title: '',
-      content: '确认该笔账单代表您接受电子账单上的信息描述，是否确认？',
-      cancelText: "拒绝",
-      confirmText: '确认',
-      success: (res) => {
-        if (res.confirm) {
-          
-          $request.get('/v1/user/info', {
-          }).then((res) => {
-            if (res.data.error == 0) {
-              if (res.data.result.signature) {
-                this.confrimBill2()
-              } else {
-                this.userSignatur()
-              }
-            }
-          })
-        } else {
-          this.setData({
-            jujuedialog: true
-          })
-        }
-      }
+    this.setData({
+      jujuedialog: true
     })
+    this.sendCode()
   },
-  userSignatur() {
-    wx.showModal({
-      title: '',
-      content: '您尚未录入个人电子签名，无法确认账单',
-      cancelText: "取消",
-      confirmText: '马上录入',
-      success: (res) => {
-        if (res.confirm) {
-          wx.navigateTo({
-            url: '../user-signature/index',
-          })
-        } else {
-        }
-      }
-    })
-  },
+
   confrimBill2() {
     const that = this
     $request.post('/v1/bills/confirm', {
-      confirmType: 0,
+      operation: 0,
       bid: this.data.bid
     }).then((res) => {
       if (res.data.error == 0) {
+        this.jujuedialogClose()
         this.onShow()
       }
     })
@@ -115,7 +113,6 @@ Page({
   jujuedialogClose() {
     this.setData({
       jujuedialog: false,
-      remark: ''
     })
   },
   clickTab(e) {
@@ -147,9 +144,9 @@ Page({
       }
     })
   },
-  getremark(e) {
+  getcode(e) {
     this.setData({
-      remark: e.detail.value
+      code: e.detail.value
     })
   }
 })
