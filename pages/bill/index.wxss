@@ -74,7 +74,7 @@
 
  .item-mid {
    margin-left: 0;
-   margin-right: 100px;
+   margin-right: 80px;
    position: relative;
  }
 
@@ -90,7 +90,7 @@
 
  .item-right {
    float: right;
-   width: 100px;
+   width: 80px;
    text-align: right;
    display: flex;
    flex-direction: column;
@@ -201,6 +201,7 @@
   border: 1px solid #999;
   margin-right: 110px;
   padding-left: 5px;
+  height: 30px;
 }
 .codeinput-view {
   padding: 20px;

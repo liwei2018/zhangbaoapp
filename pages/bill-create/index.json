@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "创建账单",
-  "navigationStyle": "custom"
+  "usingComponents": {
+    "success": "/components/success/index"
+  }
 }

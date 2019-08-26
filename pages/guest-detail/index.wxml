@@ -8,10 +8,10 @@
     </view>
     <view class='item-mid'>
       <view class='item-name'>
-        <view class="name">{{guest.name}}<view class="title">经理</view></view>
+        <view class="name">张总<view class="title">经理</view></view>
       </view>
       <view class='time'>
-        {{guest.company}}
+        12312312312
       </view>
     </view>
   </view>

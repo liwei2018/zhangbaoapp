@@ -77,8 +77,8 @@
     <button class="blue-btn btn1 btn3" bindtap="submit">查看线上协议</button>
     <button class="blue-btn btn4 " bindtap="submit" data-operation="2">同意撤回</button> 
   </view>
-  <view class="info"  wx:else>
-    <button class="blue-btn" bindtap="submit">查看线上协议</button>
+  <view class="info"   wx:if="{{(bill.userType==1 && bill.state != 1) || (bill.userType==0 && bill.state != 0&&bill.state != 2)}}">
+    <button class="blue-btn btn5" bindtap="submit">查看线上协议</button>
   </view>
   
 </view>

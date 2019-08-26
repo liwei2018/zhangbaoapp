@@ -174,12 +174,3 @@ page {
 .bill-list {
   padding: 20px;
 }
-.renzheng {
-  border: 1px solid #327BF8;
-  border-radius: 2px;
-  padding: 1px 3px;
-  color: #327BF8;
-  font-size: 10px;
-  display: inline-block;
-  margin-left: 5px;
-}

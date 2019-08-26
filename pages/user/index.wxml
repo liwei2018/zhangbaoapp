@@ -19,8 +19,11 @@
         <image class="user-photo" wx:else src="{{user.logo == '' ? '../../assets/images/个人中心/默认头像@2x.png' : user.logo}}"></image>
       </view>
       <view class="header-3">
-        <navigator url="../user-detail/index">
+        <navigator wx:if="{{iscompany == 0}}" url="../user-detail/index">
           <image src="../../assets/images/个人中心/ic_设置@2x.png" class="header-setting"></image>
+        </navigator>
+        <navigator wx:else url="../company/index">
+          <image src="../../assets/images/个人中心/ic_切换@2x.png" class="header-setting"></image>
         </navigator>
       </view>
       <view class="header-2">
@@ -83,11 +86,13 @@
         <image class="sanjiao-img" src="../../assets/images/账单管理/ic_箭头@2x.png" mode="aspectFit" />
       </view>
     </navigator>
+    <navigator url="../company-authorize/index">
     <view class=".line-item">
       <image class="icon-img" src="../../assets/images/个人中心/ic_授权委托书@2x.png"></image>
       我的授权委托书
       <image class="sanjiao-img" src="../../assets/images/账单管理/ic_箭头@2x.png" mode="aspectFit" />
     </view>
+    </navigator>
     <view class=".line-item">
       <image class="icon-img" src="../../assets/images/个人中心/ic_使用帮助@2x.png"></image>
       使用帮助

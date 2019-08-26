@@ -1,14 +1,13 @@
 <!-- index.wxml -->
-<view class="bill-create" bindtap="boxclick">
-  <view class="top-bannar" style="padding-top:{{statusBarHeight}}px">
+<view class="bill-create" wx:if="{{!success}}">
+  <view class="top-bannar" >
   
     <view class="top-button-view">
-      <image src="../../assets/images/title_ic_back.png" class="back" bindtap="back" mode="aspectFit"></image>
       <view class="top-button {{iscompany == 0?'select':''}}" bindtap="clickTab" data-iscompany="0">
         个人
         <view class='line'></view>
       </view>
-      <view class="top-button {{iscompany == 1?'select':''}}" bindtap="clickTab" data-iscompany="1">
+      <view wx:if="{{companyArr.length > 0}}" class="top-button {{iscompany == 1?'select':''}}" bindtap="clickTab" data-iscompany="1">
         企业
         <view class='line'></view>
       </view>
@@ -17,7 +16,7 @@
   <view class="subject" wx:if="{{iscompany == 0}}">{{user.name}}</view>
   <view class="subject" wx:else>
     <picker range="{{companyArr}}" bindchange="getcompany">
-      <view class='picker-view'>{{company.name}}</view>
+      <view class='picker-view'>{{company.company}}</view>
     </picker>
   </view>
   <view class="bill-block">
@@ -125,3 +124,4 @@
     </button>
   <view class='bottom-view'></view>
 </view>
+<success wx:else user="{{buyer}}" isReg="0"></success>

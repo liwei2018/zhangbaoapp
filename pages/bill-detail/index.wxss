@@ -63,6 +63,7 @@
 .blue-btn {
   width: 47%;
   float: left;
+  padding: 0;
 }
 .btn1{
   border: 1px solid #327BF8;
@@ -86,4 +87,7 @@
   margin-right: 0;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0px;
+}
+.btn5 {
+  width: 100%;
 }

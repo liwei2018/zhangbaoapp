@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/guest/index",
+    "pages/finance/index",
     "pages/bill/index",
     "pages/bill-detail/index",
     "pages/bill-create/index",
@@ -10,7 +12,7 @@
     "pages/invoice/index",
     "pages/buy/index",
     "pages/bill-create-user-list/index",
-    "pages/guest/index",
+    "pages/guest-detail/index",
     "pages/guest-create/index",
     "pages/guest-create-success/index",
     "pages/guest-create-company/index",
@@ -29,7 +31,6 @@
     "pages/company-detail/index",
     "pages/invoice-detail/index",
     "pages/buy-log/index",
-    "pages/finance/index",
     "pages/bill-history/index",
     "pages/login-face/index",
     "pages/bill-contract/index",

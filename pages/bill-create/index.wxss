@@ -62,7 +62,7 @@ page {
 .item-left {
   float:left;
   color: #333;
-  width: 80px;
+  width: 100px;
 }
 .bill-item {
   height: 40px;

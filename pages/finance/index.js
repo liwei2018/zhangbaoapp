@@ -2,17 +2,39 @@ const $request = require('../../utils/request')
 const $util = require('../../utils/util')
 Page({
   data: {
-    number: '',
-    "payment": 0,
-    "collection": 0,
+    number: 0,
+    payment: 0,
+    collection: 0,
+    statistics: 0,
+    type: 0,
+    startTime: $util.formatDate(new Date()),
+    endTime: $util.formatDate(new Date()),
     statusBarHeight: getApp().globalData.statusBarHeight,
+    company: {},
+    collectionType: 0,
+    statisticsList: [],
+    user: {}
   },
   onShow() {
-    $request.get('/v1/bills/total', {}).then((res) => {
+    $request.get('/v1/user/statistics', {
+      type: this.data.type,
+      cid: this.data.company.cid,
+      startTime: this.data.startTime,
+      endTime: this.data.endTime,
+    }).then((res) => {
       if (res.data.result) {
         this.setData({
-          "unfinished": res.data.result.unfinished,
-          "complete": res.data.result.complete
+          number: res.data.result.number,
+          payment: res.data.result.payment,
+          collection: res.data.result.collection,
+          statistics: res.data.result.statistics,
+        })
+      }
+    })
+    $request.get('/v1/user/info', {}).then((res) => {
+      if (res.data.result) {
+        this.setData({
+          user: res.data.result,
         })
       }
     })
@@ -21,27 +43,44 @@ Page({
     })
     this.getList()
   },
+  getstartTime(e) {
+    this.setData({
+      startTime: e.detail.value,
+    })
+    this.onShow()
+  },
+  getendTime(e) {
+    this.setData({
+      endTime: e.detail.value,
+    })
+    this.onShow()
+  },
   getList(up) {
-    $request.get('/v1/bills/list', {
+    $request.get('/v1/user/statisticsDetail', {
       pageNum: this.data.pageNum,
       pageSize: 10,
-      search: this.data.search,
-      type: this.data.type
+      type: this.data.type,
+      startTime: this.data.startTime,
+      endTime: this.data.endTime + ' 23:59:59',
+      collection: this.data.collectionType,
     }).then((res) => {
       if (res.data.result) {
         if (up) {
           this.setData({
-            bills: this.data.bills.concat(res.data.result)
+            statisticsList: this.data.statisticsList.concat(res.data.result)
           })
         } else {
           this.setData({
-            bills: res.data.result
+            statisticsList: res.data.result
           })
         }
       }
     })
   },
   onPullDownRefresh() {
+    this.setData({
+      statisticsList: []
+    })
     this.setData({
       pageNum: 1
     })
@@ -53,106 +92,23 @@ Page({
     })
     this.getList(true)
   },
-  confrimBill(e) {
-    const that = this
-    this.setData({
-      bid: e.currentTarget.dataset.bid
-    })
-    wx.showModal({
-      title: '',
-      content: '确认该笔账单代表您接受电子账单上的信息描述，是否确认？',
-      cancelText: "拒绝",
-      confirmText: '确认',
-      success: (res) => {
-        if (res.confirm) {
-
-          $request.get('/v1/user/info', {}).then((res) => {
-            if (res.data.error == 0) {
-              if (res.data.result.signature) {
-                this.confrimBill2()
-              } else {
-                this.userSignatur()
-              }
-            }
-          })
-        } else {
-          this.setData({
-            jujuedialog: true
-          })
-        }
-      }
-    })
-  },
-  userSignatur() {
-    wx.showModal({
-      title: '',
-      content: '您尚未录入个人电子签名，无法确认账单',
-      cancelText: "取消",
-      confirmText: '马上录入',
-      success: (res) => {
-        if (res.confirm) {
-          wx.navigateTo({
-            url: '../user-signature/index',
-          })
-        } else {}
-      }
-    })
-  },
-  confrimBill2() {
-    const that = this
-    $request.post('/v1/bills/confirm', {
-      confirmType: 0,
-      bid: this.data.bid
-    }).then((res) => {
-      if (res.data.error == 0) {
-        this.onShow()
-      }
-    })
-  },
-  jujuedialogClose() {
-    this.setData({
-      jujuedialog: false,
-      remark: ''
-    })
-  },
+ 
   clickTab(e) {
     this.setData({
       type: e.currentTarget.dataset.type
     })
     this.onPullDownRefresh()
   },
-  clickTabcollection(e) {
+  clickTabtype(e) {
     this.setData({
-      collection: e.currentTarget.dataset.collection
+      type: e.currentTarget.dataset.type
     })
     this.onPullDownRefresh()
   },
-  create() {
-
-  },
-  search(e) {
+  clickTabcollectionType(e) {
     this.setData({
-      search: e.detail.value
+      collectionType: e.currentTarget.dataset.collectiontype
     })
     this.onPullDownRefresh()
   },
-  refuse() {
-    $request.post('/v1/bills/refuse', {
-      remark: this.data.remark,
-      bid: this.data.bid
-    }).then((res) => {
-      if (res.data.error == 0) {
-        this.setData({
-          jujuedialog: false,
-          remark: ''
-        })
-        this.onShow()
-      }
-    })
-  },
-  getremark(e) {
-    this.setData({
-      remark: e.detail.value
-    })
-  }
 })

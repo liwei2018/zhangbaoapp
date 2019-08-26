@@ -37,7 +37,8 @@ Page({
     ],
     payTypeOpt: [
       '现金', '微信', '支付宝', '折让单', '银行汇款', '其他'
-    ]
+    ],
+    success: false
   },
   onLoad(option) {
     if(option.gid) {
@@ -69,19 +70,29 @@ Page({
       if (res.data.error == 0) {
         var arr = []
         res.data.result.forEach(element => {
-          arr.push(element.name)
+          arr.push(element.company)
         });
         this.setData({
           companyObj: res.data.result,
-          companyArr: arr
+          companyArr: arr,
+          company: res.data.result[0]
         })
       }
     })
   },
   clickTab(e) {
     this.setData({
-      iscompany: e.currentTarget.dataset['iscompany']
+      iscompany: e.currentTarget.dataset['iscompany'],
     })
+    if(e.currentTarget.dataset['iscompany'] == 1) {
+      this.setData({
+        company: this.data.companyObj[0],
+      })
+    } else {
+      this.setData({
+        company: {},
+      })
+    }
   },
   getcompany(e) {
     this.setData({
@@ -172,11 +183,6 @@ Page({
       }
     })
   },
-  boxclick() {
-    this.setData({
-      searchShow: false,
-    })
-  },
   selectbuyer(e) {
     this.setData({
       searchShow: false,
@@ -210,15 +216,6 @@ Page({
       })
       return;
     }
-    if (this.data.imgs.length == 0) {
-      wx.showToast({
-        title: '至少要上传一张单据', //提示文字
-        duration: 2000, //显示时长
-        mask: true, //是否显示透明蒙层，防止触摸穿透，默认：false  
-        icon: 'none', //图标，支持"success"、"loading"  
-      })
-      return;
-    }
     if (this.data.update) {
       $request.post('/v1/bills/update', {
         money: this.data.money,
@@ -243,7 +240,7 @@ Page({
 
       $request.post('/v1/bills/create', {
         gid: this.data.buyer.gid,
-        cid: this.data.buyer.cid,
+        cid: this.data.company.cid,
         main: this.data.main,
         money: this.data.money,
         status: this.data.status,
@@ -257,14 +254,8 @@ Page({
         remark: this.data.remark,
       }).then((res) => {
         if (res.data.error == 0) {
-          wx.showToast({
-            title: '账单创建成功', //提示文字
-            duration: 2000, //显示时长
-            mask: true, //是否显示透明蒙层，防止触摸穿透，默认：false  
-            icon: 'none', //图标，支持"success"、"loading"  
-          })
-          wx.navigateBack({
-            delta: 1
+          this.setData({
+            success: true
           })
         }
       })

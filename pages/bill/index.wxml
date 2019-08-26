@@ -15,10 +15,10 @@
     <navigator url="../bill-detail/index?bid={{item.bid}}" wx:for="{{bills}}">
       <view class="list-item">
         <view class='item-right'>
-          <view class='item-value2' wx:if="{{item.state!=0}}">总金额</view>
-          <view class='item-pirce' wx:if="{{item.state!=0}}">￥{{item.money}}</view>
+          <view class='item-value2' wx:if="{{item.state!=0 || item.userType == 0}}">总金额</view>
+          <view class='item-pirce' wx:if="{{item.state!=0 || item.userType == 0}}">￥{{item.money}}</view>
           <view>
-            <view class='item-button' data-bid="{{item.bid}}" catchtap="confrimBill" wx:if="{{item.state==0}}">
+            <view class='item-button' data-bid="{{item.bid}}" catchtap="confrimBill" wx:if="{{item.state==0&&item.userType == 1}}">
               确认账单
             </view>
           </view>
