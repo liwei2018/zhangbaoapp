@@ -20,5 +20,24 @@
       </view>
     </view>
   </view>
-  <button class="fixed-btn" bindtap="submit">创建</button>
+  <view class="userinfo" wx:if="{{user.userAuth == 1}}">
+    <view class="title">客户认证信息</view>
+    <view class="item">
+      <view class="left">姓名：</view>
+      <view class="right">{{user.name}}</view>
+    </view>
+    <view class="item">
+      <view class="left">手机号：</view>
+      <view class="right">{{user.mobile}}</view>
+    </view>
+    <view class="item">
+      <view class="left">身份证号：</view>
+      <view class="right">{{user.code}}</view>
+    </view>
+    <view class="item">
+      <view class="left">客户公司：</view>
+      <view class="right">{{user.company}}</view>
+    </view>
+  </view>
+  <button class="fixed-btn" bindtap="submit">{{gid ? '修改':'创建'}}</button>
 </view>

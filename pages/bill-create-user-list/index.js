@@ -49,5 +49,23 @@ Page({
     wx.navigateBack({
       delta: 1 // 返回上一级页面。
     })
-  }
+  },
+  createbill(e){
+    if(!e.currentTarget.dataset['cid']) {
+      let pages = getCurrentPages(); //获取当前页面js里面的pages里的所有信息。
+      let prevPage = pages[pages.length - 2];
+      prevPage.setData({
+        gid: e.currentTarget.dataset['gid'],
+        main: 0
+      })
+      wx.navigateBack({
+        delta: 1 // 返回上一级页面。
+      })
+    } else {
+
+      wx.navigateTo({
+        url: "../select/index?back=1&gid=" + e.currentTarget.dataset['gid']
+      })
+    }
+  },
 })

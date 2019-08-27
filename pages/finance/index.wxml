@@ -37,7 +37,7 @@
   </view>
   <view class="block">
     <view class="top-button-view">
-      <view class="top-button  {{collectionType == 0?'select':''}}" bindtap="clickTabcollectionType" data-collectionType="0">
+      <view class="top-button  {{collectionType == 1?'select':''}}" bindtap="clickTabcollectionType" data-collectionType="1">
         应收
         <view class='line'></view>
       </view>
@@ -45,7 +45,7 @@
         人员交易
         <view class='line'></view>
       </view>
-      <view class="top-button {{collectionType == 1?'select':''}}" bindtap="clickTabcollectionType" data-collectionType="1">
+      <view class="top-button {{collectionType == 0?'select':''}}" bindtap="clickTabcollectionType" data-collectionType="0">
         应付
         <view class='line'></view>
       </view>
@@ -53,7 +53,7 @@
     <view class="bill-list">
       <view class="list-item" wx:for="{{statisticsList}}">
         <view class='item-right'>
-          <view class='item-pirce' wx:if="{{collectionType == 0}}">+{{item.money}}</view>
+          <view class='item-pirce' wx:if="{{collectionType == 1}}">+{{item.money}}</view>
           <view class='item-pirce2' wx:else>-{{item.money}}</view>
         </view>
         <view class='item-mid'>

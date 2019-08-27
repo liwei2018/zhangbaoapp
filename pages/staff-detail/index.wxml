@@ -2,52 +2,69 @@
 <wxs src="../../components/utils/time.wxs" module="time" />
 <view class="staff">
   <view class="line-item">
-   <view class='btn-right'>
-      <image class="icon-btn" src="../../assets/images/客户管理/ic_电话@2x.png" />
-      <image class="icon-btn" src="../../assets/images/客户管理/ic_编辑@2x.png" />
+    <view class='btn-right'>
+      <view class="icon-view">
+        <image class="icon-btn" bindtap="call" src="../../assets/images/客户管理/ic_电话@2x.png" />
+        <navigator url="../guest-create/index?gid={{guest.gid}}">
+        <image class="icon-btn" src="../../assets/images/客户管理/ic_编辑@2x.png" />
+        </navigator>
+          <image class="icon-btn" src="../../assets/images/账单管理/发起@2x.png" bindtap="createbill" data-gid="{{guest.gid}}" data-cid="{{guest.cid}}" />
+      </view>
+      <view class="pic">
+        <view class="pic-title">应付</view>
+        <view class="pic-val">￥{{guest.payment}}</view>
+      </view>
+      <view class="pic">
+        <view class="pic-title">应收</view>
+        <view class="pic-val">￥{{guest.collection}}</view>
+      </view>
     </view>
     <view class='item-mid'>
       <view class='item-name'>
-        <view class="name">{{guest.name}}<view class="title">经理</view></view>
+        <view class="name">
+          {{guest.name}}
+          <view class="renzheng" wx:if="{{guest.userAuth == 1}}">
+            <image class="renzheng-img" src="../../assets/images/个人中心/标签_已认证@2x.png"></image>
+            已认证
+          </view>
+          <view class="renzheng renzheng2" wx:else>
+            <image class="renzheng-img" src="../../assets/images/账单管理/ic_未认证@2x.png"></image>
+            未认证
+          </view>
+        </view>
       </view>
-      <view class='time'>
-        {{guest.company}}
-      </view>
+      <view class='time'>{{guest.company}}</view>
+      <view class='time'>{{guest.mobile}}</view>
     </view>
   </view>
   <view class="">
     <view class="top-button-view">
-      <view class="top-button  {{iscomplete == 0?'select':''}}" bindtap="clickTab" data-iscomplete="0">
+      <view class="top-button  {{billType == 0?'select':''}}" bindtap="clickTab" data-billType="0">
         对账单
         <view class='line'></view>
       </view>
-      <view class="top-button {{iscomplete == 1?'select':''}}" bindtap="clickTab" data-iscomplete="1">
+      <view class="top-button {{billType == 1?'select':''}}" bindtap="clickTab" data-billType="1">
         确认书
         <view class='line'></view>
       </view>
-      <view class="top-button  {{iscomplete == 0?'select':''}}" bindtap="clickTab" data-iscomplete="0">
+      <view class="top-button  {{billType == 2?'select':''}}" bindtap="clickTab" data-billType="2">
         收款单
         <view class='line'></view>
       </view>
     </view>
     <view class="bill-list">
-      <navigator url="../bill-detail/index?id={{item.bid}}" >
+      <navigator url="../bill-detail/index?id={{item.bid}}" wx:for="{{bills}}">
         <view class="list-item">
           <view class='item-right'>
             <view class='item-value2'>总金额</view>
             <view class='item-pirce'>￥{{item.money}}</view>
-            <view>
-              <view class='item-button' data-bid="{{item.bid}}" catchtap="confrimBill" wx:if="{{item.state==0 && item.type == 0}}">
-                确认账单
-              </view>
-            </view>
+            <view></view>
           </view>
           <view class='item-mid'>
             <view class='item-name'>
-              {{item.sellerName}}123
-              <view class="item-state">123{{item.stateText}}</view>
+              {{item.first}}
+              <view class="item-state state{{item.state}}">{{item.stateText}}</view>
             </view>
-            <view class='item-value'>创建日期：{{time.format(item.createTime)}}</view>
             <view class='item-value'>创建日期：{{time.format(item.createTime)}}</view>
           </view>
         </view>

@@ -43,18 +43,11 @@ Page({
   onLoad(option) {
     if(option.gid) {
       this.setData({
-        gid:option.gid
+        gid:option.gid,
+        main: option.main
       })
       
-      $request.get('/v1/user/guestInfo', {
-        gid: option.gid
-      }).then((res) => {
-        if (res.data.error == 0) {
-          this.setData({
-            buyer: res.data.result,
-          })
-        }
-      })
+      
     }
     $request.get('/v1/user/info',{
     }).then((res) => {
@@ -66,6 +59,18 @@ Page({
     })
   },
   onShow() {
+    if(this.data.gid) {
+
+      $request.get('/v1/user/guestInfo', {
+        gid: this.data.gid
+      }).then((res) => {
+        if (res.data.error == 0) {
+          this.setData({
+            buyer: res.data.result,
+          })
+        }
+      })
+    }
     $request.get('/v1/bills/select', {}).then((res) => {
       if (res.data.error == 0) {
         var arr = []
@@ -79,6 +84,13 @@ Page({
         })
       }
     })
+  },
+  onShareAppMessage: function (res) {
+
+    return {
+      title: '自定义转发标题',
+      path: '/page/user?id=123'
+    }
   },
   clickTab(e) {
     this.setData({

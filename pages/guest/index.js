@@ -14,8 +14,13 @@ Page({
     this.getList()
   },
   createbill(e){
+    if(!e.currentTarget.dataset['cid']) {
+      wx.navigateTo({
+        url: "../bill-create/index?gid=" + e.currentTarget.dataset['gid'] + '&main=0'
+      })
+    }
     wx.navigateTo({
-      url: "../bill-create/index?gid=" + e.currentTarget.dataset['gid']
+      url: "../select/index?gid=" + e.currentTarget.dataset['gid']
     })
   },
   search(e){

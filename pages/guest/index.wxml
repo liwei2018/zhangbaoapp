@@ -3,32 +3,33 @@
   <view class='search'>
     <input class='search-input' placeholder='搜索' placeholder-class='search-inpu-placeholder' bindconfirm="search" bindblur="search"  />
   </view>
-  <view class="line-item" wx:for="{{userList}}" >
-    <view class='item-right'>
-      <image class="btn-img" src="../../assets/images/账单管理/发起@2x.png" data-gid="{{item.gid}}" bindtap="createbill" />
-    </view>
-    <view class='item-mid'>
-      <view class='item-name'>
-        {{item.name}}
-        <view class="renzheng" wx:if="{{item.cid? (item.companyAuth == 1) : (item.userAuth == 1)}}">
-          <image class="renzheng-img" src="../../assets/images/个人中心/标签_已认证@2x.png"></image>
-          已认证
+  <navigator url="../staff-detail/index?mobile={{item.mobile}}&op=1&gid={{item.gid}}" wx:for="{{userList}}">
+    <view class="line-item"  >
+      <view class='item-right'>
+        <image class="btn-img" src="../../assets/images/账单管理/发起@2x.png" data-gid="{{item.gid}}" data-cid="{{item.cid}}" bindtap="createbill" />
+      </view>
+      <view class='item-mid'>
+        <view class='item-name'>
+          {{item.name}}
+          <view class="renzheng" wx:if="{{item.userAuth == 1}}">
+            <image class="renzheng-img" src="../../assets/images/个人中心/标签_已认证@2x.png"></image>
+            已认证
+          </view>
+          <view class="renzheng renzheng2" wx:else> 
+            <image class="renzheng-img" src="../../assets/images/账单管理/ic_未认证@2x.png"></image>
+            未认证
+          </view>
+          <view class="renzheng" wx:if="{{item.legalPerson == 1}}">
+            <image class="renzheng-img" src="../../assets/images/账单管理/标签_法人@2x.png"></image>
+            法人
+          </view>
         </view>
-        <view class="renzheng renzheng2" wx:else> 
-          <image class="renzheng-img" src="../../assets/images/账单管理/ic_未认证@2x.png"></image>
-          未认证
-        </view>
-        
-        <view class="renzheng" wx:if="{{item.legalPerson == 1}}">
-          <image class="renzheng-img" src="../../assets/images/账单管理/标签_法人@2x.png"></image>
-          法人
+        <view class='time'>
+          {{item.cid ? item.company: item.mobile}}
         </view>
       </view>
-      <view class='time'>
-        {{item.cid ? item.company: item.mobile}}
-      </view>
     </view>
-  </view>
+  </navigator>
   <navigator url="../guest-create/index">
     <button class="fixed-btn" bindtap="create">
       新建客户

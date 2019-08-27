@@ -2,42 +2,59 @@ const $request = require('../../utils/request')
 const $util = require('../../utils/util')
 Page({
   data: {
-    motto: 'Hello World',
-    billList: [],
-    hasUserInfo: false,
-    jujuedialog: false,
-    iscomplete: 0,
+    guest: {},
+    billType: 0,
     bills: [],
-    pageNum: 1,
-    billState:$util.billState,
-    unfinished: 0,
-    complete: 1,
-    search: '',
-    bid: '',
-    remark:'',
-    statusBarHeight: getApp().globalData.statusBarHeight,
+    op: 0,
+  },
+  onLoad(option) {
+    console.log(option)
+    this.setData({
+      op: option.op,
+      gid: option.gid
+    })
+    
+    
+    
   },
   onShow() {
-    $request.get('/v1/bills/total', {
-    }).then((res) => {
-      if (res.data.result) {
-        this.setData({
-          "unfinished": res.data.result.unfinished,
-          "complete": res.data.result.complete
-        })
-      }
-    })
-    this.setData({
-      pageNum: 1
-    })
-    this.getList()
+    if(this.data.op == 0){
+      $request.get('/v1/user/guestInfo', {
+        gid: this.data.gid
+      }).then((res) => {
+        if (res.data.result) {
+          this.setData({
+            guest: res.data.result,
+          })
+          this.setData({
+            pageNum: 1
+          })
+          this.getList()
+        }
+      })
+    } else {
+      $request.get('/v1/user/guestInfo', {
+        gid: this.data.gid
+      }).then((res) => {
+        if (res.data.result) {
+          this.setData({
+            guest: res.data.result,
+          })
+          this.setData({
+            pageNum: 1
+          })
+          this.getList()
+        }
+      })
+    }
   },
   getList(up) {
-    $request.get('/v1/bills/list',{
+    $request.get('/v1/user/billsList',{
       pageNum: this.data.pageNum,
       pageSize: 10,
-      search: this.data.search,
-      isComplete: this.data.iscomplete
+      mobile: this.data.guest.mobile,
+      billType: this.data.billType,
+      op: this.data.op,
     }).then((res) => {
       if (res.data.result) {
         if(up) {
@@ -64,102 +81,27 @@ Page({
     })
     this.getList(true)
   },
-  confrimBill(e) {
-    const that = this
-    this.setData({
-      bid: e.currentTarget.dataset.bid
-    })
-    wx.showModal({
-      title: '',
-      content: '确认该笔账单代表您接受电子账单上的信息描述，是否确认？',
-      cancelText: "拒绝",
-      confirmText: '确认',
-      success: (res) => {
-        if (res.confirm) {
-          
-          $request.get('/v1/user/info', {
-          }).then((res) => {
-            if (res.data.error == 0) {
-              if (res.data.result.signature) {
-                this.confrimBill2()
-              } else {
-                this.userSignatur()
-              }
-            }
-          })
-        } else {
-          this.setData({
-            jujuedialog: true
-          })
-        }
-      }
-    })
-  },
-  userSignatur() {
-    wx.showModal({
-      title: '',
-      content: '您尚未录入个人电子签名，无法确认账单',
-      cancelText: "取消",
-      confirmText: '马上录入',
-      success: (res) => {
-        if (res.confirm) {
-          wx.navigateTo({
-            url: '../user-signature/index',
-          })
-        } else {
-        }
-      }
-    })
-  },
-  confrimBill2() {
-    const that = this
-    $request.post('/v1/bills/confirm', {
-      confirmType: 0,
-      bid: this.data.bid
-    }).then((res) => {
-      if (res.data.error == 0) {
-        this.onShow()
-      }
-    })
-  },
-  jujuedialogClose() {
-    this.setData({
-      jujuedialog: false,
-      remark: ''
-    })
-  },
+  
   clickTab(e) {
+    console.log(e)
     this.setData({
-      iscomplete: e.currentTarget.dataset.iscomplete
+      billType: e.currentTarget.dataset.billtype
     })
     this.onPullDownRefresh()
   },
-  create() {
-
-  },
-  search(e){
-    this.setData({
-      search: e.detail.value
-    })
-    this.onPullDownRefresh()
-  },
-  refuse() {
-    $request.post('/v1/bills/refuse', {
-      remark: this.data.remark,
-      bid: this.data.bid
-    }).then((res) => {
-      if (res.data.error == 0) {
-        this.setData({
-          jujuedialog: false,
-          remark: ''
-        })
-        this.onShow()
-      }
+  call() {
+    wx.makePhoneCall({
+      phoneNumber: this.data.guest.mobile
     })
   },
-  getremark(e) {
-    this.setData({
-      remark: e.detail.value
+  createbill(e){
+    if(!e.currentTarget.dataset['cid']) {
+      wx.navigateTo({
+        url: "../bill-create/index?gid=" + e.currentTarget.dataset['gid'] + '&main=0'
+      })
+    }
+    wx.navigateTo({
+      url: "../select/index?gid=" + e.currentTarget.dataset['gid']
     })
-  }
+  },
 })

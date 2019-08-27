@@ -11,7 +11,7 @@ Page({
     endTime: $util.formatDate(new Date()),
     statusBarHeight: getApp().globalData.statusBarHeight,
     company: {},
-    collectionType: 0,
+    collectionType: 1,
     statisticsList: [],
     user: {}
   },
@@ -97,7 +97,7 @@ Page({
     this.setData({
       type: e.currentTarget.dataset.type
     })
-    this.onPullDownRefresh()
+    this.onShow()
   },
   clickTabtype(e) {
     this.setData({

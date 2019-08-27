@@ -72,3 +72,18 @@
 
   margin-left: 60px;
 }
+.title {
+  margin: 10px 0;
+}
+.item .right {
+  color: #666;
+  float: left;
+  margin-left: 0;
+}
+.item .left {
+  display: inline;
+  width: auto;
+}
+.item {
+  height: 24px;
+}

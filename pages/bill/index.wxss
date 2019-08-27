@@ -170,7 +170,8 @@
    border-color: #29A2FF;
    color: #29A2FF;
  }
-  .state2 {
+
+ .state2 {
    border-color: #00C468;
    color: #00C468;
  }
@@ -184,42 +185,49 @@
    border-color: #29A2FF;
    color: #29A2FF;
  }
-.sendCode {
-  display: inline-block;
-  padding: 5px;
-  color: #327BF8;
-  border: 1px solid #327BF8;
-  float: right;
-  width: 90px;
-  text-align: center;
-}
-.disable {
-  color: #999;
-  border: 1px solid #999;
-}
-.codeinput{
-  border: 1px solid #999;
-  margin-right: 110px;
-  padding-left: 5px;
-  height: 30px;
-}
-.codeinput-view {
-  padding: 20px;
-  position: relative;
-}
-.sendCode-btn {
-  text-align: center;
-  background-color: #327BF8;
-  color: #fff;
-  padding: 15px 0;
-  font-size: 16px;
-}
-.dialog-close{
-  position: absolute;
-  right: 10px;
-  top:5px;
-  font-size: 20px;
-}
-.dialog-title {
-  margin-bottom: 10px;
-}
+
+ .sendCode {
+   display: inline-block;
+   padding: 5px;
+   color: #327BF8;
+   border: 1px solid #327BF8;
+   float: right;
+   width: 90px;
+   text-align: center;
+ }
+
+ .disable {
+   color: #999;
+   border: 1px solid #999;
+ }
+
+ .codeinput {
+   border: 1px solid #999;
+   margin-right: 110px;
+   padding-left: 5px;
+   height: 30px;
+ }
+
+ .codeinput-view {
+   padding: 20px;
+   position: relative;
+ }
+
+ .sendCode-btn {
+   text-align: center;
+   background-color: #327BF8;
+   color: #fff;
+   padding: 15px 0;
+   font-size: 16px;
+ }
+
+ .dialog-close {
+   position: absolute;
+   right: 10px;
+   top: 5px;
+   font-size: 20px;
+ }
+
+ .dialog-title {
+   margin-bottom: 10px;
+ }
