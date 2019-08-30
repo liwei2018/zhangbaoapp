@@ -42,6 +42,8 @@ page {
   background-color: #fff;
   padding: 20px 20px;
   height: auto;
+  overflow: hidden;
+
 }
 .title {
   background-image: linear-gradient( to left,  #B55F00 0%,#E0B11A 98%);
@@ -233,4 +235,7 @@ margin-top: 10px;
 .renzheng2 {
   border: 1px solid red;
   color: red;
+}
+navigator{
+  display: inline;
 }

@@ -13,7 +13,36 @@
   </view>
   <view class="item">
     <view class="left">手机号</view>
-    <view class="right">{{user.mobile}}<image class="mobile-img" src="../../assets/images/个人中心/ic_手机号编辑@2x.png" /></view>
+    <view class="right">
+      {{user.mobile}}
+      <image bindtap="sendCode" class="mobile-img" src="../../assets/images/个人中心/ic_手机号编辑@2x.png" />
+    </view>
   </view>
   <button class="fixed-btn-out" bindtap="logout">安全退出</button>
 </view>
+<dialog visible="{{jujuedialog}}" title="" opacity="0.5" close-on-click-modal="{{options.closeonclickmodal}}" bindclose="jujuedialogClose" bindopen="handleOpen" bindconfirm="refuse" confirmText="确认提交">
+  <view wx:if="{{!verify}}">
+    <view class='codeinput-view'>
+      <view class="dialog-close" bindtap="jujuedialogClose">×</view>
+      <view class="dialog-title">验证码已发送</view>
+      <view class="sendCode {{second > 0 ?'disable': ''}}" bindtap="sendCode">
+        发送验证码
+        <text wx:if="{{second > 0}}">({{second}})</text>
+      </view>
+      <input class="codeinput" placeholder="请输入手机验证码" bindinput="getcode"></input>
+    </view>
+    <view class="sendCode-btn" bindtap="submit">确定</view>
+  </view>
+  <view wx:else>
+    <view class='codeinput-view'>
+      <view class="dialog-close" bindtap="jujuedialogClose">×</view>
+      <input class="mobileinput" placeholder="请输入新手机号" bindinput="getmobile"></input>
+      <view class="sendCode {{second > 0 ?'disable': ''}}" bindtap="sendCode2">
+        发送验证码
+        <text wx:if="{{second > 0}}">({{second}})</text>
+      </view>
+      <input class="codeinput" placeholder="请输入手机验证码" bindinput="getcode2"></input>
+    </view>
+    <view class="sendCode-btn" bindtap="submit2">确定</view>
+  </view>
+</dialog>

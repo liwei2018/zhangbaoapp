@@ -1,18 +1,14 @@
 <view class="invoice-block">
   <view class="line-item">
-    <input placeholder='请输入员工姓名' value="" bindinput="getbuyer" />
+    {{name}}
   </view>
   <view class="line-item">
-    1311111111
-  </view>
-  <view class="line-item">
-    <input placeholder='请输入员工职位' value="" bindinput="getbuyer" />
+    {{mobile}}
   </view>
   <view class="auth">
     公司授权书
   </view>
-  <view class="auth-btn select">B公司签约权限</view>
-  <view class="auth-btn">B公司签约权限</view>
+  <view class="auth-btn select">{{company}}</view>
 </view>
 
-  <button class="fixed-btn" bindtap="create">同意授权</button>
+  <button class="fixed-btn" bindtap="submit">同意授权</button>

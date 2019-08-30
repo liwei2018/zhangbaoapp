@@ -2,164 +2,119 @@ const $request = require('../../utils/request')
 const $util = require('../../utils/util')
 Page({
   data: {
-    motto: 'Hello World',
-    billList: [],
-    hasUserInfo: false,
-    jujuedialog: false,
-    iscomplete: 0,
-    bills: [],
-    pageNum: 1,
-    billState:$util.billState,
-    unfinished: 0,
-    complete: 1,
-    search: '',
-    bid: '',
-    remark:'',
-    statusBarHeight: getApp().globalData.statusBarHeight,
+    name: '',
+    mobile: '',
+    job: '',
+    cid: [],
+    sid: '',
+    companys: []
   },
-  onShow() {
-    $request.get('/v1/bills/total', {
-    }).then((res) => {
-      if (res.data.result) {
+  onLoad(option) {
+    if (option.sid) {
+      wx.setNavigationBarTitle({
+        title: '修改员工'
+      })
+      this.setData({
+        sid: option.sid
+      })
+      $request.get('/v1/user/staffInfo', {
+        sid: option.sid
+      }).then((res) => {
+        if (res.data.error == 0) {
+          this.setData({
+            name: res.data.result.name,
+            mobile: res.data.result.mobile,
+
+            job: res.data.result.job,
+            cid: res.data.result.cid,
+            sid: res.data.result.sid,
+          })
+        }
+      })
+    }
+    $request.get('/v1/user/company', {}).then((res) => {
+      if (res.data.error == 0) {
+        res.data.result.forEach(element => {
+          if(this.data.cid.indexOf(element.cid)>-1 ){
+            element.select = true
+          }
+        });
         this.setData({
-          "unfinished": res.data.result.unfinished,
-          "complete": res.data.result.complete
+          companys: res.data.result
         })
       }
     })
-    this.setData({
-      pageNum: 1
-    })
-    this.getList()
   },
-  getList(up) {
-    $request.get('/v1/bills/list',{
-      pageNum: this.data.pageNum,
-      pageSize: 10,
-      search: this.data.search,
-      isComplete: this.data.iscomplete
+  getname(e) {
+    this.setData({
+      name: e.detail.value
+    })
+  },
+  getjob(e) {
+    this.setData({
+      job: e.detail.value
+    })
+  },
+  getcompany(e) {
+
+    wx.navigateTo({
+      url: "../guest-create-company/index"
+    })
+  },
+  getmobile(e) {
+    this.setData({
+      mobile: e.detail.value
+    })
+  },
+  selectfun(e) {
+    var index = this.data.cid.indexOf(e.currentTarget.dataset['cid']);
+    var select = false;
+    if (index > -1) {
+      this.data.cid.splice(index, 1)
+      select = false
+    } else {
+      this.data.cid.push(e.currentTarget.dataset['cid'])
+      select = true
+    }
+    this.setData({
+      cid: this.data.cid,
+      [`companys[${e.currentTarget.dataset['index']}].select`]: select
+    })
+  },
+  submit() {
+
+    $request.post('/v1/user/staffUpdate', {
+
+      name: this.data.name,
+      mobile: this.data.mobile,
+      job: this.data.job,
+      cid: this.data.cid.join(','),
+      sid: this.data.sid,
     }).then((res) => {
-      if (res.data.result) {
-        if(up) {
-          this.setData({
-            bills: this.data.bills.concat(res.data.result)
-          })
-        } else {
-          this.setData({
-            bills: res.data.result
-          })
-        }
-      }
+
+      wx.navigateBack({
+        delta: 1 // 返回上一级页面。
+      })
+
     })
   },
-  onPullDownRefresh() {
-    this.setData({
-      pageNum: 1
-    })
-    this.getList() 
-  },
-  onReachBottom() {
-    this.setData({
-      pageNum: this.data.pageNum + 1
-    })
-    this.getList(true)
-  },
-  confrimBill(e) {
-    const that = this
-    this.setData({
-      bid: e.currentTarget.dataset.bid
-    })
+  del() {
     wx.showModal({
       title: '',
-      content: '确认该笔账单代表您接受电子账单上的信息描述，是否确认？',
-      cancelText: "拒绝",
+      content: '确认删除？',
+      cancelText: "取消",
       confirmText: '确认',
       success: (res) => {
-        if (res.confirm) {
-          
-          $request.get('/v1/user/info', {
-          }).then((res) => {
-            if (res.data.error == 0) {
-              if (res.data.result.signature) {
-                this.confrimBill2()
-              } else {
-                this.userSignatur()
-              }
-            }
+        $request.get('/v1/user/staffDelete', {
+          sid: this.data.sid,
+        }).then((res) => {
+    
+          wx.navigateBack({
+            delta: 2 // 返回上一级页面。
           })
-        } else {
-          this.setData({
-            jujuedialog: true
-          })
-        }
-      }
-    })
-  },
-  userSignatur() {
-    wx.showModal({
-      title: '',
-      content: '您尚未录入个人电子签名，无法确认账单',
-      cancelText: "取消",
-      confirmText: '马上录入',
-      success: (res) => {
-        if (res.confirm) {
-          wx.navigateTo({
-            url: '../user-signature/index',
-          })
-        } else {
-        }
-      }
-    })
-  },
-  confrimBill2() {
-    const that = this
-    $request.post('/v1/bills/confirm', {
-      confirmType: 0,
-      bid: this.data.bid
-    }).then((res) => {
-      if (res.data.error == 0) {
-        this.onShow()
-      }
-    })
-  },
-  jujuedialogClose() {
-    this.setData({
-      jujuedialog: false,
-      remark: ''
-    })
-  },
-  clickTab(e) {
-    this.setData({
-      iscomplete: e.currentTarget.dataset.iscomplete
-    })
-    this.onPullDownRefresh()
-  },
-  create() {
-
-  },
-  search(e){
-    this.setData({
-      search: e.detail.value
-    })
-    this.onPullDownRefresh()
-  },
-  refuse() {
-    $request.post('/v1/bills/refuse', {
-      remark: this.data.remark,
-      bid: this.data.bid
-    }).then((res) => {
-      if (res.data.error == 0) {
-        this.setData({
-          jujuedialog: false,
-          remark: ''
+    
         })
-        this.onShow()
       }
-    })
-  },
-  getremark(e) {
-    this.setData({
-      remark: e.detail.value
     })
   }
 })

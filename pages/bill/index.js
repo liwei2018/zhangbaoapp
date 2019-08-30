@@ -20,6 +20,13 @@ Page({
     user: {},
     code: ''
   },
+  onLoad(option) {
+    if(option.auth == 1) {
+      wx.redirectTo({
+        url: '../login-auth-list/index'
+      })
+    }
+  },
   onShow() {
     this.setData({
       pageNum: 1

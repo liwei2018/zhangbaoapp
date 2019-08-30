@@ -24,7 +24,7 @@
   </view>
   <view class="part3">
     <view class="part3-pirce">合计金额：<text class="pirce">{{price}}元</text></view>
-    <view class="blue-btn pay-btn" bindtap="submit">去支付
-    </view>
+    <button class="blue-btn pay-btn" open-type="getUserInfo"  bindtap="submit">去支付
+    </button>
   </view>
 </view>

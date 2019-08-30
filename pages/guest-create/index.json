@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "新建客户"
+  "navigationBarTitleText": "新建客户",
+  "usingComponents": {
+    "success": "/components/success/index"
+  }
 }

@@ -12,6 +12,13 @@ Page({
     user: {},
     success: false
   },
+  onShareAppMessage() {
+    return {
+      title: '宝账管家',
+      path: '/pages/bill/index',
+      imageUrl: '../../assets/images/注册登录认证/logo@3x.png'
+    }
+  },
   onLoad(option) {
     if (option.gid) {
       wx.setNavigationBarTitle({

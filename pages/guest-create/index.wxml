@@ -1,5 +1,5 @@
 <!-- index.wxml -->
-<view class="container">
+<view class="container" wx:if="{{!success}}">
   <view class="userinfo">
     <view class="line-item">
       <view class="left">客户简称</view>
@@ -41,3 +41,4 @@
   </view>
   <button class="fixed-btn" bindtap="submit">{{gid ? '修改':'创建'}}</button>
 </view>
+<success wx:else user="{{buyer}}" isReg="0"></success>

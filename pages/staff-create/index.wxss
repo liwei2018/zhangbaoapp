@@ -48,3 +48,22 @@
   border-color: #327BF8;
   color: #327BF8 ;
 }
+.blue-btn {
+  width: 47%;
+  float: left;
+  padding: 0;
+}
+.btn1{
+  border: 1px solid #327BF8;
+  color: #327BF8;
+  background-color: #fff;
+  margin-right: 5%;
+}
+.info {
+  padding: 10px 20px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+}

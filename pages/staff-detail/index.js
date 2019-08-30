@@ -6,19 +6,25 @@ Page({
     billType: 0,
     bills: [],
     op: 0,
+    gid: '',
+    sid: ''
   },
   onLoad(option) {
-    console.log(option)
     this.setData({
       op: option.op,
-      gid: option.gid
+      gid: option.gid,
+      sid: option.sid,
     })
-    
+    if (option.op == 0) {
+      wx.setNavigationBarTitle({
+        title: '员工详情'
+      })
+    }
     
     
   },
   onShow() {
-    if(this.data.op == 0){
+    if(this.data.op == 1){
       $request.get('/v1/user/guestInfo', {
         gid: this.data.gid
       }).then((res) => {
@@ -33,8 +39,8 @@ Page({
         }
       })
     } else {
-      $request.get('/v1/user/guestInfo', {
-        gid: this.data.gid
+      $request.get('/v1/user/staffInfo', {
+        sid: this.data.sid
       }).then((res) => {
         if (res.data.result) {
           this.setData({

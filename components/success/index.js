@@ -25,7 +25,12 @@ Component({
   },
   detached: function () {
   },
-
+  onShareAppMessage() {
+    return {
+      title: '宝账管家',
+      path: '/page/bill/index'
+    }
+  },
   methods: {
     checkPosition: function (val) {
       return this.data.positions.indexOf(val) >= 0;
@@ -50,6 +55,7 @@ Component({
     confirm: function () {
       this.closedialog();
       this.triggerEvent('confirm');
-    }
+    },
+    
   }
 })

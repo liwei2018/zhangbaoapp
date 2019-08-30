@@ -5,16 +5,19 @@
     <view class='btn-right'>
       <view class="icon-view">
         <image class="icon-btn" bindtap="call" src="../../assets/images/客户管理/ic_电话@2x.png" />
-        <navigator url="../guest-create/index?gid={{guest.gid}}">
-        <image class="icon-btn" src="../../assets/images/客户管理/ic_编辑@2x.png" />
+        <navigator url="../guest-create/index?gid={{guest.gid}}" wx:if="{{op==1}}">
+          <image class="icon-btn" src="../../assets/images/客户管理/ic_编辑@2x.png" />
         </navigator>
-          <image class="icon-btn" src="../../assets/images/账单管理/发起@2x.png" bindtap="createbill" data-gid="{{guest.gid}}" data-cid="{{guest.cid}}" />
+        <navigator url="../staff-create/index?sid={{guest.sid}}" wx:if="{{op==0}}">
+          <image class="icon-btn" src="../../assets/images/客户管理/ic_编辑@2x.png" />
+        </navigator>
+        <image class="icon-btn" wx:if="{{op==1}}" src="../../assets/images/账单管理/发起@2x.png" bindtap="createbill" data-gid="{{guest.gid}}" data-cid="{{guest.cid}}" />
       </view>
-      <view class="pic">
+      <view class="pic" wx:if="{{op==1}}">
         <view class="pic-title">应付</view>
         <view class="pic-val">￥{{guest.payment}}</view>
       </view>
-      <view class="pic">
+      <view class="pic" wx:if="{{op==1}}">
         <view class="pic-title">应收</view>
         <view class="pic-val">￥{{guest.collection}}</view>
       </view>
@@ -33,7 +36,7 @@
           </view>
         </view>
       </view>
-      <view class='time'>{{guest.company}}</view>
+      <view class='time' wx:if="{{op==1}}">{{guest.company}}</view>
       <view class='time'>{{guest.mobile}}</view>
     </view>
   </view>

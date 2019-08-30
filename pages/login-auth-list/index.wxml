@@ -1,15 +1,13 @@
 <view class="company-list">
-  <view class="line-item">
-    <view class='item-right'>
-      <view class="btn">去授权</view>
-    </view>
-    <view class='item-mid'>
-      <view class='item-name'>
-        按按
+  <navigator url="../login-auth-create?aid={{item.aid}}&name={{item.name}}&mobile={{item.mobile}}&company={{item.company}}" wx:for="{{bills}}">
+    <view class="line-item">
+      <view class='item-right'>
+        <view class="btn">去授权</view>
       </view>
-      <view class='time'>
-        12312312312
+      <view class='item-mid'>
+        <view class='item-name'>{{item.name}}</view>
+        <view class='time'>{{item.mobile}}</view>
       </view>
     </view>
-  </view>
+  </navigator>
 </view>

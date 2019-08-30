@@ -1,7 +1,7 @@
 <!-- index.wxml -->
 <view class="success">
   <image src="../../assets/images/账单管理/提示_创建成功@2x.png" class="img" />
-  <view class="title">恭喜您，认证成功</view>
+  <view class="title">恭喜您，创建成功</view>
   <view class="user" wx:if="{{isReg == 0}}">
     <view class="user-item">
       <view class="left">客户简称</view>
@@ -22,10 +22,12 @@
       <image class="icon" src="../../assets/images/账单管理/邀请认证_微信好友@2x.png" />
       <view class="text">发给微信好友</view>
     </button>
-    <view class="renzheng-item">
-      <image class="icon" src="../../assets/images/账单管理/邀请认证_手机短信@2x.png" />
-      <view class="text">发送手机短信</view>
-    </view>
+    <navigator url="../login-4/index?issuccess=1">
+      <view class="renzheng-item">
+        <image class="icon" src="../../assets/images/账单管理/邀请认证_手机短信@2x.png" />
+        <view class="text">发送手机短信</view>
+      </view>
+    </navigator>
     <view class="renzheng-item">
       <image class="icon" src="../../assets/images/账单管理/邀请认证_小程序码 @2x.png" />
       <view class="text">生成小程序码</view>

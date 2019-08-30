@@ -79,7 +79,7 @@
         <image class="sanjiao-img" src="../../assets/images/账单管理/ic_箭头@2x.png" mode="aspectFit" />
       </view>
     </navigator>
-    <navigator url="../sraff/index" wx:if="{{iscompany == 1}}">
+    <navigator url="../staff/index" wx:if="{{iscompany == 1}}">
       <view class=".line-item">
         <image class="icon-img" src="../../assets/images/个人中心/ic_人员管理@2x.png"></image>
         人员管理
@@ -93,10 +93,13 @@
       <image class="sanjiao-img" src="../../assets/images/账单管理/ic_箭头@2x.png" mode="aspectFit" />
     </view>
     </navigator>
+    <navigator url="../webview/index?url=https://api.ublog.top/v1/common/helpUrl">
     <view class=".line-item">
       <image class="icon-img" src="../../assets/images/个人中心/ic_使用帮助@2x.png"></image>
       使用帮助
       <image class="sanjiao-img" src="../../assets/images/账单管理/ic_箭头@2x.png" mode="aspectFit" />
     </view>
+
+  </navigator>
   </view>
 </view>

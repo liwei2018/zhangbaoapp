@@ -40,6 +40,13 @@ Page({
     ],
     success: false
   },
+  onShareAppMessage() {
+    return {
+      title: '宝账管家',
+      path: '/pages/bill/index',
+      imageUrl: '../../assets/images/注册登录认证/logo@3x.png'
+    }
+  },
   onLoad(option) {
     if(option.gid) {
       this.setData({
@@ -84,13 +91,6 @@ Page({
         })
       }
     })
-  },
-  onShareAppMessage: function (res) {
-
-    return {
-      title: '自定义转发标题',
-      path: '/page/user?id=123'
-    }
   },
   clickTab(e) {
     this.setData({

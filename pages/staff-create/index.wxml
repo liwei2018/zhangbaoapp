@@ -1,18 +1,21 @@
 <view class="invoice-block">
   <view class="line-item">
-    <input placeholder='请输入员工姓名' value="" bindinput="getbuyer" />
+    <input placeholder='请输入员工姓名' value="{{name}}" bindinput="getname" />
   </view>
   <view class="line-item">
-    <input placeholder='请输入员工电话' value="" bindinput="getbuyer" />
+    <input placeholder='请输入员工电话' value="{{mobile}}" bindinput="getmobile" />
   </view>
   <view class="line-item">
-    <input placeholder='请输入员工职位' value="" bindinput="getbuyer" />
+    <input placeholder='请输入员工职位' value="{{job}}" bindinput="getjob" />
   </view>
   <view class="auth">
     公司授权书
   </view>
-  <view class="auth-btn select">B公司签约权限</view>
-  <view class="auth-btn">B公司签约权限</view>
+  <view wx:for="{{companys}}" bindtap="selectfun" class="auth-btn {{item.select ? 'select': ''}}" data-cid="{{item.cid}}" data-index="{{index}}">{{item.company}}</view>
 </view>
 
-  <button class="fixed-btn" bindtap="create">创建</button>
+  <button class="fixed-btn" bindtap="submit" wx:if="{{!sid}}">创建</button>
+  <view class="info"  wx:else>
+    <button class="blue-btn btn1" bindtap="del" >删除</button> 
+    <button class="blue-btn" bindtap="submit">保存</button>
+  </view>
