@@ -24,7 +24,7 @@
       <view class='item-left'>客户选择</view>
       <navigator url="../bill-create-user-list/index">
         <view class='item-right'>
-          <image src="../../assets/images/账单管理/ic_箭头@2x.png" class="jiantou1" />
+          <image src="../../assets/images/bill/9.png" class="jiantou1" />
           <text wx:if="{{buyer}}">{{main == 0?buyer.name:buyer.company}}</text>
           <text wx:else>请选择</text>
         </view>
@@ -37,7 +37,7 @@
       <view class='item-right'>
         <picker range="{{billTypeOpt}}" value="{{billType}}" bindchange="getbillType">
           <view class="picker">
-            {{billTypeOpt[billType]}}<image src="../../assets/images/账单管理/ic_箭头@2x.png" class="jiantou" />
+            {{billTypeOpt[billType]}}<image src="../../assets/images/bill/9.png" class="jiantou" />
           </view>
         </picker>
       </view>
@@ -56,7 +56,7 @@
         <picker range="{{statusOpt}}" value="{{status}}" bindchange="getstatus">
           <view class="picker">
             {{statusOpt[status]}}
-            <image src="../../assets/images/账单管理/ic_箭头@2x.png" class="jiantou" />
+            <image src="../../assets/images/bill/9.png" class="jiantou" />
           </view>
         </picker>
       </view>
@@ -67,7 +67,7 @@
         <picker range="{{payTypeOpt}}" value="{{payType}}" bindchange="getpayType">
           <view class="picker">
             {{payTypeOpt[payType]}}
-            <image src="../../assets/images/账单管理/ic_箭头@2x.png" class="jiantou" />
+            <image src="../../assets/images/bill/9.png" class="jiantou" />
           </view>
         </picker>
       </view>
@@ -86,7 +86,7 @@
         <picker mode="date" value="{{billTime}}" bindchange="getbillTime">
           <view class="picker">
             {{billTime}}
-            <image src="../../assets/images/账单管理/ic_箭头@2x.png" class="jiantou" />
+            <image src="../../assets/images/bill/9.png" class="jiantou" />
           </view>
         </picker>
       </view>
@@ -97,7 +97,7 @@
         <picker mode="date" value="{{refundTime}}" bindchange="getrefundTime">
           <view class="picker">
             {{refundTime}}
-            <image src="../../assets/images/账单管理/ic_箭头@2x.png" class="jiantou" />
+            <image src="../../assets/images/bill/9.png" class="jiantou" />
           </view>
         </picker>
       </view>
@@ -110,11 +110,11 @@
       <view class="title-name">上传图片</view>
       <view class='img-view'>
         <view class='img-item' wx:for="{{imgs}}">
-          <image class="img-del" bindtap="delimg" data-index="{{index}}" src="../../assets/images/账单管理/ic_删除照片@2x.png" />
+          <image class="img-del" bindtap="delimg" data-index="{{index}}" src="../../assets/images/bill/10.png" />
           <image class="img" src="{{item}}" />
         </view>
         <view class='img-item img-add' bindtap="addimg" wx:if="{{imgs.length < 9}}">
-          <image class="img" src="../../assets/images/账单管理/添加图片@2x.png" />
+          <image class="img" src="../../assets/images/bill/5.png" />
         </view>
       </view>
     </view>

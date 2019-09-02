@@ -231,3 +231,6 @@
  .dialog-title {
    margin-bottom: 10px;
  }
+.slide-image {
+  width: 100%;
+}

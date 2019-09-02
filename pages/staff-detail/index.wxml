@@ -4,14 +4,14 @@
   <view class="line-item">
     <view class='btn-right'>
       <view class="icon-view">
-        <image class="icon-btn" bindtap="call" src="../../assets/images/客户管理/ic_电话@2x.png" />
+        <image class="icon-btn" bindtap="call" src="../../assets/images/guest/1.png" />
         <navigator url="../guest-create/index?gid={{guest.gid}}" wx:if="{{op==1}}">
-          <image class="icon-btn" src="../../assets/images/客户管理/ic_编辑@2x.png" />
+          <image class="icon-btn" src="../../assets/images/guest/2.png" />
         </navigator>
         <navigator url="../staff-create/index?sid={{guest.sid}}" wx:if="{{op==0}}">
-          <image class="icon-btn" src="../../assets/images/客户管理/ic_编辑@2x.png" />
+          <image class="icon-btn" src="../../assets/images/guest/2.png" />
         </navigator>
-        <image class="icon-btn" wx:if="{{op==1}}" src="../../assets/images/账单管理/发起@2x.png" bindtap="createbill" data-gid="{{guest.gid}}" data-cid="{{guest.cid}}" />
+        <image class="icon-btn" wx:if="{{op==1}}" src="../../assets/images/bill/3.png" bindtap="createbill" data-gid="{{guest.gid}}" data-cid="{{guest.cid}}" />
       </view>
       <view class="pic" wx:if="{{op==1}}">
         <view class="pic-title">应付</view>
@@ -27,11 +27,11 @@
         <view class="name">
           {{guest.name}}
           <view class="renzheng" wx:if="{{guest.userAuth == 1}}">
-            <image class="renzheng-img" src="../../assets/images/个人中心/标签_已认证@2x.png"></image>
+            <image class="renzheng-img" src="../../assets/images/user/1.png"></image>
             已认证
           </view>
           <view class="renzheng renzheng2" wx:else>
-            <image class="renzheng-img" src="../../assets/images/账单管理/ic_未认证@2x.png"></image>
+            <image class="renzheng-img" src="../../assets/images/bill/1.png"></image>
             未认证
           </view>
         </view>

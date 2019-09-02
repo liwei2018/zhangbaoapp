@@ -6,21 +6,21 @@
   <navigator url="../staff-detail/index?mobile={{item.mobile}}&op=1&gid={{item.gid}}" wx:for="{{userList}}">
     <view class="line-item"  >
       <view class='item-right'>
-        <image class="btn-img" src="../../assets/images/账单管理/发起@2x.png" data-gid="{{item.gid}}" data-cid="{{item.cid}}" bindtap="createbill" />
+        <image class="btn-img" src="../../assets/images/bill/3.png" data-gid="{{item.gid}}" data-cid="{{item.cid}}" bindtap="createbill" />
       </view>
       <view class='item-mid'>
         <view class='item-name'>
           {{item.name}}
           <view class="renzheng" wx:if="{{item.userAuth == 1}}">
-            <image class="renzheng-img" src="../../assets/images/个人中心/标签_已认证@2x.png"></image>
+            <image class="renzheng-img" src="../../assets/images/user/1.png"></image>
             已认证
           </view>
           <view class="renzheng renzheng2" wx:else> 
-            <image class="renzheng-img" src="../../assets/images/账单管理/ic_未认证@2x.png"></image>
+            <image class="renzheng-img" src="../../assets/images/bill/1.png"></image>
             未认证
           </view>
           <view class="renzheng" wx:if="{{item.legalPerson == 1}}">
-            <image class="renzheng-img" src="../../assets/images/账单管理/标签_法人@2x.png"></image>
+            <image class="renzheng-img" src="../../assets/images/bill/2.png"></image>
             法人
           </view>
         </view>

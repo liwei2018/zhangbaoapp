@@ -30,6 +30,7 @@
     "pages/login-3/index",
     "pages/login-2/index",
     "pages/staff-detail/index",
+    "pages/staff-create/index",
     "pages/company-authorize/index",
     "pages/company-detail/index",
     "pages/invoice-detail/index",

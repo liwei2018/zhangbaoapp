@@ -46,6 +46,9 @@ function all(opt) {
           resolve(res)
         } else if (res.data.error === 401) {
           reject(res)
+         if(getCurrentPageUrl() == "pages/login/index") {
+           return
+         }
           wx.navigateTo({
             url: '../login/index?redirect=/' + getCurrentPageUrl(),
           })

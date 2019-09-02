@@ -5,6 +5,13 @@ Page({
     userList: [],
     statusBarHeight: getApp().globalData.statusBarHeight,
   },
+  onLoad(option) {
+    if (option.company) {
+      wx.setNavigationBarTitle({
+        title: '企业选择'
+      })
+    }
+  },
   search(e) {
     $request.get('/v1/common/searchList', {
       name: e.detail.value,

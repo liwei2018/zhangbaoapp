@@ -3,8 +3,8 @@
 <view class="staff">
   <view class="line-item">
    <view class='btn-right'>
-      <image class="icon-btn" src="../../assets/images/客户管理/ic_电话@2x.png" />
-      <image class="icon-btn" src="../../assets/images/客户管理/ic_编辑@2x.png" />
+      <image class="icon-btn" src="../../assets/images/guest/1.png" />
+      <image class="icon-btn" src="../../assets/images/guest/2.png" />
     </view>
     <view class='item-mid'>
       <view class='item-name'>

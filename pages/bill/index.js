@@ -18,7 +18,9 @@ Page({
     second: 0,
     fun: null,
     user: {},
-    code: ''
+    code: '',
+    banner: [],
+    imgheight: 0,
   },
   onLoad(option) {
     if(option.auth == 1) {
@@ -38,6 +40,23 @@ Page({
           user: res.data.result,
         })
       }
+    })
+    $request.get('/v1/common/banner', {}).then((res) => {
+      if (res.data.result) {
+        this.setData({
+          banner: res.data.result,
+        })
+        
+        
+      }
+    })
+  },
+  imageLoad: function(e) {
+    var $width = e.detail.width; //获取图片真实宽度
+    var $height = e.detail.height; //获取图片真实高度
+    var height = (wx.getSystemInfoSync().windowWidth - 40) * $height / $width
+    this.setData({
+      imgheight: height,
     })
   },
   sendCode() {

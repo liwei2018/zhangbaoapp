@@ -11,12 +11,22 @@
       <view class='line'></view>
     </view>
   </view>
+  
   <view class="bill-list">
+  <swiper indicator-dots="{{true}}" style="height: {{imgheight}}px" indicator-active-color="rgba(255,255,255,1)">
+    <navigator wx:for="{{banner}}" url="../webview/index?url={{item.url}}">
+      <swiper-item>
+        <image src="{{item.image}}" class="slide-image" mode="widthFix" bindload="imageLoad"  />
+      </swiper-item>
+    </navigator>
+  </swiper>
     <navigator url="../bill-detail/index?bid={{item.bid}}" wx:for="{{bills}}">
       <view class="list-item">
         <view class='item-right'>
           <view class='item-value2' wx:if="{{item.state!=0 || item.userType == 0}}">总金额</view>
-          <view class='item-pirce' wx:if="{{item.state!=0 || item.userType == 0}}">￥{{item.money}}</view>
+          <view class='item-pirce' wx:if="{{item.state!=0 || item.userType == 0}}">
+            ￥{{item.money}}
+          </view>
           <view>
             <view class='item-button' data-bid="{{item.bid}}" catchtap="confrimBill" wx:if="{{item.state==0&&item.userType == 1}}">
               确认账单
@@ -39,19 +49,20 @@
       <view class='nothing-text'>暂无账单</view>
     </view>
   </view>
-  <dialog visible="{{jujuedialog}}" title="" opacity="0.5"  close-on-click-modal="{{options.closeonclickmodal}}" bindclose="jujuedialogClose" bindopen="handleOpen" bindconfirm="refuse" confirmText="确认提交">
+  <dialog visible="{{jujuedialog}}" title="" opacity="0.5" close-on-click-modal="{{options.closeonclickmodal}}" bindclose="jujuedialogClose" bindopen="handleOpen" bindconfirm="refuse" confirmText="确认提交">
     <view class='codeinput-view'>
       <view class="dialog-close" bindtap="jujuedialogClose">×</view>
       <view class="dialog-title">已发送验证码至{{user.mobile}}</view>
-      <view class="sendCode {{second > 0 ?'disable': ''}}" bindtap="sendCode" >重新发送<text wx:if="{{second > 0}}">({{second}})</text></view>
+      <view class="sendCode {{second > 0 ?'disable': ''}}" bindtap="sendCode">
+        重新发送
+        <text wx:if="{{second > 0}}">({{second}})</text>
+      </view>
       <input class="codeinput" placeholder="请输入手机验证码" bindinput="getcode"></input>
     </view>
     <view class="sendCode-btn" bindtap="confrimBill2">确定</view>
   </dialog>
   <navigator url="../bill-create/index">
-    <button class="fixed-btn" bindtap="create">
-      创建
-    </button>
+    <button class="fixed-btn" bindtap="create">创建</button>
   </navigator>
   <view class='bottom-view'></view>
 </view>

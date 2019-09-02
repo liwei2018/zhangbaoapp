@@ -7,24 +7,22 @@ Component({
     user: {
       type: Object,
       value: {},
-      
+
     },
     isReg: {
       type: String,
       value: '',
-      
+
     },
   },
   data: {
-    
+
   },
   attached: function () {
- 
+
   },
-  moved: function () {
-  },
-  detached: function () {
-  },
+  moved: function () {},
+  detached: function () {},
   onShareAppMessage() {
     return {
       title: '宝账管家',
@@ -56,6 +54,16 @@ Component({
       this.closedialog();
       this.triggerEvent('confirm');
     },
-    
+    imgYu: function (event) {
+      $request.get('/v1/common/appletQrCode', {}).then((res) => {
+        if (res.data.result) {
+
+          //图片预览
+          wx.previewImage({
+            urls: [res.data.result.qrCode],
+          })
+        }
+      })
+    },
   }
 })

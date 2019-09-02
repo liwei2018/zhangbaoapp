@@ -5,7 +5,7 @@
   <navigator url="../staff-detail/index?sid={{item.sid}}&op=0" wx:for="{{bills}}">
     <view class="line-item">
       <view class='item-right'>
-        <image class="tanhao" src="../../assets/images/个人中心/ic_详细信息@2x.png" />
+        <image class="tanhao" src="../../assets/images/user/6.png" />
       </view>
       <view class='item-mid'>
         <view class='item-name'>

@@ -15,27 +15,27 @@
   <view class="block money">
     <view class="user-header">
       <view class="header-1">
-        <image class="user-photo" wx:if="{{iscompany == 0}}" src="{{user.avatar == '' ? '../../assets/images/个人中心/默认头像@2x.png' : user.avatar}}"></image>
-        <image class="user-photo" wx:else src="{{user.logo == '' ? '../../assets/images/个人中心/默认头像@2x.png' : user.logo}}"></image>
+        <image class="user-photo" wx:if="{{iscompany == 0}}" src="{{user.avatar == '' ? '../../assets/images/user/7.png' : user.avatar}}"></image>
+        <image class="user-photo" wx:else src="{{user.logo == '' ? '../../assets/images/user/9.png' : user.logo}}"></image>
       </view>
       <view class="header-3">
         <navigator wx:if="{{iscompany == 0}}" url="../user-detail/index">
-          <image src="../../assets/images/个人中心/ic_设置@2x.png" class="header-setting"></image>
+          <image src="../../assets/images/user/10.png" class="header-setting"></image>
         </navigator>
         <navigator wx:else url="../company/index">
-          <image src="../../assets/images/个人中心/ic_切换@2x.png" class="header-setting"></image>
+          <image src="../../assets/images/user/11.png" class="header-setting"></image>
         </navigator>
       </view>
       <view class="header-2">
         <view class="header-name">{{iscompany == 1?user.companyName:user.name}}</view>
         <view class="header-name2">
           <view class="renzheng" wx:if="{{user.isRealName == 1}}">
-            <image class="renzheng-img" src="../../assets/images/个人中心/标签_已认证@2x.png"></image>
+            <image class="renzheng-img" src="../../assets/images/user/1.png"></image>
             已认证
           </view>
           <view class="renzheng renzheng2" wx:if="{{user.isRealName == 0}}">
-            <image class="renzheng-img" src="../../assets/images/账单管理/ic_未认证@2x@2x.png"></image>
-            已认证
+            <image class="renzheng-img" src="../../assets/images/bill/1.png"></image>
+            未认证
           </view>
         </view>
       </view>
@@ -60,44 +60,44 @@
   <view class="block">
     <navigator url="../buy-log/index">
       <view class=".line-item">
-        <image class="icon-img" src="../../assets/images/个人中心/ic_购买记录@2x.png"></image>
+        <image class="icon-img" src="../../assets/images/user/12.png"></image>
         购买使用记录
-        <image class="sanjiao-img" src="../../assets/images/账单管理/ic_箭头@2x.png" mode="aspectFit" />
+        <image class="sanjiao-img" src="../../assets/images/bill/9.png" mode="aspectFit" />
       </view>
     </navigator>
     <navigator url="../logi/index" wx:if="{{iscompany == 0}}">
       <view class=".line-item">
-        <image class="icon-img" src="../../assets/images/个人中心/ic_个人认证@2x.png"></image>
+        <image class="icon-img" src="../../assets/images/user/13.png"></image>
         个人认证
-        <image class="sanjiao-img" src="../../assets/images/账单管理/ic_箭头@2x.png" mode="aspectFit" />
+        <image class="sanjiao-img" src="../../assets/images/bill/9.png" mode="aspectFit" />
       </view>
     </navigator>
     <navigator url="../company/index" wx:if="{{iscompany == 1}}">
       <view class=".line-item">
-        <image class="icon-img" src="../../assets/images/个人中心/ic_企业管理@2x.png"></image>
+        <image class="icon-img" src="../../assets/images/user/14.png"></image>
         企业管理
-        <image class="sanjiao-img" src="../../assets/images/账单管理/ic_箭头@2x.png" mode="aspectFit" />
+        <image class="sanjiao-img" src="../../assets/images/bill/9.png" mode="aspectFit" />
       </view>
     </navigator>
     <navigator url="../staff/index" wx:if="{{iscompany == 1}}">
       <view class=".line-item">
-        <image class="icon-img" src="../../assets/images/个人中心/ic_人员管理@2x.png"></image>
+        <image class="icon-img" src="../../assets/images/user/15.png"></image>
         人员管理
-        <image class="sanjiao-img" src="../../assets/images/账单管理/ic_箭头@2x.png" mode="aspectFit" />
+        <image class="sanjiao-img" src="../../assets/images/bill/9.png" mode="aspectFit" />
       </view>
     </navigator>
     <navigator url="../company-authorize/index">
     <view class=".line-item">
-      <image class="icon-img" src="../../assets/images/个人中心/ic_授权委托书@2x.png"></image>
+      <image class="icon-img" src="../../assets/images/user/16.png"></image>
       我的授权委托书
-      <image class="sanjiao-img" src="../../assets/images/账单管理/ic_箭头@2x.png" mode="aspectFit" />
+      <image class="sanjiao-img" src="../../assets/images/bill/9.png" mode="aspectFit" />
     </view>
     </navigator>
     <navigator url="../webview/index?url=https://api.ublog.top/v1/common/helpUrl">
     <view class=".line-item">
-      <image class="icon-img" src="../../assets/images/个人中心/ic_使用帮助@2x.png"></image>
+      <image class="icon-img" src="../../assets/images/user/17.png"></image>
       使用帮助
-      <image class="sanjiao-img" src="../../assets/images/账单管理/ic_箭头@2x.png" mode="aspectFit" />
+      <image class="sanjiao-img" src="../../assets/images/bill/9.png" mode="aspectFit" />
     </view>
 
   </navigator>

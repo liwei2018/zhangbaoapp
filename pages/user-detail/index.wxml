@@ -1,6 +1,6 @@
 <view class="user-block">
   <view class="logo">
-    <image class="logo-img" src="{{user.avatar==''?'../../assets/images/个人中心/默认头像@2x.png':user.avatar}}" />
+    <image class="logo-img" src="{{user.avatar==''?'../../assets/images/user/7.png':user.avatar}}" />
     <view class="logo-btn" bindtap="addimg">设置头像</view>
   </view>
   <view class="item">
@@ -15,7 +15,7 @@
     <view class="left">手机号</view>
     <view class="right">
       {{user.mobile}}
-      <image bindtap="sendCode" class="mobile-img" src="../../assets/images/个人中心/ic_手机号编辑@2x.png" />
+      <image bindtap="sendCode" class="mobile-img" src="../../assets/images/user/8.png" />
     </view>
   </view>
   <button class="fixed-btn-out" bindtap="logout">安全退出</button>

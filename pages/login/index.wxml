@@ -1,13 +1,13 @@
 <!-- index.wxml -->
 <view class="login">
-  <image src="../../assets/images/注册登录认证/logo@2x.png" class='logo' />
+  <image src="../../assets/images/login/logo.png" class='logo' />
   <view class="userinfo">
     <view class="line-item">
-      <image src="../../assets/images/注册登录认证/ic_手机@2x.png" class="input-icon" />
+      <image src="../../assets/images/login/6.png" class="input-icon" />
       <input placeholder="请输入手机号码" bindinput="getmobile" />
     </view>
     <view class="line-item">
-      <image src="../../assets/images/注册登录认证/ic_验证码@2x.png" class="input-icon" />
+      <image src="../../assets/images/login/7.png" class="input-icon" />
       <input placeholder="请输入验证码" bindinput="getcode" />
       <view class="sendCode {{second > 0 ?'disable': ''}}" bindtap="sendCode" >获取验证码<text wx:if="{{second > 0}}">({{second}})</text></view>
     </view>

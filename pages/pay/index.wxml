@@ -17,9 +17,9 @@
   <view class="part2">
     <view class="part2-title">请选择支付方式</view>
     <view class="line-item">
-      <image src="../../assets/images/个人中心/ic_微信支付@2x.png" class="pay-icon"></image>
+      <image src="../../assets/images/user/4.png" class="pay-icon"></image>
       <view class="pay-name">微信支付</view>
-      <image src="../../assets/images/个人中心/ic_已选@2x.png" class="pay-radio"></image>
+      <image src="../../assets/images/user/5.png" class="pay-radio"></image>
     </view>
   </view>
   <view class="part3">

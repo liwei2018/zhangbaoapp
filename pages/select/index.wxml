@@ -1,22 +1,22 @@
 <view class="company-list">
     <view class="line-item" bindtap="check" data-main="0">
       <view class='item-left'>
-        <image class="btn-img" wx:if="{{main == 1}}" src="../../assets/images/客户管理/ic_未选@2x.png"  />
-        <image class="btn-img" wx:if="{{main == 0}}" src="../../assets/images/客户管理/ic_已选@2x.png"  />
+        <image class="btn-img" wx:if="{{main == 1}}" src="../../assets/images/guest/4.png"  />
+        <image class="btn-img" wx:if="{{main == 0}}" src="../../assets/images/guest/3.png"  />
       </view>
       <view class='item-mid'>
         <view class='item-name'>
           {{user.name}}
           <view class="renzheng" wx:if="{{user.userAuth == 1}}">
-            <image class="renzheng-img" src="../../assets/images/个人中心/标签_已认证@2x.png"></image>
+            <image class="renzheng-img" src="../../assets/images/user/1.png"></image>
             已认证
           </view>
           <view class="renzheng renzheng2" wx:else> 
-            <image class="renzheng-img" src="../../assets/images/账单管理/ic_未认证@2x.png"></image>
+            <image class="renzheng-img" src="../../assets/images/bill/1.png"></image>
             未认证
           </view>
           <view class="renzheng" wx:if="{{user.legalPerson == 1}}">
-            <image class="renzheng-img" src="../../assets/images/账单管理/标签_法人@2x.png"></image>
+            <image class="renzheng-img" src="../../assets/images/bill/2.png"></image>
             法人
           </view>
         </view>
@@ -24,18 +24,18 @@
     </view>
     <view class="line-item" bindtap="check" data-main="1">
       <view class='item-left'>
-        <image class="btn-img" wx:if="{{main == 0}}" src="../../assets/images/客户管理/ic_未选@2x.png"  />
-        <image class="btn-img" wx:if="{{main == 1}}" src="../../assets/images/客户管理/ic_已选@2x.png"  />
+        <image class="btn-img" wx:if="{{main == 0}}" src="../../assets/images/guest/4.png"  />
+        <image class="btn-img" wx:if="{{main == 1}}" src="../../assets/images/guest/3.png"  />
       </view>
       <view class='item-mid'>
         <view class='item-name'>
           {{user.company}}
           <view class="renzheng" wx:if="{{user.companyAuth == 1}}">
-            <image class="renzheng-img" src="../../assets/images/个人中心/标签_已认证@2x.png"></image>
+            <image class="renzheng-img" src="../../assets/images/user/1.png"></image>
             已认证
           </view>
           <view class="renzheng renzheng2" wx:else> 
-            <image class="renzheng-img" src="../../assets/images/账单管理/ic_未认证@2x.png"></image>
+            <image class="renzheng-img" src="../../assets/images/bill/1.png"></image>
             未认证
           </view>
         </view>
