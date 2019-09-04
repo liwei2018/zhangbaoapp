@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="success">
-  <image src="../../assets/images/login/企业认证成功@2x.png" class="img" />
+  <image src="../../assets/images/login/5.png" class="img" />
   <view class="title">{{user.companyName}}</view>
   <view class="title">欢迎您的加入宝账</view>
   <button class="blue-btn" bindtap="nextFun">开始使用</button>

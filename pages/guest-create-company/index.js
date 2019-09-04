@@ -5,12 +5,14 @@ Page({
     userList: [],
     statusBarHeight: getApp().globalData.statusBarHeight,
   },
-  onLoad(option) {
+  onLoad: function (option) {
+    console.log(option)
     if (option.company) {
       wx.setNavigationBarTitle({
         title: '企业选择'
       })
     }
+    
   },
   search(e) {
     $request.get('/v1/common/searchList', {
@@ -23,7 +25,7 @@ Page({
       }
     })
   },
-  selected(e) {
+  selectedd(e) {
 
     let pages = getCurrentPages(); //获取当前页面js里面的pages里的所有信息。
     let prevPage = pages[pages.length - 2];

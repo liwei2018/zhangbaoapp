@@ -50,7 +50,7 @@ Page({
   getcompany(e) {
 
     wx.navigateTo({
-      url: "../guest-create-company/index"
+      url: "../guest-create-company/index?company=1"
     })
   },
   getmobile(e) {

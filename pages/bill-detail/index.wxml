@@ -70,20 +70,20 @@
   </view>
   <view class="info" wx:if="{{bill.userType==0 && (bill.state == 0||bill.state == 2)}}">
     <button class="blue-btn btn1" bindtap="submit" data-operation="0">申请撤回单据</button>
-    <navigator url="../webview/index?url={{bill.url}}">
+    <navigator url="../bill-detail-ag/index?bid={{bill.bid}}">
       <button class="blue-btn">查看线上协议</button>
     </navigator>
   </view>
   <view class="info" wx:if="{{bill.userType==1 && bill.state == 1}}">
     <button class="blue-btn btn1 btn2 " bindtap="submit" data-operation="1">拒绝撤回</button>
-    <navigator url="../webview/index?url={{bill.url}}">
-      <button class="blue-btn">查看线上协议</button>
+    <navigator url="../bill-detail-ag/index?bid={{bill.bid}}">
+      <button class="blue-btn btn3">查看线上协议</button>
     </navigator>
     <button class="blue-btn btn4 " bindtap="submit" data-operation="2">同意撤回</button>
   </view>
   <view class="info" wx:if="{{(bill.userType==1 && bill.state != 1) || (bill.userType==0 && bill.state != 0&&bill.state != 2)}}">
-    <navigator url="../webview/index?url={{bill.url}}">
-      <button class="blue-btn">查看线上协议</button>
+    <navigator url="../bill-detail-ag/index?bid={{bill.bid}}">
+      <button class="blue-btn btn5">查看线上协议</button>
     </navigator>
   </view>
 </view>

@@ -58,7 +58,7 @@
         </view>
         <view class='item-mid'>
           <view class='item-name'>{{item.name}}</view>
-          <view class='item-value'>创建日期：{{time.format(item.createTime)}}</view>
+          <view class='item-value'>创建日期：{{item.createTime}}</view>
         </view>
       </view>
     </view>

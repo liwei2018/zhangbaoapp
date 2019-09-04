@@ -133,6 +133,7 @@
  .item-pirce {
    color: red;
    font-size: 16px;
+   word-break:break-all;
  }
 
  .item-button {

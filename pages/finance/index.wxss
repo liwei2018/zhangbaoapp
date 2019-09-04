@@ -200,11 +200,15 @@ page {
 .item-pirce {
   color: red;
   font-size: 16px;
+  word-break:break-all;
+  text-align: center;
 }
 
 .item-pirce2 {
   color: green;
   font-size: 16px;
+  word-break:break-all;
+  text-align: center;
 }
 
 .item-button {

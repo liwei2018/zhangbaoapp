@@ -35,7 +35,7 @@ Page({
     $request.get('/v1/user/company', {}).then((res) => {
       if (res.data.error == 0) {
         res.data.result.forEach(element => {
-          if(this.data.cid.indexOf(element.cid)>-1 ){
+          if (this.data.cid.indexOf(element.cid) > -1) {
             element.select = true
           }
         });
@@ -58,7 +58,7 @@ Page({
   getcompany(e) {
 
     wx.navigateTo({
-      url: "../guest-create-company/index"
+      url: "../guest-create-company/index?company=1"
     })
   },
   getmobile(e) {
@@ -105,15 +105,17 @@ Page({
       cancelText: "取消",
       confirmText: '确认',
       success: (res) => {
-        $request.get('/v1/user/staffDelete', {
-          sid: this.data.sid,
-        }).then((res) => {
-    
-          wx.navigateBack({
-            delta: 2 // 返回上一级页面。
+        if (res.confirm) {
+          $request.get('/v1/user/staffDelete', {
+            sid: this.data.sid,
+          }).then((res) => {
+
+            wx.navigateBack({
+              delta: 2 // 返回上一级页面。
+            })
+
           })
-    
-        })
+        }
       }
     })
   }

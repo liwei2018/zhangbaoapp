@@ -23,6 +23,10 @@
 .info {
   padding: 20px;
   overflow: hidden;
+  position:fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 .title-info {
   font-size: 18px;
@@ -87,8 +91,52 @@
   margin-right: 0;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0px;
-  box-shadow: none;
 }
 .btn5 {
   width: 100%;
+}
+.sendCode {
+  display: inline-block;
+  padding: 5px;
+  color: #327BF8;
+  border: 1px solid #327BF8;
+  float: right;
+  width: 90px;
+  text-align: center;
+}
+
+.disable {
+  color: #999;
+  border: 1px solid #999;
+}
+
+.codeinput {
+  border: 1px solid #999;
+  margin-right: 110px;
+  padding-left: 5px;
+  height: 30px;
+}
+
+.codeinput-view {
+  padding: 20px;
+  position: relative;
+}
+
+.sendCode-btn {
+  text-align: center;
+  background-color: #327BF8;
+  color: #fff;
+  padding: 15px 0;
+  font-size: 16px;
+}
+
+.dialog-close {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  font-size: 20px;
+}
+
+.dialog-title {
+  margin-bottom: 10px;
 }

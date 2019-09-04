@@ -1,6 +1,9 @@
 {
   "pages": [
     "pages/bill/index",
+
+    "pages/bill-detail-ag/index",
+    "pages/select/index",
     "pages/bill-create/index",
     "pages/user/index",
     "pages/mobile/index",
