@@ -14,7 +14,8 @@ Page({
       })
 
       this.setData({
-        isSuccess: option.issuccess
+        isSuccess: option.issuccess,
+        mobile: option.mobile
       })
     }
   },

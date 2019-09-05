@@ -22,7 +22,7 @@
       <image class="icon" src="../../assets/images/bill/7.png" />
       <view class="text">发给微信好友</view>
     </button>
-    <navigator url="../login-4/index?issuccess=1">
+    <navigator url="../login-4/index?issuccess=1&mobile={{user.mobile}}">
       <view class="renzheng-item">
         <image class="icon" src="../../assets/images/bill/6.png" />
         <view class="text">发送手机短信</view>

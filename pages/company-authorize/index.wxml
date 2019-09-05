@@ -1,7 +1,7 @@
 <view class="company-list">
   <view class="line-item" wx:for="{{bills}}">
     <view class='item-left'>
-      <image class="company-icon" src="{{item.logo}}" />
+      <image class="company-icon" src="{{item.logo ? item.logo: '../../assets/images/user/9.png'}}" />
     </view>
     <view class='item-right'>
       <navigator url="../webview/index?url={{item.url}}">

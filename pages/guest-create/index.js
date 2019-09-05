@@ -59,7 +59,7 @@ Page({
     })
   },
   submit() {
-    
+
     $request.post('/v1/user/guestUpdate', {
 
       name: this.data.name,
@@ -68,15 +68,26 @@ Page({
       company: this.data.company,
       gid: this.data.gid,
     }).then((res) => {
-      
-      if(this.data.gid) {
+
+      if (this.data.gid) {
         wx.navigateBack({
           delta: 1 // 返回上一级页面。
         })
       } else {
         if (res.data.error == 0) {
+
+          this.setData({
+            user: {
+              name: this.data.name,
+              mobile: this.data.mobile,
+              company: this.data.company
+            }
+          })
           this.setData({
             success: true
+          })
+          wx.setNavigationBarTitle({
+            title: '创建成功'
           })
         }
       }

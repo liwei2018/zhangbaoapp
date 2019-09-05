@@ -42,6 +42,7 @@ page {
 
 .money {
   height: 106px;
+  margin-bottom: 6px;
 }
 
 .money-item {

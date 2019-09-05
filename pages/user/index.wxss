@@ -79,13 +79,16 @@
 }
 .money-item {
   width: 33%;
-  height: 60px;
   float: left;
-  margin-top: 24px;
 }
 .money-item-1 {
   text-align: center;
   font-size: 20px;
+  height: 60px;
+  word-break: break-all;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .money-item-2 {
   text-align: center;

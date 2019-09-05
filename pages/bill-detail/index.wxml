@@ -70,20 +70,39 @@
   </view>
   <view class="info" wx:if="{{bill.userType==0 && (bill.state == 0||bill.state == 2)}}">
     <button class="blue-btn btn1" bindtap="submit" data-operation="0">申请撤回单据</button>
-    <navigator url="../bill-detail-ag/index?bid={{bill.bid}}">
+    <navigator url="../webview/index?url={{bill.url}}">
       <button class="blue-btn">查看线上协议</button>
     </navigator>
   </view>
   <view class="info" wx:if="{{bill.userType==1 && bill.state == 1}}">
     <button class="blue-btn btn1 btn2 " bindtap="submit" data-operation="1">拒绝撤回</button>
-    <navigator url="../bill-detail-ag/index?bid={{bill.bid}}">
+    <navigator url="../webview/index?url={{bill.url}}">
       <button class="blue-btn btn3">查看线上协议</button>
     </navigator>
     <button class="blue-btn btn4 " bindtap="submit" data-operation="2">同意撤回</button>
   </view>
-  <view class="info" wx:if="{{(bill.userType==1 && bill.state != 1) || (bill.userType==0 && bill.state != 0&&bill.state != 2)}}">
-    <navigator url="../bill-detail-ag/index?bid={{bill.bid}}">
+  <view class="info" wx:if="{{bill.userType==1 && bill.state == 0}}">
+    <button class="blue-btn btn1 btn2 " bindtap="confrimBill" data-operation="1">拒签</button>
+    <navigator url="../webview/index?url={{bill.url}}">
+      <button class="blue-btn btn3">查看线上协议</button>
+    </navigator>
+    <button class="blue-btn btn4 " bindtap="confrimBill" data-operation="0">同意签署</button>
+  </view>
+  <view class="info" wx:if="{{(bill.userType==1 && bill.state != 1 && bill.state != 0) || (bill.userType==0 && bill.state != 0&&bill.state != 2)}}">
+    <navigator url="../webview/index?url={{bill.url}}">
       <button class="blue-btn btn5">查看线上协议</button>
     </navigator>
   </view>
 </view>
+  <dialog visible="{{jujuedialog}}" title="" opacity="0.5" close-on-click-modal="{{options.closeonclickmodal}}" bindclose="jujuedialogClose" bindopen="handleOpen" bindconfirm="refuse" confirmText="确认提交">
+    <view class='codeinput-view'>
+      <view class="dialog-close" bindtap="jujuedialogClose">×</view>
+      <view class="dialog-title">已发送验证码至{{user.mobile}}</view>
+      <view class="sendCode {{second > 0 ?'disable': ''}}" bindtap="sendCode">
+        重新发送
+        <text wx:if="{{second > 0}}">({{second}})</text>
+      </view>
+      <input class="codeinput" placeholder="请输入手机验证码" bindinput="getcode"></input>
+    </view>
+    <view class="sendCode-btn" bindtap="confrimBill2">确定</view>
+  </dialog>

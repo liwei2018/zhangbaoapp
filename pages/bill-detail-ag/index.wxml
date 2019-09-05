@@ -1,12 +1,12 @@
 
 <view class="bill-block">
-  <web-view src="{{bill.url}}"></web-view>
+  <!-- <web-view src="{{bill.url}}"></web-view> -->
 
   <view class="fexid-block"></view>
-  <view class="info" wx:if="{{bill.userType==1 && bill.state == 0}}">
+  <cover-view class="info" wx:if="{{bill.userType==1 && bill.state == 0}}">
     <button class="blue-btn btn1" bindtap="confrimBill" data-operation="1">拒签</button>
     <button class="blue-btn" bindtap="confrimBill" data-operation="0">同意签署</button>
-  </view>
+  </cover-view>
 </view>
   <dialog visible="{{jujuedialog}}" title="" opacity="0.5" close-on-click-modal="{{options.closeonclickmodal}}" bindclose="jujuedialogClose" bindopen="handleOpen" bindconfirm="refuse" confirmText="确认提交">
     <view class='codeinput-view'>

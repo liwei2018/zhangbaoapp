@@ -41,4 +41,4 @@
   </view>
   <button class="fixed-btn" bindtap="submit">{{gid ? '修改':'创建'}}</button>
 </view>
-<success wx:else user="{{buyer}}" isReg="0"></success>
+<success wx:else user="{{user}}" isReg="0"></success>

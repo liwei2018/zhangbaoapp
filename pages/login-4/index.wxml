@@ -8,7 +8,7 @@
       输入法人手机号，通过短信邀请法人进行认证
     </view>
     <view class="line-item">
-      <input class="user-input" placeholder="请输入法人手机号" bindinput="getmobile" />
+      <input class="user-input" value="{{mobile}}" placeholder="请输入法人手机号" bindinput="getmobile" />
     </view>
   </view>
   <button class="next-btn" bindtap="nextFun">发送短信</button>

@@ -40,7 +40,7 @@
         </view>
       </view>
     </view>
-    <view>
+    <view class="money-box">
       <navigator url="../buy/index">
         <view class="money-item">
           <view class="money-item-1">{{user.surplus}}</view>
@@ -65,7 +65,7 @@
         <image class="sanjiao-img" src="../../assets/images/bill/9.png" mode="aspectFit" />
       </view>
     </navigator>
-    <navigator url="../logi/index" wx:if="{{iscompany == 0}}">
+    <navigator url="../login-2/index" wx:if="{{iscompany == 0 && user.isRealName == 0}}">
       <view class=".line-item">
         <image class="icon-img" src="../../assets/images/user/13.png"></image>
         个人认证
