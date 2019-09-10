@@ -6,6 +6,13 @@ Page({
     statusBarHeight: getApp().globalData.statusBarHeight,
     buyer: null
   },
+  onShow() {
+    this.search({
+      detail: {
+        value: ''
+      }
+    })
+  },
   search(e) {
     $request.get('/v1/user/guest', {
       search: e.detail.value,
@@ -24,19 +31,18 @@ Page({
     this.setData({
       buyer: this.data.userList[e.currentTarget.dataset.index],
     })
-    if(this.data.buyer.cid) {
+    if (this.data.buyer.cid) {
       wx.showActionSheet({
         itemList: [this.data.buyer.name, this.data.buyer.company],
-        success: (res)=> {
-            this.selected2(res.tapIndex)
+        success: (res) => {
+          this.selected2(res.tapIndex)
         },
-        fail: (res)=> {
-        }
+        fail: (res) => {}
       })
     } else {
       this.selected2(0)
     }
-    
+
   },
   selected2(tapIndex) {
     console.log(tapIndex)
@@ -50,8 +56,8 @@ Page({
       delta: 1 // 返回上一级页面。
     })
   },
-  createbill(e){
-    if(!e.currentTarget.dataset['cid']) {
+  createbill(e) {
+    if (!e.currentTarget.dataset['cid']) {
       let pages = getCurrentPages(); //获取当前页面js里面的pages里的所有信息。
       let prevPage = pages[pages.length - 2];
       prevPage.setData({

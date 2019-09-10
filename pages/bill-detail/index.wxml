@@ -1,4 +1,12 @@
 <view class="bill-block">
+  <view class="top-error" wx:if="{{bill.sign!=0}}">
+    <view class="error-left">
+      <image src="../../assets/images/bill/11.png" class="error-ico" />
+    </view>
+    <view class="error-right" wx:if="{{bill.sign==1}}">请先完成个人认证再进行签约。</view>
+    <view class="error-right" wx:if="{{bill.sign==2}}">请您先认证企业信息，再进行签约。</view>
+    <view class="error-right" wx:if="{{bill.sign==3}}">请联系法人注册认证企业并获得企业授权，再进行签约。</view>
+  </view>
   <view class="header">
     <view class="header-left">
       <view class="header-item">订单ID：{{bill.orderNum}}</view>
@@ -81,12 +89,26 @@
     </navigator>
     <button class="blue-btn btn4 " bindtap="submit" data-operation="2">同意撤回</button>
   </view>
-  <view class="info" wx:if="{{bill.userType==1 && bill.state == 0}}">
+  <view class="info" wx:if="{{bill.userType==1 && bill.state == 0 && bill.sign == 0}}">
     <button class="blue-btn btn1 btn2 " bindtap="confrimBill" data-operation="1">拒签</button>
     <navigator url="../webview/index?url={{bill.url}}">
       <button class="blue-btn btn3">查看线上协议</button>
     </navigator>
     <button class="blue-btn btn4 " bindtap="confrimBill" data-operation="0">同意签署</button>
+  </view>
+  <view class="info" wx:if="{{bill.userType==1 && bill.state == 0  && bill.sign != 0}}">
+    <navigator url="../webview/index?url={{bill.url}}">
+      <button class="blue-btn btn1">查看线上协议</button>
+    </navigator>
+    <navigator url="../login-2/index" wx:if="{{bill.sign == 1}}">
+      <button class="blue-btn">进行个人认证</button>
+    </navigator>
+    <navigator url="../login-3/index" wx:if="{{bill.sign == 2}}">
+      <button class="blue-btn">进行企业认证</button>
+    </navigator>
+    <navigator url="../login-4/index?code={{bill.companyCode}}" wx:if="{{bill.sign == 3}}">
+      <button class="blue-btn">邀请法人认证</button>
+    </navigator>
   </view>
   <view class="info" wx:if="{{(bill.userType==1 && bill.state != 1 && bill.state != 0) || (bill.userType==0 && bill.state != 0&&bill.state != 2)}}">
     <navigator url="../webview/index?url={{bill.url}}">
@@ -94,15 +116,15 @@
     </navigator>
   </view>
 </view>
-  <dialog visible="{{jujuedialog}}" title="" opacity="0.5" close-on-click-modal="{{options.closeonclickmodal}}" bindclose="jujuedialogClose" bindopen="handleOpen" bindconfirm="refuse" confirmText="确认提交">
-    <view class='codeinput-view'>
-      <view class="dialog-close" bindtap="jujuedialogClose">×</view>
-      <view class="dialog-title">已发送验证码至{{user.mobile}}</view>
-      <view class="sendCode {{second > 0 ?'disable': ''}}" bindtap="sendCode">
-        重新发送
-        <text wx:if="{{second > 0}}">({{second}})</text>
-      </view>
-      <input class="codeinput" placeholder="请输入手机验证码" bindinput="getcode"></input>
+<dialog visible="{{jujuedialog}}" title="" opacity="0.5" close-on-click-modal="{{options.closeonclickmodal}}" bindclose="jujuedialogClose" bindopen="handleOpen" bindconfirm="refuse" confirmText="确认提交">
+  <view class='codeinput-view'>
+    <view class="dialog-close" bindtap="jujuedialogClose">×</view>
+    <view class="dialog-title">已发送验证码至{{user.mobile}}</view>
+    <view class="sendCode {{second > 0 ?'disable': ''}}" bindtap="sendCode">
+      重新发送
+      <text wx:if="{{second > 0}}">({{second}})</text>
     </view>
-    <view class="sendCode-btn" bindtap="confrimBill2">确定</view>
-  </dialog>
+    <input class="codeinput" placeholder="请输入手机验证码" bindinput="getcode"></input>
+  </view>
+  <view class="sendCode-btn" bindtap="confrimBill2">确定</view>
+</dialog>

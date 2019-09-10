@@ -39,22 +39,6 @@
    width: 20px;
  }
 
- .search {
-   padding: 10px;
- }
-
- .search-input {
-   background-color: #eee;
-   border-radius: 15px;
-
-   height: 40px;
-
-   padding-left: 20px;
- }
-
- .search-input-placeholder {
-   text-align: center;
- }
 
  .bill-list {
    margin: 50px 15px 0;

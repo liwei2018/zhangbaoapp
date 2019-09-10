@@ -1,7 +1,7 @@
 <view class="company-list">
 
   <view class='search'>
-    <input class='search-input' placeholder='搜索' placeholder-class='search-inpu-placeholder' bindconfirm="search" bindblur="search"  />
+    <input class='search-input' placeholder='搜索' confirm-type="search" placeholder-class='search-inpu-placeholder' bindconfirm="search" bindblur="search"  />
   </view>
   <view class="line-item" wx:for="{{userList}}" data-cid="{{item.cid}}" data-gid="{{item.gid}}" bindtap="createbill">
     <view class='item-right'>

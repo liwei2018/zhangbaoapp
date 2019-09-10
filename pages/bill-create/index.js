@@ -53,8 +53,6 @@ Page({
         gid:option.gid,
         main: option.main
       })
-      
-      
     }
     $request.get('/v1/user/info',{
     }).then((res) => {
@@ -79,7 +77,7 @@ Page({
       })
     }
     $request.get('/v1/bills/select', {}).then((res) => {
-      if (res.data.error == 0) {
+      if (res.data.error == 0 ) {
         var arr = []
         res.data.result.forEach(element => {
           arr.push(element.company)
@@ -87,7 +85,6 @@ Page({
         this.setData({
           companyObj: res.data.result,
           companyArr: arr,
-          company: res.data.result[0]
         })
       }
     })

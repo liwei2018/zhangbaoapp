@@ -30,5 +30,17 @@ Page({
       iscompany: e.currentTarget.dataset.iscompany
     })
   },
-  
+  buyclick() {
+    wx.getSystemInfo({
+      success: function(res) {
+        console.log(res.platform)
+        if (res.platform == "android") {            
+          wx.navigateTo({
+            url: "../buy/index"
+          })  
+        }
+      }
+    })
+   
+  }
 })

@@ -115,15 +115,23 @@ Page({
   },
   confrimBill(e) {
     const that = this
-    this.setData({
+    $request.get('/v1/bills/info', {
       bid: e.currentTarget.dataset.bid
+    }).then((res) => {
+      if (res.data.result.sign == 0) {
+        this.setData({
+          bid: e.currentTarget.dataset.bid,
+          jujuedialog: true
+        })
+        this.sendCode()
+      } else {
+        wx.navigateTo({
+          url: "../bill-detail/index?bid=" + e.currentTarget.dataset.bid
+        })
+      }
     })
-    this.setData({
-      jujuedialog: true
-    })
-    this.sendCode()
+    
   },
-
   confrimBill2() {
     const that = this
     $request.post('/v1/bills/confirm', {

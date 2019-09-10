@@ -141,3 +141,27 @@
 .dialog-title {
   margin-bottom: 10px;
 }
+.top-error {
+  background-color: #FFFAE3;
+  padding: 10px 25px;
+  position: relative;
+}
+.error-left {
+  float: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  left: 25px;
+  top: 0;
+  position: absolute;
+}
+.error-ico {
+  width: 14px;
+  height: 14px;
+}
+.error-right {
+  margin-left: 24px;
+  color: #FF6700;
+  font-size: 12px;
+}

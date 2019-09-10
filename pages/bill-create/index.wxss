@@ -143,6 +143,7 @@ page {
   color: #999;
   width: auto;
   margin-top: 10px;
+  height: 60px;
 }
 
 .contract {

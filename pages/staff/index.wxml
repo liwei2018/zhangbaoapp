@@ -1,6 +1,6 @@
 <view class="company-list">
   <view class='search'>
-    <input class='search-input' placeholder='搜索' placeholder-class='search-inpu-placeholder' bindconfirm="search" bindblur="search" />
+    <input class='search-input' placeholder='搜索' confirm-type="search" placeholder-class='search-inpu-placeholder' bindconfirm="search" bindblur="search" />
   </view>
   <navigator url="../staff-detail/index?sid={{item.sid}}&op=0" wx:for="{{bills}}">
     <view class="line-item">

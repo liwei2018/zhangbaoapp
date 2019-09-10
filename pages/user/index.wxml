@@ -41,12 +41,10 @@
       </view>
     </view>
     <view class="money-box">
-      <navigator url="../buy/index">
-        <view class="money-item">
-          <view class="money-item-1">{{user.surplus}}</view>
-          <view class="money-item-2">剩余套餐</view>
-        </view>
-      </navigator>
+      <view class="money-item" bindtap="buyclick">
+        <view class="money-item-1">{{user.surplus}}</view>
+        <view class="money-item-2">剩余套餐</view>
+      </view>
       <view class="money-item">
         <view class="money-item-1">￥{{iscompany == 1?user.company.payment:user.user.payment}}</view>
         <view class="money-item-2">剩余应付</view>

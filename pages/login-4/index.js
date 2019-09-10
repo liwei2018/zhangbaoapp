@@ -5,9 +5,15 @@ const $request = require('../../utils/request')
 Page({
   data: {
     mobile: '',
-    isSuccess: false
+    isSuccess: false,
+    code: ''
   },
   onLoad(option) {
+    if(option.code) {
+      this.setData({
+        code: option.code
+      })
+    }
     if (option.issuccess) {
       wx.setNavigationBarTitle({
         title: '邀请注册'
@@ -23,6 +29,7 @@ Page({
 
     $request.post('/v1/common/inviteSms', {
       'mobile': this.data.mobile,
+      code: this.data.code
     }).then((res) => {
       wx.showToast({
         title: '发送成功', //提示文字
