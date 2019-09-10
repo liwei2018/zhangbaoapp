@@ -16,7 +16,7 @@ Page({
     return {
       title: '宝账管家',
       path: '/pages/bill/index',
-      imageUrl: '../../assets/images/login/logo.png'
+      imageUrl: '../../assets/images/share.png'
     }
   },
   onLoad(option) {

@@ -23,5 +23,12 @@ App({
   },
   globalData: {
     userInfo: null
-  }
+  },
+  onShareAppMessage() {
+    return {
+      title: '宝账管家',
+      path: '/pages/bill/index',
+      imageUrl: '../../assets/images/share.png'
+    }
+  },
 })
