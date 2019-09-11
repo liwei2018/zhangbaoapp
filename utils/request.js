@@ -90,7 +90,7 @@ function getCurrentPageUrl() {
   return url
 }
 let config = {
-  domain: 'api.ublog.top',
+  domain: 'api.baozhang356.com',
   protocol: 'https',
 }
 

@@ -91,7 +91,7 @@
       <image class="sanjiao-img" src="../../assets/images/bill/9.png" mode="aspectFit" />
     </view>
     </navigator>
-    <navigator url="../webview/index?url=https://api.ublog.top/v1/common/helpUrl">
+    <navigator url="../webview/index?url=https://api.baozhang356.com/v1/common/helpUrl">
     <view class=".line-item">
       <image class="icon-img" src="../../assets/images/user/17.png"></image>
       使用帮助

@@ -1,3 +1,4 @@
 {
-  "navigationBarTitleText": "随意签"
+  "navigationBarTitleText": "随意签",
+  "navigationStyle": "custom"
 }
