@@ -87,7 +87,8 @@ Page({
     const that = this
     $request.post('/v1/bills/confirm', {
       operation: that.data.operation,
-      bid: this.data.bid
+      bid: this.data.bid,
+      code: this.data.code
     }).then((res) => {
       if (res.data.error == 0) {
         this.jujuedialogClose()
@@ -120,6 +121,11 @@ Page({
   jujuedialogClose() {
     this.setData({
       jujuedialog: false
+    })
+  },
+  getcode(e) {
+    this.setData({
+      code: e.detail.value
     })
   }
 })
