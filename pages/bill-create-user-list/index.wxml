@@ -28,4 +28,9 @@
       </view>
     </view>
   </view>
+  <navigator url="../guest-create/index">
+    <button class="fixed-btn">
+      新建客户
+    </button>
+  </navigator>
 </view>

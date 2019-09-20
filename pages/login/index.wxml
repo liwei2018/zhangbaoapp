@@ -1,16 +1,25 @@
 <!-- index.wxml -->
 <view class="login">
   <image src="../../assets/images/login/logo.png" class='logo' />
+  <view class='logo-text'>宝账电子账单系统</view>
   <view class="userinfo">
-    <view class="line-item">
+    <!-- <view class="line-item">
       <image src="../../assets/images/login/6.png" class="input-icon" />
       <input placeholder="请输入手机号码" bindinput="getmobile" />
     </view>
-    <view class="line-item">
+<view class="line-item">
       <image src="../../assets/images/login/7.png" class="input-icon" />
       <input placeholder="请输入验证码" bindinput="getcode" />
       <view class="sendCode {{second > 0 ?'disable': ''}}" bindtap="sendCode" >获取验证码<text wx:if="{{second > 0}}">({{second}})</text></view>
     </view>
-    <button class='blue-btn' bindtap="login">快速登录</button>
+    <button class='blue-btn' bindtap="login">快速登录</button> -->
+    <button open-type="getUserInfo" class='blue-btn' bindgetuserinfo="getUserInfo" wx:if="{{loginBtn}}">
+      <image class='btnImg' src='../../assets/images/login-1.png'></image>
+      <view>微信登录</view>
+    </button>
+    <button open-type="getPhoneNumber" class='blue-btn' bindgetphonenumber="getPhoneNumber" wx:if="{{!loginBtn}}">
+      <image class='btnImg2' src='../../assets/images/login-2.png'></image>
+      <view>绑定手机号</view>
+    </button>
   </view>
 </view>

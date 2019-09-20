@@ -18,6 +18,7 @@ Page({
       wx.navigateTo({
         url: "../bill-create/index?gid=" + e.currentTarget.dataset['gid'] + '&main=0'
       })
+      return;
     }
     wx.navigateTo({
       url: "../select/index?gid=" + e.currentTarget.dataset['gid']
