@@ -38,7 +38,8 @@ Page({
     payTypeOpt: [
       '现金', '微信', '支付宝', '折让单', '银行汇款', '其他'
     ],
-    success: false
+    success: false,
+    lock: false,
   },
   onShareAppMessage() {
     return {
@@ -216,6 +217,10 @@ Page({
     })
   },
   submitForm() {
+    if (this.data.lock) {
+      return;
+    }
+    
     if (!this.data.money) {
       wx.showToast({
         title: '请填写金额', //提示文字
@@ -225,6 +230,9 @@ Page({
       })
       return;
     }
+    this.setData({
+      lock: true
+    })
     if (this.data.update) {
       $request.post('/v1/bills/update', {
         money: this.data.money,
@@ -233,6 +241,7 @@ Page({
         bid: this.data.bid,
         cid: this.data.cid
       }).then((res) => {
+        
         if (res.data.error == 0) {
           wx.showToast({
             title: '账单修改成功', //提示文字
@@ -244,6 +253,17 @@ Page({
             delta: 1
           })
         }
+        setTimeout(()=>{
+          this.setData({
+            lock: false
+          })
+        },1000)
+      }).catch((res) => {
+        setTimeout(()=>{
+          this.setData({
+            lock: false
+          })
+        },1000)
       })
     } else {
 
@@ -262,11 +282,23 @@ Page({
         pictures: this.data.imgs.join(','),
         remark: this.data.remark,
       }).then((res) => {
+        
         if (res.data.error == 0) {
           this.setData({
             success: true
           })
         }
+        setTimeout(()=>{
+          this.setData({
+            lock: false
+          })
+        },1000)
+      }).catch((res) => {
+        setTimeout(()=>{
+          this.setData({
+            lock: false
+          })
+        },1000)
       })
     }
 

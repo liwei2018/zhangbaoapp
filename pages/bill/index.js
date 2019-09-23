@@ -33,12 +33,12 @@ Page({
     this.setData({
       pageNum: 1
     })
-    this.getList()
     $request.get('/v1/user/info', {}).then((res) => {
       if (res.data.result) {
         this.setData({
           user: res.data.result,
         })
+        this.getList()
       }
     })
     $request.get('/v1/common/banner', {}).then((res) => {

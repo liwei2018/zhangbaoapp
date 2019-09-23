@@ -13,6 +13,7 @@ Page({
     fun: null,
     loginBtn: true,
     bindToken: '',
+    type: 1
   },
   onLoad: function (option) {
     if (option.redirect) {
@@ -96,7 +97,7 @@ Page({
               if(response2.data.result.bindToken) {
                 that.setData({
                   bindToken: response2.data.result.bindToken,
-                  loginBtn: false,
+                  type: 3
                 })
               }
               if(response2.data.result.token) {
@@ -136,6 +137,11 @@ Page({
           url: '../login-1/index'
         })
       }
+    })
+  },
+  logintype(e) {
+    this.setData({
+      type: e.currentTarget.dataset.type
     })
   }
 })
