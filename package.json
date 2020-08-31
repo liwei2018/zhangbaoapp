@@ -1,0 +1,23 @@
+{
+  "name": "zhangbao2",
+  "version": "1.0.0",
+  "description": "电子账务系统_小程序",
+  "main": "app.js",
+  "dependencies": {
+    "@vant/weapp": "^1.4.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liwei2018/zhangbao2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/liwei2018/zhangbao2/issues"
+  },
+  "homepage": "https://github.com/liwei2018/zhangbao2#readme"
+}

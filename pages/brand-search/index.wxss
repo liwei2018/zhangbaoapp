@@ -1,0 +1,12 @@
+.hot {
+  margin-top: 14rpx;
+}
+.img {
+  width: 100rpx;
+  height: 50rpx;
+  margin-right: 14rpx;
+}
+.van-index-bar__index {
+  font-size: 30rpx!important;
+  line-height: 34rpx!important;
+}

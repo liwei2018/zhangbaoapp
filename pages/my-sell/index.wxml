@@ -1,0 +1,70 @@
+<view class="tabs">
+  <view class="tabs-item {{tabtype == 1?'select':''}}" bindtap="clickTab" data-tabtype="1">
+    <view class="tab-line">等待估价</view>
+  </view>
+  <view class="tabs-item {{tabtype == 2?'select':''}}" bindtap="clickTab" data-tabtype="2">
+    <view class="tab-line">等待上架</view>
+  </view>
+  <view class="tabs-item {{tabtype == 3?'select':''}}" bindtap="clickTab" data-tabtype="3">
+    <view class="tab-line">寄卖中</view>
+  </view>
+  <view class="tabs-item {{tabtype == 4?'select':''}}" bindtap="clickTab" data-tabtype="4">
+    <view class="tab-line">已完成</view>
+  </view>
+</view>
+<view class="offer">
+  <navigator url="../../pages/order-detail/index?id={{item.id}}" wx:for="{{orders}}">
+    <view class="todos">
+      <view class="todos-middle">
+        <view class="order-id">订单ID :{{item.id}}</view>
+        <view class="order-status">{{paimaiStatus[item.status]}}</view>
+      </view>
+      <view class="todos-content">
+        <image class="content-img" src="{{item.iconAttachment.thumbFileUrl}}"></image>
+        <view class="content-message">
+          <view class="message-title">{{item.brandName}} {{item.xilie}}</view>
+          <view class="message-time">结束时间：{{item.paimaiEndTime}}</view>
+          <view wx:if="{{item.paidePrice && item.paidePrice!='0.00'}}">
+            拍得价格：
+            <text class="price">{{item.paidePrice}}元</text>
+          </view>
+          <view wx:elif="{{item.minPrice && item.minPrice!='0.00'}}">
+            预估价：
+            <text class="price">{{item.minPrice}}-{{item.maxPrice}}元</text>
+          </view>
+        </view>
+      </view>
+      <view class="line"></view>
+      <view class="todos-btn" wx:if="{{item.status == 9}}">
+        <navigator url="../../pages/upload-voucher/index?id={{item.id}}&type=1">
+          <view class="btn primary">接受出价</view>
+        </navigator>
+        <view class="btn" catchtap="jujue" data-id='{{index}}'>拒绝出价</view>
+      </view>
+      <view class="todos-btn" wx:elif="{{item.status == 3}}">
+        <navigator url="../../pages/shop/index?id={{item.id}}&type=1">
+          <text class="btn primary">到店咨询</text>
+        </navigator>
+        <navigator url="../../pages/shop/index?id={{item.id}}&type=2">
+          <text class="btn">快递到店</text>
+        </navigator>
+      </view>
+      <view class="todos-btn" wx:elif="{{item.rejectReason}}">
+        <text class="reject">{{item.rejectReason}}</text>
+      </view>
+      <view class="todos-btn" wx:else>
+        <text class="reject">{{paimaiStatusText[item.status]}}</text>
+      </view>
+    </view>
+  </navigator>
+  <van-dialog use-slot show="{{ show }}" show-confirm-button="{{false}}">
+    <view class="dialog">
+      <view class="dialog-title">拒绝出价</view>
+      <view class="commission-text">您是否确认拒绝此次竞拍的最高出价？</view>
+      <view class="dialog-btn">
+        <view class="dialog-btn1" bindtap="onClose">取消</view>
+        <view class="dialog-btn2" bindtap="jujuesub">确认</view>
+      </view>
+    </view>
+  </van-dialog>
+</view>

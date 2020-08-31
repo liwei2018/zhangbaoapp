@@ -1,39 +1,17 @@
 <!-- index.wxml -->
 <view class="login">
-  <image src="../../assets/images/login/logo.png" class='logo' />
-  <view class='logo-text'>宝账电子账单系统</view>
-  <view class="userinfo" wx:if="{{type == 2}}">
-    <view class="line-item">
-      <image src="../../assets/images/login/6.png" class="input-icon" />
-      <input placeholder="请输入手机号码" bindinput="getmobile" />
-    </view>
-    <view class="line-item">
-      <image src="../../assets/images/login/7.png" class="input-icon" />
-      <input placeholder="请输入验证码" bindinput="getcode" />
-      <view class="sendCode {{second > 0 ?'disable': ''}}" bindtap="sendCode">
-        获取验证码
-        <text wx:if="{{second > 0}}">({{second}})</text>
-      </view>
-    </view>
-    <button class='blue-btn' bindtap="login">快速登录</button>
-    <view class="goback" bindtap="logintype" data-type="1">返回</view>
-  </view>
-  <view class="userinfo"  wx:if="{{type == 3}}">
-    <button open-type="getPhoneNumber" class='blue-btn blue-btn2' bindgetphonenumber="getPhoneNumber" >
-      <image class='btnImg2' src='../../assets/images/login-2.png'></image>
-      <view>绑定手机号</view>
-    </button>
-    <view class="goback" bindtap="logintype" data-type="1">返回</view>
-  </view>
-  <view class="userinfo"  wx:if="{{type == 1}}">
+	<image src="../../assets/images/denglu_ic_logo.png" class='logo' />
+	<button open-type="getUserInfo" class='blue-btn' bindgetuserinfo="getUserInfo">
+		<view>微信登录</view>
+	</button>
 
-    <button class='blue-btn' bindtap="logintype" data-type="2" >
-      <view>手机号登录</view>
-    </button>
-    <button open-type="getUserInfo" class='blue-btn blue-btn2' bindgetuserinfo="getUserInfo" >
-      <image class='btnImg' src='../../assets/images/login-1.png'></image>
-      <view>微信登录</view>
-    </button>
-    
-  </view>
+	<van-dialog use-slot show="{{ show }}" show-confirm-button="{{false}}">
+		<view class="dialog">
+			<view class="dialog-title">获取手机号</view>
+			<view class="dialog-title2">账户需绑定手机号，请使用微信授权获取手机号</view>
+			<button open-type="getPhoneNumber" class='blue-btn2' bindgetphonenumber="getPhoneNumber">
+				<view>好的</view>
+			</button>
+		</view>
+	</van-dialog>
 </view>

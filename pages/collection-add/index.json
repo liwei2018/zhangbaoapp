@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "van-checkbox": "/miniprogram_npm/vant-weapp/checkbox/index",
+    "vButton": "/components/vButton/index"
+  },
+  "navigationBarTitleText": "收款账户管理"
+}

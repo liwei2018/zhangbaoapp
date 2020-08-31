@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "个人信息设置",
-  "usingComponents": {
-    "dialog": "/components/dialog/dialog"
-  }
-}

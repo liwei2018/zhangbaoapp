@@ -14,14 +14,15 @@ App({
     })
   },
   onShow (options) {
+    console.log(123)
   },
   globalData: {
     userInfo: null
   },
   onShareAppMessage() {
     return {
-      title: '宝账管家',
-      path: '/pages/bill/index',
+      title: 'ECO',
+      path: '/pages/index/index',
       imageUrl: '../../assets/images/share.png'
     }
   },

@@ -1,0 +1,36 @@
+  <view class="tabs">
+  	<view class="tabs-item {{tabtype == 1?'select':''}}" bindtap="clickTab" data-tabtype="1">
+  		<view class="tab-line">出价中</view>
+  	</view>
+  	<view class="tabs-item {{tabtype == 2?'select':''}}" bindtap="clickTab" data-tabtype="2">
+  		<view class="tab-line">出价失败</view>
+  	</view>
+  	<view class="tabs-item {{tabtype == 3?'select':''}}" bindtap="clickTab" data-tabtype="3">
+  		<view class="tab-line">出价成功</view>
+  	</view>
+    <view class="tabs-item {{tabtype == 4?'select':''}}" bindtap="clickTab" data-tabtype="4">
+  		<view class="tab-line">已完成</view>
+  	</view>
+  </view>
+  <view class="offer">
+  	<view class="todos" wx:for="{{orders}}">
+  		<view class="todos-middle">
+  			<view class="order-id">订单ID :86690900998</view>
+  			<view class="order-status">等待付款</view>
+  		</view>
+  		<view class="todos-content">
+  			<image class="content-img" src="../../assets/images/com_tab_ic_home_sel@2x.png"></image>
+  			<view class="content-message">
+  				<view class="message-title">Serpenti系列18K玫瑰金手镯</view>
+  				<view class="message-time">结束时间：2020-07-12 12:00:00</view>
+  				<view>我的出价：<text class="price">3500.22元</text>
+  				</view>
+  			</view>
+  		</view>
+  		<view class="line"></view>
+  		<view class="todos-btn">
+  			<text class="btn primary">接受出价</text>
+  			<text class="btn">拒绝出价</text>
+  		</view>
+  	</view>
+  </view>

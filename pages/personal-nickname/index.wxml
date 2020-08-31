@@ -1,0 +1,4 @@
+<view class="personal-nickname">
+	<input bindinput="getname" class="input-nickname" placeholder="请输入新昵称，不超过6个字"></input>
+	<view class="button-nickname" bindtap="save">保存</view>
+</view>

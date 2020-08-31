@@ -1,0 +1,58 @@
+<view class="collection-add">
+	<view class="card">
+		<view class="card-zhifubao">
+			<view class="head">
+				<image src="/assets/images/collection/shoukuan_ic_zhifubao.png"></image>
+				<view>支付宝账户</view>
+			</view>
+			<view class="phone">18844169583</view>
+			<view class="name">郭丹丹</view>
+		</view>
+		<view class="card-bottom">
+			<van-checkbox value="{{ checked }}" shape="square" checked-color="#07c160" bind:change="onChange">
+				默认收款账户
+			</van-checkbox>
+			<view class="delete">
+				删除
+				<image class="del-img" src="/assets/images/collection/shoukuan_ic_shanchu.png"></image>
+			</view>
+		</view>
+	</view>
+	<view class="card mg-30">
+		<view class="card-yinhang">
+			<view class="head">
+				<image src="/assets/images/collection/shoukuan_ic_yinhang.png"></image>
+				<view>招商银行账户</view>
+			</view>
+			<view class="phone">18844169583</view>
+			<view class="name">郭丹丹</view>
+		</view>
+		<view class="card-bottom">
+			<van-checkbox value="{{ checked }}" shape="square" checked-color="#07c160" bind:change="onChange">
+				默认收款账户
+			</van-checkbox>
+			<view class="delete">
+				删除
+				<image class="del-img" src="/assets/images/collection/shoukuan_ic_shanchu.png"></image>
+			</view>
+		</view>
+	</view>
+	<view class="tip">
+		<view class="tip-content">
+			<image src="/assets/images/collection/shoukuan_ic_zhuyi.png"></image>
+			<view>收款人信息需与实名认证信息保持一致</view>
+		</view>
+		<view class="tip-content mg-30">
+			<image src="/assets/images/collection/shoukuan_ic_zhuyi.png"></image>
+			<view>账户最多绑定三个账户</view>
+		</view>
+	</view>
+	<view class="upload">
+		<image src="/assets/images/collection/shoukuan_btn_ic_tianjia.png"></image>
+		<view>添加银行卡账户</view>
+	</view>
+	<view class="upload mg-20">
+		<image src="/assets/images/collection/shoukuan_btn_ic_tianjia.png"></image>
+		<view>添加银行卡账户</view>
+	</view>
+</view>

@@ -1,4 +1,6 @@
 {
-  "navigationBarTitleText": "随意签",
-  "navigationStyle": "custom"
+  "navigationBarTitleText": "登录",
+  "usingComponents": {
+    "van-dialog": "/miniprogram_npm/vant-weapp/dialog/index"
+  }
 }

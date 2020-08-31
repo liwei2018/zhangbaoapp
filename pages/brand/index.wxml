@@ -1,0 +1,32 @@
+<wxs src="../../components/utils/str.wxs" module="str" />
+<view class="brand">
+  <van-search value="{{ value }}" placeholder="请搜索要搜索的品牌" bindtap="onfocus" />
+  <view class="hot">
+    <view class="hot-block">
+      <navigator class="hot-item"  url="../evaluation-create/index?fenleiId={{fenleiId}}&fenleiname={{fenleiname}}&brandId={{item.id}}&brandname={{item.name}}" wx:for="{{brandlist}}" wx:if="{{index < 10}}">
+        
+          <image class="hot-img" slot="icon" src="{{item.logoAttachment.thumbFileUrl}}" mode="heightFix" />
+        
+      </navigator>
+    </view>
+  </view>
+  <van-index-bar index-list="{{chatlist}}">
+    <view wx:for="{{chatlist}}" wx:if="{{item!='#'}}">
+      <van-index-anchor index="{{item}}" />
+      <navigator url="../evaluation-create/index?fenleiId={{fenleiId}}&fenleiname={{fenleiname}}&brandId={{itemName.id}}&brandname={{itemName.name}}" wx:for="{{brandlist}}" wx:for-item="itemName" wx:if="{{str.strBrand(item,itemName.name)}}">
+        <van-cell title="{{itemName.name}}" >
+          <image class="img" slot="icon" src="{{itemName.logoAttachment.thumbFileUrl}}" mode="heightFix" />
+        </van-cell>
+      </navigator>
+
+    </view>
+    <view >
+      <van-index-anchor index="#" />
+      <navigator url="../evaluation-create/index?fenleiId={{fenleiId}}&fenleiname={{fenleiname}}&brandId={{itemName.id}}&brandname={{itemName.name}}" wx:for="{{brandlist}}" wx:for-item="itemName" wx:if="{{!str.strBrand2(chatlist,itemName.name)}}">
+        <van-cell title="{{itemName.name}}" >
+          <image class="img" slot="icon" src="{{itemName.logoAttachment.thumbFileUrl}}" mode="heightFix" />
+        </van-cell>
+      </navigator>
+    </view>
+  </van-index-bar>
+</view>

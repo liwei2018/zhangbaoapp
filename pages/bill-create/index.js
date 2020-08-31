@@ -2,44 +2,37 @@ const $request = require('../../utils/request')
 const $util = require('../../utils/util')
 Page({
   data: {
-    user: {},
-    buyer: '',
-    cid:'',
-    gid: '',
-    main: '0',
-    money: '',
-    status: '0',
+    companyNumber: 0,
     billType: '0',
-    shopType: '',
-    money: '',
-    refundTime: $util.formatDate(new Date()),
-    payType: '0',
-    imgs: [],
-    remark: '',
-    billTime: $util.formatDate(new Date()),
-    statusBarHeight: getApp().globalData.statusBarHeight,
-    company: {},
-    companyObj: [],
     companyArr: [],
-    iscompany: 0,
-    mainOpt: [
-      '个人',
-      '公司',
-    ],
+    companylist: [],
+    guest: {},
+    guestList: [],
+    guestArr: [],
+    guestNumber: 0,
+    refundTime: $util.formatDate(new Date()),
+    money: '',
+    shouldMoney: '',
+    statusNumber: 0,
+    remark: '',
+    imgs: [],
+    lock: false,
     statusOpt: [
       '未结算',
       '已结算'
     ],
-    billTypeOpt: [
-      '销售确认书',
-      '财务对账单',
-      '收款单',
-    ],
-    payTypeOpt: [
-      '现金', '微信', '支付宝', '折让单', '银行汇款', '其他'
-    ],
-    success: false,
-    lock: false,
+    statusBarHeight: getApp().globalData.statusBarHeight,
+    billTime: $util.formatDate(new Date()),
+    success: true,
+    payType: 0,
+    payTypelist: [
+      '现金',
+      '微信',
+      '支付宝',
+      '折让单',
+      '银行汇款',
+      '其他'
+    ]
   },
   onShareAppMessage() {
     return {
@@ -48,80 +41,96 @@ Page({
       imageUrl: '../../assets/images/share.png'
     }
   },
-  onLoad(option) {
-    if(option.gid) {
-      this.setData({
-        gid:option.gid,
-        main: option.main
-      })
-    }
-    $request.get('/v1/user/info',{
+  onShow() {
+    this.searchcompany();
+  },
+  //获取公司列表
+  searchcompany() {
+    $request.get('/v1/user/company', {
+      pageSize: 100,
+      pageNum: 1,
+      job: 0
     }).then((res) => {
       if (res.data.result) {
-        this.setData({
-          user: res.data.result
-        })
-      }
-    })
-  },
-  onShow() {
-    if(this.data.gid) {
-
-      $request.get('/v1/user/guestInfo', {
-        gid: this.data.gid
-      }).then((res) => {
-        if (res.data.error == 0) {
-          this.setData({
-            buyer: res.data.result,
-          })
-        }
-      })
-    }
-    $request.get('/v1/bills/select', {}).then((res) => {
-      if (res.data.error == 0 ) {
         var arr = []
         res.data.result.forEach(element => {
           arr.push(element.company)
         });
+        arr.push('创建企业')
         this.setData({
-          companyObj: res.data.result,
+          companylist: res.data.result,
           companyArr: arr,
         })
       }
     })
   },
-  clickTab(e) {
-    this.setData({
-      iscompany: e.currentTarget.dataset['iscompany'],
+  //调取客户列表
+  searchguest() {
+    $request.get('/v1/user/guest', {
+      pageSize: 100,
+      pageNum: 1,
+      search: '',
+      cid: this.data.companylist[this.data.companyNumber].cid
+    }).then((res) => {
+      if (res.data.error == 0) {
+        var arr = []
+        res.data.result.forEach(element => {
+          arr.push(element.company || element.name)
+        });
+        this.setData({
+          guestList: res.data.result,
+          guestArr: arr
+        })
+      }
     })
-    if(e.currentTarget.dataset['iscompany'] == 1) {
-      this.setData({
-        company: this.data.companyObj[0],
+  },
+  //点击获得我的企业的index
+  getcompanyindex(e) {
+    if (Number(e.detail.value) == this.data.companylist.length) {
+      wx.navigateTo({
+        url: '../certificateorjoin-company/index'
       })
-    } else {
-      this.setData({
-        company: {},
-      })
+      return;
     }
-  },
-  getcompany(e) {
     this.setData({
-      company: this.data.companyObj[e.detail.value],
+      companyNumber: Number(e.detail.value)
     })
   },
+  //获得点击的账单类型
   getbillType(e) {
     this.setData({
-      billType: e.detail.value,
+      billType: e.currentTarget.dataset['type']
+    })
+  },
+  //点击获得客户的index
+  getguestindex(e) {
+    this.setData({
+      guestNumber: Number(e.detail.value)
     })
   },
   getpayType(e) {
     this.setData({
-      payType: e.detail.value,
+      payType: Number(e.detail.value)
     })
   },
-  getshopType(e) {
+  getmoney(e) {
     this.setData({
-      shopType: e.detail.value,
+      money: e.detail.value
+    })
+  },
+  getshouldMoney(e) {
+    this.setData({
+      shouldMoney: e.detail.value
+    })
+  },
+  getstatus(e) {
+    this.setData({
+      statusNumber: e.detail.value
+    })
+  },
+  getremark(e) {
+    this.setData({
+      remark: e.detail.value
     })
   },
   delimg(e) {
@@ -131,14 +140,14 @@ Page({
       imgs: this.data.imgs
     })
   },
-  getrefundTime(e) {
-    this.setData({
-      refundTime: e.detail.value,
-    })
-  },
   getbillTime(e) {
     this.setData({
       billTime: e.detail.value,
+    })
+  },
+  add() {
+    wx.navigateTo({
+      url: '../guest-create/index?cid=' + this.data.companylist[this.data.companyNumber].cid
     })
   },
   addimg() {
@@ -161,54 +170,7 @@ Page({
             }
           })
         });
-
       }
-    })
-  },
-  contractFun() {
-    if (!this.data.buyer && !this.data.update && !this.data.searchtext) {
-      wx.showToast({
-        title: '尚未填写买方信息，不能关联合同', //提示文字
-        duration: 2000, //显示时长
-        mask: true, //是否显示透明蒙层，防止触摸穿透，默认：false  
-        icon: 'none', //图标，支持"success"、"loading"  
-      })
-      return;
-    }
-    wx.navigateTo({
-      url: "../bill-contract/index"
-    })
-
-  },
-  getbuyer(e) {
-    $request.get('/v1/user/search', {
-      searchValue: e.detail.value
-    }).then((res) => {
-      if (res.data.error == 0) {
-        this.setData({
-          buyerSearch: res.data.result,
-          searchShow: true,
-          searchtext: e.detail.value
-        })
-      }
-    })
-  },
-  selectbuyer(e) {
-    this.setData({
-      searchShow: false,
-      buyer: this.data.buyerSearch[e.currentTarget.dataset.index].id,
-      buyerType: this.data.buyerSearch[e.currentTarget.dataset.index].type,
-      searchtext: this.data.buyerSearch[e.currentTarget.dataset.index].name,
-    })
-  },
-  getmoney(e) {
-    this.setData({
-      money: e.detail.value,
-    })
-  },
-  getRemark(e) {
-    this.setData({
-      remark: e.detail.value,
     })
   },
   back() {
@@ -220,7 +182,6 @@ Page({
     if (this.data.lock) {
       return;
     }
-    
     if (!this.data.money) {
       wx.showToast({
         title: '请填写金额', //提示文字
@@ -233,85 +194,60 @@ Page({
     this.setData({
       lock: true
     })
-    if (this.data.update) {
-      $request.post('/v1/bills/update', {
-        money: this.data.money,
-        pictures: this.data.imgs.join(','),
-        remark: this.data.remark,
-        bid: this.data.bid,
-        cid: this.data.cid
-      }).then((res) => {
-        
-        if (res.data.error == 0) {
-          wx.showToast({
-            title: '账单修改成功', //提示文字
-            duration: 2000, //显示时长
-            mask: true, //是否显示透明蒙层，防止触摸穿透，默认：false  
-            icon: 'none', //图标，支持"success"、"loading"  
-          })
-          wx.navigateBack({
-            delta: 1
-          })
+    if (this.data.billType == 1) {
+      wx.showModal({
+        title: '',
+        content: '客户签署对账单后，应收款金额将以此单为准，请再次核对此客户欠款金额是否准确',
+        cancelText: "取消",
+        confirmText: '确定',
+        success: (res) => {
+          if (res.confirm) {
+            $request.post('/v1/bills/create', {
+              cid: this.data.companylist[this.data.companyNumber].cid,
+              gid: this.data.guest.gid,
+              main: this.data.main,
+              shouldMoney: this.data.shouldMoney,
+              money: this.data.money,
+              status: this.data.status,
+              billType: this.data.billType,
+              payType: this.data.payType,
+              billTime: this.data.billTime,
+              pictures: this.data.imgs.join(','),
+              remark: this.data.remark,
+            }).then((res) => {
+              if (res.data.error == 0) {
+                wx.redirectTo({
+                  url: `../bill-create-success/index?bid=${res.data.result.bid}`
+                })
+              }
+            }).catch((res) => {
+
+            })
+          }
         }
-        setTimeout(()=>{
-          this.setData({
-            lock: false
-          })
-        },1000)
-      }).catch((res) => {
-        setTimeout(()=>{
-          this.setData({
-            lock: false
-          })
-        },1000)
       })
     } else {
-
       $request.post('/v1/bills/create', {
-        gid: this.data.buyer.gid,
-        cid: this.data.company.cid,
+        cid: this.data.companylist[this.data.companyNumber].cid,
+        gid: this.data.guest.gid,
         main: this.data.main,
+        shouldMoney: this.data.shouldMoney,
         money: this.data.money,
         status: this.data.status,
         billType: this.data.billType,
-        shopType: this.data.shopType,
-        money: this.data.money,
-        refundTime: this.data.refundTime,
         payType: this.data.payType,
         billTime: this.data.billTime,
         pictures: this.data.imgs.join(','),
         remark: this.data.remark,
       }).then((res) => {
-        
         if (res.data.error == 0) {
-          this.setData({
-            success: true
+          wx.redirectTo({
+            url: `../bill-create-success/index?bid=${res.data.result.bid}`
           })
         }
-        setTimeout(()=>{
-          this.setData({
-            lock: false
-          })
-        },1000)
       }).catch((res) => {
-        setTimeout(()=>{
-          this.setData({
-            lock: false
-          })
-        },1000)
+
       })
     }
-
-  },
-  textareafun() {
-    this.setData({
-      textareaShow: true,
-      focus: true
-    })
-  },
-  textareafun2() {
-    this.setData({
-      textareaShow: false
-    })
   }
 })

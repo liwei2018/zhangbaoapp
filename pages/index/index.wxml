@@ -1,13 +1,56 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+<wxs src="../../components/utils/str.wxs" module="str" />
+<header goback="{{false}}" name="ECO"></header>
+<view class="index">
+  <view class="auth">
+    <image src="../../assets/images/index/com_popup_ic_renzheng@2x.png" class="auth-image" mode="widthFix" />
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+	<swiper indicator-dots="{{true}}" style="height: {{imgheight}}px" indicator-active-color="#C9AC79" indicator-color="rgb(234,234,234)">
+		<navigator wx:for="{{banner}}" url="../webview/index?url={{item.url}}">
+			<swiper-item>
+				<image src="{{item.picAttachment.originFileUrl}}" class="slide-image" mode="widthFix" bindload="imageLoad" />
+			</swiper-item>
+		</navigator>
+	</swiper>
+	<van-sticky>
+		<view class="tabs">
+			<view class="tabs-item {{iscompany == 1?'select':''}}" bindtap="clickTab" data-iscompany="1">
+				<image src="../../assets/images/index/shouye_list_ic_zhouhuigu_nor@2x.png" class="tabs-item-img nor" mode="widthFix" />
+				<image src="../../assets/images/index/shouye_list_ic_zhouhuigu_sel@2x.png" class="tabs-item-img sel" mode="widthFix" />周回顾</view>
+        <view class="line {{iscompany == 1||iscompany == 2?'hide':''}}"></view>
+			<view class="tabs-item {{iscompany == 2?'select':''}}" bindtap="clickTab" data-iscompany="2">
+				<image src="../../assets/images/index/shouye_list_ic_remen_nor@2x.png" class="tabs-item-img nor" mode="widthFix" />
+				<image src="../../assets/images/index/shouye_list_ic_remen_sel@2x.png" class="tabs-item-img sel" mode="widthFix" />热门回顾</view>
+        <view class="line {{iscompany == 2||iscompany == 3?'hide':''}}"></view>
+			<view class="tabs-item {{iscompany == 3?'select':''}}" bindtap="clickTab" data-iscompany="3">
+				<image src="../../assets/images/index/shouye_list_ic_shoumaizhong_nor@2x.png" class="tabs-item-img nor" mode="widthFix" />
+				<image src="../../assets/images/index/shouye_list_ic_shoumaizhong_sel@2x.png" class="tabs-item-img sel" mode="widthFix" />售卖中</view>
+		</view>
+    <view class="sort">
+      <view class="sort-item {{sort == ''?'select':''}}" bindtap="clickSort" data-sort="">全部</view>
+      <view wx:for="{{brandlist}}" class="sort-item {{sort == item.id?'select':''}}" bindtap="clickSort" data-sort="{{item.id}}">{{item.name}}</view>
+    </view>
+  </van-sticky>
+  <view class="goods">
+    <navigator url="../detail/index?id={{item.id}}&type={{iscompany}}" wx:for="{{goods}}">
+    <view class="goods-item">
+      <view class="status1">{{str.status(item.endTime)}}</view>
+      <image src="{{item.itemDisplayVO.iconAttachment.thumbFileUrl}}" class="goods-image" mode="widthFix" />
+      <view class="goods-item-right">
+        <view class="goods-first-line">
+          <view class="goods-title">{{item.itemDisplayVO.brandName}} {{item.itemDisplayVO.xilie}}</view>
+          <view class="goods-status">
+            <view class="goods-status-btn">{{item.itemDisplayVO.firstFenleiName}}</view>
+          </view>
+        </view>
+        <view class="goods-time">{{item.endTime}}</view>
+        <view class="goods-people">
+          <view class="goods-people1">
+            已有<text class="red">{{item.priceManCount}}</text>人参与
+          </view>
+          <view class="goods-people2"><text>{{item.seeNum}}</text>人围观</view>
+        </view>
+      </view>
+    </view>
+    </navigator>
   </view>
 </view>

@@ -1,0 +1,59 @@
+<view class="order">
+  <view class="block1">
+    <view class="text1">{{paimaiStatus[order.status]}}</view>
+    <view class="text2">
+      {{paimaiStatusText[order.status]?paimaiStatusText[order.status] : order.rejectReason}}
+    </view>
+    <image class="img-block1" src="../../assets/images/order/dingdan_ic_chenggong@2x.png" mode="widthFix" />
+  </view>
+  <view class="block2">
+    <view class="text1">应付金额(含佣金8%，最低佣金为50元)</view>
+    <view class="price">{{priceobj.yingfuPrice}}元</view>
+  </view>
+  <view class="block3">
+    <navigator url="{{order.status > 6 ? '../../pages/detail/index?id='+order.id+'&type=5' : ''}}">
+      <view class="goods">
+        <image src="{{order.iconAttachment.thumbFileUrl}}" mode="widthFix" class="goods-img"></image>
+        <view class="goods-title">{{order.brandName}} {{order.xilie}}</view>
+        <image src="../../assets/images/order/dingdan_ic_arrow@2x.png" mode="widthFix" class="goods-go" wx:if="{{order.status > 6}}"></image>
+      </view>
+    </navigator>
+  </view>
+  <view class="block4">
+    <view class="item">
+      商品编号：{{order.id}}
+      <view class="btn-copy">复制</view>
+    </view>
+    <view class="item">出价结束：{{order.paimaiEndTime}}</view>
+    <view class="item" wx:if="{{order.expressNo}}">
+      订单编号：{{order.expressNo}}
+      <view class="btn-copy">复制</view>
+    </view>
+  </view>
+  <view class="block5">
+    <view class="todos-btn" wx:if="{{order.status == 9}}">
+      <navigator url="../../pages/upload-voucher/index?id={{order.id}}&type=1">
+        <text class="btn primary">接受出价</text>
+      </navigator>
+      <text class="btn" catchtap="jujue">拒绝出价</text>
+    </view>
+    <view class="todos-btn" wx:elif="{{order.status == 3}}">
+      <navigator url="../../pages/shop/index?id={{order.id}}&type=1">
+        <text class="btn primary">到店咨询</text>
+      </navigator>
+      <navigator url="../../pages/shop/index?id={{order.id}}&type=2">
+        <text class="btn">快递到店</text>
+      </navigator>
+    </view>
+  </view>
+  <van-dialog use-slot show="{{ show }}" show-confirm-button="{{false}}">
+    <view class="dialog">
+      <view class="dialog-title">拒绝出价</view>
+      <view class="commission-text">您是否确认拒绝此次竞拍的最高出价？</view>
+      <view class="dialog-btn">
+        <view class="dialog-btn1" bindtap="onClose">取消</view>
+        <view class="dialog-btn2" bindtap="jujuesub">确认</view>
+      </view>
+    </view>
+  </van-dialog>
+</view>

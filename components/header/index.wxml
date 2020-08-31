@@ -1,0 +1,10 @@
+<view class="header" style="padding-top:{{statusBarHeight}}px;">
+  <view class="goback" wx:if="{{goback}}" bindtap="gobackFun">
+    <image class="goback-img" 
+    mode="aspectFit" src="../../assets/images/goback.svg" />
+  </view>
+  <view class="name">
+  {{name}}
+  </view>
+  
+</view>

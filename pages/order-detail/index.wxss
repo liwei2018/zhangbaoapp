@@ -1,0 +1,214 @@
+.block1 {
+  height: 260rpx;
+  background: linear-gradient(270deg, rgba(201, 172, 121, 1) 0%, rgba(234, 205, 156, 1) 100%);
+  position: relative;
+  overflow: hidden;
+  padding-left: 30rpx;
+}
+
+.img-block1 {
+  height: 198rpx;
+  width: 118rpx;
+  position: absolute;
+  right: 30rpx;
+  bottom: 0;
+}
+
+.block1 .text1 {
+  font-size: 30rpx;
+  color: rgba(255, 255, 255, 1);
+  margin-top: 80rpx;
+}
+
+.block1 .text2 {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 1);
+  margin-top: 24rpx;
+}
+
+.block2 {
+  padding: 20rpx 30rpx
+}
+
+.block2 .text1 {
+  font-size: 24rpx;
+  color: rgba(159, 159, 159, 1);
+}
+
+.block2 .price {
+  font-size: 30rpx;
+  color: rgba(199, 78, 70, 1);
+  margin-top: 14rpx;
+}
+
+page {
+  background-color: #fff;
+}
+
+.block3 {
+  background: rgba(238, 238, 238, 1);
+  padding: 20rpx 30rpx
+}
+
+.goods {
+  background-color: #fff;
+  padding: 20rpx 30rpx;
+  border-radius: 30rpx;
+  display: flex;
+}
+
+.goods-img {
+  width: 170rpx;
+  height: 170rpx;
+  border-radius: 10rpx;
+}
+
+.goods-title {
+  flex: 1;
+  padding: 0 50rpx;
+  font-size: 24rpx;
+}
+
+.goods-go {
+  width: 34rpx;
+  height: 34rpx;
+  margin-top: 68rpx;
+}
+
+.block4 {
+  padding: 40rpx 30rpx;
+}
+
+.block4 .item {
+  font-size: 26rpx;
+  color: rgba(102, 102, 102, 1);
+  height: 60rpx;
+}
+
+.btn-copy {
+  width: 103rpx;
+  height: 41rpx;
+  border-radius: 10rpx;
+  border: 1rpx solid rgba(109, 109, 109, 0.5);
+  font-size: 20rpx;
+  color: rgba(15, 15, 15, 1);
+  text-align: center;
+  line-height: 39rpx;
+  display: inline-block;
+  margin-left: 20rpx;
+}
+
+.block5 {
+  padding: 20rpx 30rpx;
+  border-top: 1rpx solid rgba(234,234,234,1);
+}
+
+.btn {
+  height: 60rpx;
+  border-radius: 10rpx;
+  padding: 0 16rpx;
+  font-size: 28rpx;
+  color: rgba(51, 51, 51, 1);
+  line-height: 60rpx;
+  float: right;
+  border: 1rpx solid rgba(51, 51, 51, 1);
+}
+
+
+.dialog {
+  padding: 40rpx 50rpx;
+}
+
+.dialog-title {
+  height: 42rpx;
+  font-size: 30rpx;
+  color: rgba(201, 172, 121, 1);
+  line-height: 42rpx;
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+
+.dialog-item {
+  display: flex;
+  margin-bottom: 16rpx;
+}
+
+.dialog-item-left {
+  width: 140rpx;
+  justify-content: center;
+  font-size: 28rpx;
+  line-height: 58rpx;
+}
+
+.dialog-item-right {
+  flex: 1;
+  display: flex;
+}
+
+.input {
+  width: 100%;
+  height: 58rpx;
+  border-radius: 6rpx;
+  border: 2rpx solid rgba(221, 221, 221, 1);
+  padding-left: 10rpx;
+}
+
+.code {
+  width: 140rpx;
+  height: 58rpx;
+}
+
+.input-code {
+  flex: 1;
+  margin-right: 20rpx;
+}
+
+.commission {
+  font-size: 26rpx;
+  color: rgba(151, 151, 151, 1);
+  line-height: 58rpx;
+}
+
+.commission-text {
+  font-size: 24rpx;
+  color: rgba(151, 151, 151, 1);
+  text-align: center;
+  margin: 40rpx auto;
+}
+
+.placeholder-class {
+  font-size: 26rpx;
+}
+
+.dialog-btn {
+  height: 80rpx;
+  display: flex;
+  margin-top: 20rpx;
+}
+
+.dialog-btn1 {
+  flex: 1;
+  height: 80rpx;
+  background: rgba(128, 128, 128, 1);
+  border-radius: 10rpx 0px 0px 10rpx;
+  text-align: center;
+  color: #fff;
+  line-height: 80rpx;
+}
+
+.dialog-btn2 {
+  flex: 1;
+  height: 80rpx;
+  background: rgba(201, 172, 121, 1);
+  border-radius: 0px 10rpx 10rpx 0px;
+  text-align: center;
+  color: #fff;
+  line-height: 80rpx;
+}
+
+.primary {
+  background: rgba(201, 172, 121, 1);
+  color: rgba(255, 255, 255, 1);
+  border: none;
+  margin-left: 10rpx;
+}

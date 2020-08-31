@@ -1,0 +1,50 @@
+<view class="person-message">
+	<!-- head -->
+	<view class="view-head">
+		<view class="head-portrait">
+			<image class="portrait-img" src="{{user.avatar.thumbFileUrl}}"></image>
+		</view>
+		<view class="head-message">
+			<navigator url="../../pages/personal-nickname/index">
+				<view class="name">{{user.nickName}}
+					<image class="edit-img" src="../../assets/images/personal/gerenxinxi_ic_bianji.png"></image>
+				</view>
+			</navigator>
+			<view class="phone">{{user.telphone}}</view>
+		</view>
+		<navigator url="../../pages/login/index">
+			<view class="switch">切换账号</view>
+		</navigator>
+	</view>
+	<!-- list -->
+	<view class="list">
+		<navigator url="../../pages/personal-authentication/index">
+			<view class="item border-top">
+				<image class="icon" src="../../assets/images/personal/gerenxinxi_ic_shiming.png"></image>
+				<view class="title">实名认证</view>
+				<image class="back" src="../../assets/images/evaluation/com_list_ic_arrow@2x.png"></image>
+			</view>
+		</navigator>
+		<navigator url="../../pages/personal-address-list/index">
+			<view class="item">
+				<image class="icon" src="../../assets/images/personal/gerenxinxi_ic_shiming.png"></image>
+				<view class="title">收货地址</view>
+				<image class="back" src="../../assets/images/evaluation/com_list_ic_arrow@2x.png"></image>
+			</view>
+		</navigator>
+		<navigator url="../../pages/collection-add/index">
+			<view class="item">
+				<image class="icon" src="../../assets/images/personal/gerenxinxi_ic_shiming.png"></image>
+				<view class="title">收款信息</view>
+				<image class="back" src="../../assets/images/evaluation/com_list_ic_arrow@2x.png"></image>
+			</view>
+		</navigator>
+		<navigator url="../../pages/personal-authentication-buyer-complate/index">
+			<view class="item border-bottom">
+				<image class="icon" src="../../assets/images/personal/gerenxinxi_ic_renzheng.png"></image>
+				<view class="title">买家认证</view>
+				<image class="back" src="../../assets/images/evaluation/com_list_ic_arrow@2x.png"></image>
+			</view>
+		</navigator>
+	</view>
+</view>

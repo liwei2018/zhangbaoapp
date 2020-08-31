@@ -27,13 +27,14 @@ function all(opt) {
   let apiUrl = `${config.protocol}://${config.domain}${opt.url}`
   let header = opt.header || {}
   let token = $auth.getToken()
-  if (token) header.token = token
+  if (token) apiUrl = apiUrl + '?token=' + token
   let nonce = Math.random().toString(36).substr(2);
   var timestamp = Date.parse(new Date()) / 1000;
 
   header.nonce = nonce;
   header.timestamp = timestamp;
   header.sign = $md5.hexMD5(nonce + timestamp + "7c6fe563abc91f43be71d5bc9072329f");
+  header['content-type']='application/x-www-form-urlencoded'
 
   return new Promise((resolve, reject) => {
     wx.request({
@@ -42,9 +43,13 @@ function all(opt) {
       data: opt.data,
       method: opt.method,
       success: (res) => {
-        if (res.data.error === 0) {
+        if (res.header['Content-Type'] == 'image/jpeg') {
           resolve(res)
-        } else if (res.data.error === 401) {
+          return;
+        }
+        if (!res.data.data.errCode) {
+          resolve(res)
+        } else if (res.data.data.errCode === 20105) {
           reject(res)
          if(getCurrentPageUrl() == "pages/login/index") {
            return
@@ -52,24 +57,15 @@ function all(opt) {
           wx.navigateTo({
             url: '../login/index?redirect=/' + getCurrentPageUrl(),
           })
-        } else if (res.data.error === 1005) {
-          reject(res)
-          wx.showToast({
-            title: res.data.reason, //提示文字
-            duration: 2000, //显示时长
-            mask: true, //是否显示透明蒙层，防止触摸穿透，默认：false  
-            icon: 'none', //图标，支持"success"、"loading"  
-          })
-          wx.redirectTo({
-            url: '../login-1/index?redirect=/' + getCurrentPageUrl(),
-          })
         } else {
           reject(res)
-          wx.showToast({
-            title: res.data.reason, //提示文字
-            duration: 2000, //显示时长
-            mask: true, //是否显示透明蒙层，防止触摸穿透，默认：false  
-            icon: 'none', //图标，支持"success"、"loading"  
+          wx.showModal({
+            title: '提示',
+            content: res.data.data.errMsg,
+            showCancel: false,
+            success (res) {
+              
+            }
           })
         }
         wx.stopPullDownRefresh()
@@ -90,7 +86,7 @@ function getCurrentPageUrl() {
   return url
 }
 let config = {
-  domain: 'api.baozhang356.com',
+  domain: 'wechatapi.eco-recycle.cn',
   protocol: 'https',
 }
 

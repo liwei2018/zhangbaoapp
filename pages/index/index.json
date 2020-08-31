@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "header": "/components/header/index",
+    "van-sticky": "/miniprogram_npm/vant-weapp/sticky/index"
+  }
 }

@@ -1,0 +1,113 @@
+<view class="personal-view">
+  <header user="{{user}}"></header>
+  <!-- body -->
+  <view class="body">
+    <!-- tabs -->
+    <view class="tabs">
+      <view class="tabs-item" wx:for="{{tabsList}}" wx:key="{{index}}">
+        <image class="tabs-item-img" src="{{item.src}}"></image>
+        <view class="tabs-item-text">{{item.text}}</view>
+        <view class="tip-msg" wx:if="{{item.text=='站内信'}}">10</view>
+      </view>
+    </view>
+    <!-- buyer1 -->
+    <view class="buyer">
+      <view class="buyer-title">买家中心</view>
+      <view class="buyer-body">
+        <navigator url="../../pages/my-buy/index?type=2">
+          <view class="buyer-item">
+            <view class="buyer-item-count">{{buyer.doing}}</view>
+            <view class="buyer-item-text">出价中</view>
+          </view>
+        </navigator>
+        <navigator url="../../pages/my-buy/index?type=2">
+          <view class="buyer-item">
+            <view class="buyer-item-count">{{buyer.fail}}</view>
+            <view class="buyer-item-text">出价失败</view>
+          </view>
+        </navigator>
+        <navigator url="../../pages/my-buy/index?type=2">
+          <view class="buyer-item">
+            <view class="buyer-item-count">{{buyer.done}}</view>
+            <view class="buyer-item-text">出价成功</view>
+          </view>
+        </navigator>
+        <navigator url="../../pages/my-buy/index?type=2">
+          <view class="buyer-item">
+            <view class="buyer-item-count">{{buyer.done}}</view>
+            <view class="buyer-item-text">已完成</view>
+          </view>
+        </navigator>
+      </view>
+    </view>
+    <!-- seller -->
+    <view class="seller" wx:if="{{user.buyerStatus==1}}">
+      <view class="seller-title">卖家中心</view>
+      <view class="seller-body">
+        <navigator url="../../pages/my-sell/index?type=1">
+          <view class="seller-item">
+            <view class="seller-item-count">{{seller.wait}}</view>
+            <view class="seller-item-text">等待估价</view>
+          </view>
+        </navigator>
+        <navigator url="../../pages/my-sell/index?type=2">
+          <view class="seller-item">
+            <view class="seller-item-count">{{seller.up}}</view>
+            <view class="seller-item-text">等待上架</view>
+          </view>
+        </navigator>
+        <navigator url="../../pages/my-sell/index?type=3">
+          <view class="seller-item">
+            <view class="seller-item-count">{{seller.doing}}</view>
+            <view class="seller-item-text">寄卖中</view>
+          </view>
+        </navigator>
+        <navigator url="../../pages/my-sell/index?type=4">
+          <view class="seller-item">
+            <view class="seller-item-count">{{seller.done}}</view>
+            <view class="seller-item-text">已完成</view>
+          </view>
+        </navigator>
+      </view>
+    </view>
+    <view class="buyer auth" wx:else>
+      <view class="buyer-title">买家中心</view>
+      <view class="buyer-tip">通过买家认证， 具备买家资格的用户才能出</view>
+      <view class="buyer-btn">申请买家认证</view>
+    </view>
+    <!-- todos -->
+    <view class="todos">
+      <view class="todos-top">
+        <view class="todos-top-left">
+          <image src="../../assets/images/personal/wode_ic_daibanshiyi @2x.png" class="icon"></image>
+          <view class="title">代办事宜</view>
+        </view>
+        <view class="todos-top-right">
+          <image class="left" src="../../assets/images/personal/wode_ic_zuo_dis@2x.png"></image>
+          <view class="page">1/3</view>
+          <image class="right" src="../../assets/images/personal/wode_ic_you_nor@2x.png"></image>
+        </view>
+      </view>
+      <view class="todos-middle">
+        <view class="order-id">订单ID :86690900998</view>
+        <view class="order-status">等待付款</view>
+      </view>
+      <view class="todos-content">
+        <image class="content-img" src="../../assets/images/com_tab_ic_home_sel@2x.png"></image>
+        <view class="content-message">
+          <view class="message-title">Serpenti系列18K玫瑰金手镯</view>
+          <view class="message-time">结束时间：2020-07-12 12:00:00</view>
+          <view>
+            我的出价：
+            <text class="price">3500.22元</text>
+          </view>
+        </view>
+      </view>
+      <view class="line"></view>
+      <view class="todos-btn">
+        <text class="btn primary">接受出价</text>
+        <text class="btn">拒绝出价</text>
+      </view>
+    </view>
+  </view>
+</view>

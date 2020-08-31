@@ -1,0 +1,6 @@
+	<view class="authentication-status">
+		<image wx:if="{{type == 1}}" class="fail-img" src="/assets/images/personal/com_ic_wancheng.png"></image>
+		<image wx:if="{{type == 2}}" class="fail-img" src="/assets/images/personal/com_ic_dengdai.png"></image>
+		<image wx:if="{{type == 3}}" class="fail-img" src="/assets/images/personal/com_ic_shibai.png"></image>
+		<view class="fail-text">{{text}}</view>
+	</view>

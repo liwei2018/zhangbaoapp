@@ -1,0 +1,22 @@
+var str = {
+  strBrand: function (a,value) {
+    return value.substring(0, 1).toUpperCase() == a
+  },
+  strBrand2: function (list,value) {
+    return list.indexOf(value.substring(0, 1).toUpperCase()) >-1
+  },
+  indexof: function (key,value) {
+    return value.indexOf(key) > -1
+  },
+  status: function (time) {
+    var time = Date.parse(time) - Date.now();
+    return time>0?'售卖中':'已结束'
+  }
+}
+
+module.exports = {
+  strBrand: str.strBrand,
+  strBrand2: str.strBrand2,
+  indexof: str.indexof,
+  status: str.status,
+}

@@ -1,0 +1,22 @@
+<view class="personal-address-add">
+	<view class="form">
+		<view class="form-item">
+			<input class="item-input" placeholder="请输入收货人姓名，不超过8个字"></input>
+		</view>
+		<view class="form-item">
+			<input class="item-input" placeholder="请输入联系电话"></input>
+		</view>
+		<view class="form-item">
+			<input class="item-input" placeholder="请选择所在地区"></input>
+		</view>
+		<view class="form-item">
+			<textarea class="item-input" auto-height placeholder="请输入详细地址" />
+			</view>
+	</view>
+  <view class="default-address">
+  <view class="default-txt">设为默认地址</view>
+  <van-switch active-color="#C9AC79" checked="{{ checked }}" size="20px" />
+  </view>
+  <view class="default-address del">删除收货地址</view>
+  <vButton></vButton>
+</view>

@@ -1,0 +1,9 @@
+<wxs src="../../components/utils/str.wxs" module="str" />
+<view class="brand">
+	<van-search value="{{ key }}" placeholder="请搜索要搜索的品牌" show-action bind:search="oninput" bind:change="oninput" bind:cancel="oncancel" focus="{{true}}" />
+	<view class="hot">
+		<van-cell title="{{item.name}}" wx:for="{{brandlist}}" wx:if="{{str.indexof(key,item.name) && key!=''}}">
+			<image class="img" slot="icon" src="{{item.logoAttachment.thumbFileUrl}}" mode="heightFix" />
+		</van-cell>
+	</view>
+</view>

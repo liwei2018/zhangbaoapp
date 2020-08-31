@@ -1,0 +1,15 @@
+<view class="personal-authentication-buyer-complate">
+	<status></status>
+	<reason></reason>
+	<view class="upload-part">
+		<view class="upload-title">请缴纳保证金后上传凭证</view>
+		<view class="price">
+			<text class="price-left">需保证金金额：</text>
+			<text class="price-right">3000元</text>
+		</view>
+		<view class="upload">
+			<image class="add-img" src="/assets/images/personal/maijiarenzheng_pic_ic_add.png"></image>
+		</view>
+	</view>
+	<vButton></vButton>
+</view>

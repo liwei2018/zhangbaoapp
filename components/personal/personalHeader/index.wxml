@@ -1,0 +1,13 @@
+	<!-- head -->
+	<view class="view-head">
+		<view class="head-portrait">
+			<image class="portrait-img" src="{{user.avatar.thumbFileUrl}}"></image>
+		</view>
+		<view class="head-message">
+			<view class="name">{{user.nickName}}</view>
+			<view class="phone">{{user.telphone}}</view>
+		</view>
+		<navigator url="../../pages/personal-message/index">
+			<image class="head-set" src="../../../assets/images/personal/wode_list_ic_shezhi@2x.png"></image>
+		</navigator>
+	</view>

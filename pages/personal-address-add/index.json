@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "van-switch": "/miniprogram_npm/vant-weapp/switch/index",
+    "vButton": "/components/vButton/index"
+  },
+  "navigationBarTitleText": "收货地址"
+}

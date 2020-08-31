@@ -1,0 +1,34 @@
+.hot {
+  padding: 0 30rpx;
+  margin-top: 14rpx;
+}
+.hot-block {
+  padding: 35rpx 0 35rpx 15rpx;
+  margin-top: 14rpx;
+  display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+background-color: #fff;
+border-radius: 20rpx;
+}
+.hot-item {
+  
+  width: 31%;
+  margin: 0 2% 2% 0;
+  border:1px solid rgba(151,151,151,0.5);
+  height: 117rpx;
+}
+.img {
+  width: 100rpx;
+  height: 50rpx;
+  margin-right: 14rpx;
+}
+.hot-img {
+  height: 100%;
+  width: 100%;
+  display: block;
+}
+.van-index-bar__index {
+  font-size: 30rpx!important;
+  line-height: 34rpx!important;
+}

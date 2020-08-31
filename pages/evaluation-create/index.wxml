@@ -1,0 +1,75 @@
+<view class="create">
+  <view class="header">
+    <view class="header-item">
+      <view class="left">分类<text class="red">*</text></view>
+      <view class="right">{{fenleiname}}<image src="../../assets/images/evaluation/com_list_ic_arrow@2x.png" class="header-img" mode="widthFix" /></view>
+    </view>
+    <view class="header-item">
+      <view class="left">品牌<text class="red">*</text></view>
+      <view class="right">{{brandname}}<image src="../../assets/images/evaluation/com_list_ic_arrow@2x.png" class="header-img" mode="widthFix" /></view>
+    </view>
+  </view>
+  <view class="mid">
+    <view class="block">
+      <view class="block-header">
+        <view class="block-title">物品照片<text class="red">*</text></view>
+        <view class="block-msg">请按照示例上传清晰的照片</view>
+      </view>
+      <view class="block-content">
+        <view class="img-upload">
+          <view class="img-upload-title">正面</view>
+          <view class="img-upload-img" bindtap="addimg" data-index="1">
+            <image class="img-del" wx:if="{{pic1.thumbFileUrl}}" catchtap="delimg" data-index="1" src="../../assets/images/evaluation/com_pic_ic_close@2x.png" mode="widthFix" />
+            <image class="img-add" wx:if="{{!pic1.thumbFileUrl}}" src="../../assets/images/evaluation/com_list_pic_ic_add_hui@2x.png" mode="widthFix" />
+            <image class="img" src="{{pic1.thumbFileUrl}}" mode="scaleToFill"></image>
+          </view>
+        </view>
+        <view class="img-upload">
+          <view class="img-upload-title">背面</view>
+          <view class="img-upload-img" bindtap="addimg" data-index="2">
+            <image class="img-del" wx:if="{{pic2.thumbFileUrl}}" catchtap="delimg" data-index="2" src="../../assets/images/evaluation/com_pic_ic_close@2x.png" mode="widthFix" />
+            <image class="img-add" wx:if="{{!pic2.thumbFileUrl}}" src="../../assets/images/evaluation/com_list_pic_ic_add_hui@2x.png" mode="widthFix" />
+            <image class="img" src="{{pic2.thumbFileUrl}}" mode="scaleToFill"></image>
+          </view>
+        </view>
+        <view class="img-upload">
+          <view class="img-upload-title">刻印</view>
+          <view class="img-upload-img" bindtap="addimg" data-index="3">
+            <image class="img-del"  wx:if="{{pic3.thumbFileUrl}}" catchtap="delimg" data-index="3" src="../../assets/images/evaluation/com_pic_ic_close@2x.png" mode="widthFix" />
+            <image class="img-add"  wx:if="{{!pic3.thumbFileUrl}}" src="../../assets/images/evaluation/com_list_pic_ic_add_hui@2x.png" mode="widthFix" />
+            <image class="img" src="{{pic3.thumbFileUrl}}" mode="scaleToFill"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="block">
+      <view class="block-header">
+        <view class="block-title">更多照片</view>
+        <view class="block-msg">上传发票、证书、配件或其他磨损部位（选填）</view>
+      </view>
+      <view class="block-content">
+        <view class="img-upload" wx:for="{{morePic}}">
+          <view class="img-upload-img" >
+            <image class="img-del" catchtap="delimg2" data-index="{{index}}" src="../../assets/images/evaluation/com_pic_ic_close@2x.png" mode="widthFix" />
+            <image class="img" src="{{item.thumbFileUrl}}" mode="scaleToFill"></image>
+          </view>
+        </view>
+         <view class="img-upload">
+          <view class="img-upload-img"  bindtap="addimg" >
+            <image class="img-add" src="../../assets/images/evaluation/com_list_pic_ic_add_hui@2x.png" mode="widthFix" />
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="block">
+      <view class="block-header">
+        <view class="block-title">备注</view>
+        <view class="block-msg">可简单描述物品购买时间、新旧程度、购买地点等信息（选填）</view>
+      </view>
+      <view class="block-content">
+       <textarea class="textarea"  placeholder="选填备注信息" bindinput="getmemo" value="{{memo}}" />
+      </view>
+    </view>
+    <view class="btn-buy" bindtap="sub">提交</view>
+  </view>
+</view>

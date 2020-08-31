@@ -1,6 +1,3 @@
 {
-  "navigationBarTitleText": "创建账单",
-  "usingComponents": {
-    "success": "/components/success/index"
-  }
+  "navigationBarTitleText": "开单"
 }

@@ -1,0 +1,40 @@
+<Swiper imgUrls="{{shops}}" bind:clickTab="clickTab" class="swiper" />
+<view class="shop">
+  <view class="eva-title">店铺实景</view>
+  <view class="shop-img">
+    <image class="shop-img-item" wx:for="{{shops[shopindex].actualPicsAttachmentList}}" src="{{item.thumbFileUrl}}" mode="widthFix" />
+  </view>
+  <view class="eva-title">{{shops[shopindex].name}}</view>
+  <view class="msg" wx:if="{{tpey==1}}">
+    <view class="explain-item">
+      <view class="address">
+        <image class="explain-item-img" src="../../assets/images/evaluation/gujia_list_ic_dizhi@2x.png" mode="widthFix" />
+        地址：{{shops[shopindex].address}}
+      </view>
+      <view class="btn-copy">复制地址</view>
+    </view>
+    <view class="explain-item">
+      <image class="explain-item-img" src="../../assets/images/evaluation/gujia_list_ic_dianhua @2x.png" mode="widthFix" />
+      联系电话：{{shops[shopindex].telphone}}
+    </view>
+  </view>
+  <view class="msg" wx:else>
+    <view class="explain-item">
+      <view class="address">
+        <image class="explain-item-img" src="../../assets/images/com_tab_ic_me_sel@2x.png" mode="widthFix" />
+        联系人：{{shops[shopindex].deliveryName}}
+      </view>
+    </view>
+    <view class="explain-item">
+      <view class="address">
+        <image class="explain-item-img" src="../../assets/images/evaluation/gujia_list_ic_dizhi@2x.png" mode="widthFix" />
+        地址：{{shops[shopindex].deliveryAddress}}
+      </view>
+      <view class="btn-copy">复制地址</view>
+    </view>
+    <view class="explain-item">
+      <image class="explain-item-img" src="../../assets/images/evaluation/gujia_list_ic_dianhua @2x.png" mode="widthFix" />
+      联系电话：{{shops[shopindex].deliveryTelphone}}
+    </view>
+  </view>
+</view>

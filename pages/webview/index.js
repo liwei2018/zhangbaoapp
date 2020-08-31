@@ -1,14 +1,17 @@
-
-
 Page({
   data: {
     url: '',
   },
   onLoad: function (option) {
-    this.setData({
-      url: option.url
-    })
-
+    if (option.type) {
+      this.setData({
+        url: `${option.url}?type=${option.type}`
+      })
+    } else {
+      this.setData({
+        url: option.url
+      })
+    }
   },
- 
+
 })

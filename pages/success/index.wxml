@@ -1,0 +1,14 @@
+<view class="personal-authentication-buyer-complate">
+	<status type="{{type}}" text="{{text}}"></status>
+	<view class="item" wx:if="{{class == 1}}">
+		<view class="title">最高出价</view>
+		<view class="price">{{price}}</view>
+	</view>
+	<view class="item flex" wx:if="{{class == 1}}">
+		<image wx:if="{{type == 3}}" class="ico-img" src="/assets/images/personal/com_ic_shibai.png"></image>
+		<view class="text2">注：您可联系客服免费召回物品或尝试再次出售</view>
+	</view>
+	<button class="btn" open-type="contact" >
+		联系客服
+	</button>
+</view>

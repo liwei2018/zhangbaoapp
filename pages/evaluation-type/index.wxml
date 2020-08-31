@@ -1,0 +1,11 @@
+<view class="eva" wx:for="{{list}}" wx:if="{{item.id==fenleiId}}">
+	<navigator url="../brand/index?fenleiId={{item.id}}&fenleiname={{item.name}}" wx:for="{{item.subFenleiDOList}}">
+		<view class="eva-block">
+			<view class="eva-item">
+				<image class="img" src="{{item.picAttachment.originFileUrl}}" mode="widthFix" />
+				<view class="eva-title">{{item.name}}</view>
+			</view>
+		</view>
+	</navigator>
+
+</view>

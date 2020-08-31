@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "买家认证",
+  "usingComponents": {
+    "status": "/components/personal/authenticationStatus/index"
+  }
+}

@@ -1,0 +1,66 @@
+<view class="personal-authentication-buyer">
+	<view class="tltle-head">请点击上传身份证件照片
+	</view>
+	<view class="upload-part">
+		<view class="photo-left">
+			<image></image>
+		</view>
+		<view class="photo-right">
+			<image></image>
+		</view>
+	</view>
+	<view class="tltle-head">请点击上传店铺照片
+	</view>
+	<view class="upload-part">
+		<view class="photo-left">
+			<image></image>
+		</view>
+		<view class="photo-right">
+			<image></image>
+		</view>
+	</view>
+	<view class="tltle-head">请点击上传营业执照
+	</view>
+	<view class="business-license">
+		<view class="license-img"></view>
+		<view class="license-tip">
+			<image class="tip-img" src="/assets/images/personal/maijiarenzheng_ic_biaoji.png"></image>
+			<text class="tip-txt">注：请提供以上能证明买家身份的信息，信息不全将导致 买家认证失败</text>
+		</view>
+	</view>
+	<view class="tltle-head">请提交联系方式
+	</view>
+	<view class="bottom">
+		<view class="form">
+			<view class="form-item">
+				<view class="item-left">姓名</view>
+				<input class="item-input" placeholder="请输入收货人姓名，不超过8个字"></input>
+			</view>
+			<view class="form-item">
+				<view class="item-left">微信号</view>
+				<input class="item-input" placeholder="请输入微信号"></input>
+			</view>
+			<view class="form-item">
+				<view class="item-left">联系电话</view>
+				<input class="item-input" placeholder="请输入联系电话"></input>
+			</view>
+			<view class="form-item">
+				<view class="item-left">所在地区</view>
+				<input class="item-input" placeholder="请选择所在地区"></input>
+			</view>
+			<view class="form-item">
+				<view class="item-left">详细地址</view>
+				<input class="item-input" placeholder="请输入详细地址"></input>
+			</view>
+		</view>
+		<vButton></vButton>
+		<view class="xieyi">
+			<label class="radio">
+				<radio color="#C9AC79" value="r1" checked="true" />
+			</label>
+			<view class="radio-txt">
+				同意<navigator url="" class="xieyi-txt">《易麦用户服务协议》</navigator>
+			</view>
+		</view>
+	</view>
+</view>

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "vButton": "/components/vButton/index"
+  },
+  "navigationBarTitleText": "实名认证"
+}

@@ -1,0 +1,5 @@
+<view class="personal-authentication-complate">
+	<status></status>
+	<reason></reason>
+	<vButton></vButton>
+</view>

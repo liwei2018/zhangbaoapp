@@ -1,0 +1,4 @@
+<view class="authentication-reason">
+	<view class="icon">!</view>
+	<view class="reason">驳回原因：身份证照片模糊，请重新上传</view>
+</view>

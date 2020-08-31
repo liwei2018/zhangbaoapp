@@ -1,0 +1,11 @@
+.btn {
+  width: 690rpx;
+  height: 90rpx;
+  background: linear-gradient(360deg, rgba(201, 172, 121, 1) 0%, rgba(243, 217, 172, 1) 100%);
+  margin: 0 auto;
+  font-size: 32rpx;
+  color: rgba(255, 255, 255, 1);
+  line-height: 45rpx;
+  text-align: center;
+  line-height: 90rpx;
+}

@@ -1,0 +1,19 @@
+<view class="personal-address-list">
+	<view class="list">
+		<view class="list-item">
+			<view class="item-top">
+				<view class="name">李伟</view>
+				<view class="phone">15900397095</view>
+			</view>
+			<view class="item-bottom">
+				<view class="item-address">
+					<text class="default">默认</text>
+					<text class="address">北京市 朝阳区 闵庄路与香山南路交叉口西行100米</text>
+				</view>
+				<view class="edit-btn">编辑</view>
+			</view>
+		</view>
+	</view>
+	<view class="add-btn">添加新地址<image src="/assets/images/personal/shouhuodizhi_ic_tianjia.png"></image>
+	</view>
+</view>

@@ -1,47 +1,34 @@
 {
   "pages": [
-    "pages/bill/index",
-
-    "pages/bill-detail-ag/index",
-    "pages/select/index",
-    "pages/bill-create/index",
-    "pages/user/index",
-    "pages/mobile/index",
-    "pages/staff/index",
-    "pages/login-3-success/index",
-    "pages/login-4/index",
-    "pages/login-auth-list/index",
-    "pages/webview/index",
-    "pages/guest/index",
-    "pages/finance/index",
-    "pages/bill-detail/index",
-    "pages/user-detail/index",
-    "pages/company/index",
-    "pages/invoice-log/index",
-    "pages/invoice/index",
-    "pages/buy/index",
-    "pages/bill-create-user-list/index",
-    "pages/guest-detail/index",
-    "pages/guest-create/index",
-    "pages/guest-create-success/index",
-    "pages/guest-create-company/index",
-    "pages/login-2-success/index",
-    "pages/login-1/index",
-    "pages/login/index",
-    "pages/login-auth-create/index",
-    "pages/pay/index",
-    "pages/login-3/index",
-    "pages/login-2/index",
-    "pages/staff-detail/index",
-    "pages/staff-create/index",
-    "pages/company-authorize/index",
-    "pages/company-detail/index",
-    "pages/invoice-detail/index",
-    "pages/buy-log/index",
-    "pages/bill-history/index",
-    "pages/bill-contract/index",
+    "pages/personal/index",
+    "pages/success/index",
+    "pages/personal-authentication-buyer-complate/index",
+    "pages/upload-voucher/index", 
+    "pages/shop/index",
+    "pages/my-buy/index",
+    "pages/my-sell/index",
     "pages/index/index",
-    "pages/aboutme/index"
+    "pages/evaluation-create/index",
+    "pages/login/index",
+    "pages/collection-set/index",
+    "pages/collection-add/index",
+    "pages/brand/index",
+    "pages/evaluation/index",
+    "pages/order-detail/index",
+    "pages/personal-address-add/index",
+    "pages/personal-address-list/index",
+    "pages/personal-authentication-buyer/index",
+    "pages/personal-authentication-complate/index",
+    "pages/personal-authentication/index",
+    "pages/evaluation-info/index",
+    "pages/brand-search/index",
+    "pages/evaluation-type/index",
+    "pages/detail/index",
+    "pages/personal-nickname/index",
+    "pages/personal-message/index",
+    "pages/webview/index",
+    "pages/bill-create/index"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -51,36 +38,33 @@
     "backgroundColor": "#F5F5F5"
   },
   "tabBar": {
-    "color": "#808080",
+    "color": "#454545",
     "backgroundColor": "#fff",
-    "selectedColor": "#327BF8",
+    "selectedColor": "#C9AC79",
     "borderStyle": "black",
     "list": [
       {
-        "iconPath": "assets/images/ic_账单管理@2x.png",
-        "selectedIconPath": "assets/images/ic_账单管理_pr@2x.png",
-        "pagePath": "pages/bill/index",
-        "text": "账单管理"
+        "iconPath": "assets/images/com_tab_ic_home_nor@2x.png",
+        "selectedIconPath": "assets/images/com_tab_ic_home_sel@2x.png",
+        "pagePath": "pages/index/index",
+        "text": "首页"
       },
       {
-        "iconPath": "assets/images/ic_客户管理@2x.png",
-        "selectedIconPath": "assets/images/ic_客户管理_pr@2x.png",
-        "pagePath": "pages/guest/index",
-        "text": "客户管理"
+        "iconPath": "assets/images/com_tab_ic_gujia_nor@2x.png",
+        "selectedIconPath": "assets/images/com_tab_ic_gujia_sel@2x.png",
+        "pagePath": "pages/evaluation/index",
+        "text": "估价"
       },
       {
-        "iconPath": "assets/images/ic_财务统计@2x.png",
-        "selectedIconPath": "assets/images/ic_财务统计_pr@2x.png",
-        "pagePath": "pages/finance/index",
-        "text": "财务统计"
-      },
-      {
-        "iconPath": "assets/images/ic_个人中心@2x.png",
-        "selectedIconPath": "assets/images/ic_个人中心_pr@2x.png",
-        "pagePath": "pages/user/index",
-        "text": "个人中心"
+        "iconPath": "assets/images/com_tab_ic_me_nor@2x.png",
+        "selectedIconPath": "assets/images/com_tab_ic_me_sel@2x.png",
+        "pagePath": "pages/personal/index",
+        "text": "我的"
       }
     ]
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "van-field": "vant-weapp/field"
+  }
 }

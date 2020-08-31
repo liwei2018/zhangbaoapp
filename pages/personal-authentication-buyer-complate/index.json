@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "买家认证",
+  "usingComponents": {
+    "status": "/components/personal/authenticationStatus/index",
+    "reason": "/components/personal/authenticationReason/index",
+    "vButton": "/components/vButton/index"
+  }
+}

@@ -1,0 +1,23 @@
+.authentication-status {
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 10rpx 40rpx 0px rgba(0, 0, 0, 0.05);
+  border-radius: 10rpx;
+  margin: 20rpx 30rpx 0;
+  padding-bottom: 40rpx;
+}
+
+.fail-img {
+  width: 122rpx;
+  height: 122rpx;
+  margin: 90rpx 284rpx 50rpx;
+}
+
+.fail-text {
+  width: 400rpx;
+  margin: 0 auto;
+  line-height: 42rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: rgba(102, 102, 102, 1);
+  letter-spacing: 2rpx;
+}

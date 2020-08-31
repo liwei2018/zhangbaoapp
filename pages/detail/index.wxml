@@ -1,0 +1,140 @@
+<view class="detail">
+  <swiper style="height: {{imgheight}}px" indicator-active-color="#C9AC79" indicator-color="rgb(234,234,234)">
+    <swiper-item wx:for="{{goods.itemDisplayVO.mainPicAttachmentList}}">
+      <image src="{{item.mediumFileUrl}}" class="slide-image" mode="widthFix" bindload="imageLoad" />
+    </swiper-item>
+  </swiper>
+  <view class="buy-time">
+    <van-count-down wx:if="{{time > 0}}" time="{{ time }}" format="距离结束还有：DD 天 HH 时 mm 分 ss 秒" />
+    <text wx:else>已结束</text>
+  </view>
+  <view class="content">
+    <view class="title">{{goods.itemDisplayVO.brandName}} {{goods.itemDisplayVO.xilie}}</view>
+    <view class="message">
+      <view class="goods-people1" wx:if="{{time < 0}}">
+        已有
+        <text class="red">{{goods.priceManCount}}</text>
+        人参与
+      </view>
+      <view class="goods-people2" wx:if="{{type != 2}}">
+        <text>{{goods.seeNum}}</text>
+        人围观
+      </view>
+      <view class="goods-price {{type == 2 ? 'goods-price2': ''}}">
+        {{priceText[type]}}：
+        <text class="red2">{{goods.displayPrice? goods.displayPrice + '元' : '暂未出价'}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="tabs">
+    <view class="tabs-item {{tabtype == 0?'select':''}}" bindtap="clickTab" data-tabtype="0">
+      <view class="tab-line">实拍图片</view>
+    </view>
+    <view class="tabs-item {{tabtype == 1?'select':''}}" bindtap="clickTab" data-tabtype="1">
+      <view class="tab-line">商品参数</view>
+    </view>
+    <view class="tabs-item {{tabtype == 2?'select':''}}" bindtap="clickTab" data-tabtype="2" wx:if="{{type != 2 && time < 0}}">
+      <view class="tab-line">出价记录</view>
+    </view>
+  </view>
+  <view wx:if="{{tabtype == 0}}">
+    <view wx:for="{{goods.itemDisplayVO.realPicAttachmentList}}">
+      <image src="{{item.mediumFileUrl}}" class="info-image" mode="widthFix" />
+      <view class="info-line">
+        <view class="left-line"></view>
+        <view class="mid-line">ECO</view>
+        <view class="right-line"></view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{tabtype == 1}}">
+    <view class="param">
+      <view class="param-item">
+        <view class="param-left">商品编号：</view>
+        <view class="param-right">{{goods.itemDisplayVO.id}}</view>
+      </view>
+      <view class="param-item">
+        <view class="param-left">分类：</view>
+        <view class="param-right">{{goods.itemDisplayVO.firstFenleiName}}</view>
+      </view>
+      <view class="param-item">
+        <view class="param-left">品牌：</view>
+        <view class="param-right">{{goods.itemDisplayVO.brandName}}</view>
+      </view>
+      <view class="param-item">
+        <view class="param-left">系列：</view>
+        <view class="param-right">{{goods.itemDisplayVO.xilie}}</view>
+      </view>
+      <view class="param-item">
+        <view class="param-left">类别：</view>
+        <view class="param-right">{{goods.itemDisplayVO.categoryName}}</view>
+      </view>
+      <view class="param-item">
+        <view class="param-left">型号：</view>
+        <view class="param-right">{{goods.itemDisplayVO.xinghao}}</view>
+      </view>
+    </view>
+    <view class="param-other">
+      <view class="param-title">
+        <view class="left-title"></view>
+        <view class="mid-title">其他参数</view>
+        <view class="right-title"></view>
+      </view>
+      <view class="param-other-item" wx:for="{{goods.itemDisplayVO.params}}">
+        <view class="param-other-left">{{item.name}}：</view>
+        <view class="param-other-right">{{item.value}}</view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{tabtype == 2}}">
+    <view class="buy-log-title buy-log">
+      <view class="buy-log-left">
+        <view class="left-buy-log"></view>
+        <view class="mid-buy-log">用户昵称</view>
+        <view class="right-buy-log"></view>
+      </view>
+      <view class="buy-log-right">
+        <view class="left-buy-log"></view>
+        <view class="mid-buy-log">出价</view>
+        <view class="right-buy-log"></view>
+      </view>
+    </view>
+    <view class="buy-log" wx:for="{{orders}}">
+      <view class="buy-log-left">{{item.buyer.nickName}}</view>
+      <view class="buy-log-right">{{item.currentPrice}}元</view>
+    </view>
+  </view>
+  <view class="btn-buy" bindtap="chujia" wx:if="{{time > 0}}">
+    {{goods.displayPrice? '再次出价': '立即出价'}}
+  </view>
+  <view class="btn-buy btn-buy-dis" wx:else>已完成</view>
+  <van-dialog use-slot show="{{ show }}" show-confirm-button="{{false}}">
+    <view class="dialog">
+      <view class="dialog-title">我的出价</view>
+      <view class="dialog-item">
+        <view class="dialog-item-left">出价</view>
+        <view class="dialog-item-right">
+          <input type="number" bindinput="caculateprice" type="number" placeholder="请输入价格" class="input-price input" placeholder-class="placeholder-class" />
+        </view>
+      </view>
+      <view class="dialog-item">
+        <view class="dialog-item-left">验证码</view>
+        <view class="dialog-item-right">
+          <input type="number" class="input-code input" bindinput="getcode" placeholder="请输入验证码" placeholder-class="placeholder-class" />
+          <image src="{{codeimg}}" class="code" bindtap="getcodeimg" />
+        </view>
+      </view>
+      <view class="dialog-item">
+        <view class="dialog-item-left">含佣价</view>
+        <view class="dialog-item-right">
+          <text class="commission">￥{{priceobj.commissionPrice}}</text>
+        </view>
+      </view>
+      <view class="commission-text">（含佣金8%，最低佣金为50元）</view>
+      <view class="dialog-btn">
+        <view class="dialog-btn1" bindtap="onClose">取消</view>
+        <view class="dialog-btn2" bindtap="sub">确认</view>
+      </view>
+    </view>
+  </van-dialog>
+</view>

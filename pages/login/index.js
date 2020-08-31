@@ -13,7 +13,8 @@ Page({
     fun: null,
     loginBtn: true,
     bindToken: '',
-    type: 1
+    type: 1,
+    show: false
   },
   onLoad: function (option) {
     if (option.redirect) {
@@ -32,29 +33,7 @@ Page({
       mobile: e.detail.value
     })
   },
-  sendCode() {
-    if(this.data.second > 0) {
-      return;
-    }
-    $request.get('/v1/user/sendCode', {
-      mobile: this.data.mobile,
-      operate: 0
-    }).then((res) => {
-      
-      this.setData({
-        second: 60
-      })
-      setInterval(()=>{
-        if(this.data.second == 0) {
-          clearInterval(this.data.fun)
-          return;
-        }
-        this.setData({
-          second: this.data.second-1
-        })
-      },1000);
-    })
-  },
+  
   login() {
     $request.post('/v1/user/login', {
       mobile: this.data.mobile,
@@ -62,11 +41,7 @@ Page({
     }).then((res) => {
       if (res.data.result.token) {
         $auth.setAuthInfo(res.data.result.token)
-        if(res.data.result.isRealName == 0) {
-          wx.redirectTo({
-            url: '../login-1/index'
-          })
-        } else {
+
           if (this.data.redirect) {
             wx.navigateBack({
               delta: 1
@@ -76,7 +51,6 @@ Page({
               url: '../bill/index'
             })
           }
-        }
         
       }
     })
@@ -86,31 +60,31 @@ Page({
     wx.login({
       success(res) {
         if (res.code) {
-          $request.post('/v1/user/appletLogin', {
+          $request.post('/home/users/getwechatlogincode', {
             'code': res.code,
           }).then((response) => {
-            $request.post('/v1/user/wechatLogin', {
-              'code': response.data.result.code,
-              'encryptedData': e.detail.encryptedData,
-              'iv': e.detail.iv
+            $request.post('/home/users/loginbywechat', {
+              'loginCode': response.data.data.code,
+              'rawData': e.detail.rawData
             }).then((response2) => {
-              if(response2.data.result.bindToken) {
+              if(!response2.data.data.userInfoDO.telphone) {
                 that.setData({
-                  bindToken: response2.data.result.bindToken,
-                  type: 3
+                  show: true
                 })
-              }
-              if(response2.data.result.token) {
-                $auth.setAuthInfo(response2.data.result.token)
+              } else {
                 if (that.data.redirect) {
                   wx.navigateBack({
                     delta: 1
                   })
                 } else {
                   wx.switchTab({
-                    url: '../bill/index'
+                    url: '../index/index'
                   })
                 }
+              }
+              if(response2.data.data.token) {
+                $auth.setAuthInfo(response2.data.data.token)
+                
               }
             })
           })
@@ -126,15 +100,14 @@ Page({
     })
   }
   ,getPhoneNumber(e) {
-    $request.post('/v1/user/bindMobile', {
-      'bindToken': this.data.bindToken,
+    $request.post('/home/users/bindtelphone', {
       'encryptedData': e.detail.encryptedData,
       'iv': e.detail.iv
     }).then((res) => {
-      if (res.data.result.token) {
-        $auth.setAuthInfo(res.data.result.token)
-        wx.redirectTo({
-          url: '../login-1/index'
+      if (res.data.data.token) {
+        $auth.setAuthInfo(res.data.data.token)
+        wx.switchTab({
+          url: '../index/index'
         })
       }
     })

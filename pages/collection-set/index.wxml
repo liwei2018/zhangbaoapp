@@ -1,0 +1,33 @@
+<view class="collection-set">
+	<view class="form">
+		<view class="form-item">
+			<view class="input-title">银行卡号</view>
+			<input placeholder="请输入银行卡号"></input>
+		</view>
+		<view class="form-item">
+			<view class="input-title">所属银行</view>
+			<input placeholder="请输入所属银行名称"></input>
+		</view>
+		<view class="form-item">
+			<view class="input-title">开户支行</view>
+			<input placeholder="请输入开户支行名称"></input>
+		</view>
+	</view>
+	<view class="set-default">
+		<view>设为默认收款账户</view>
+		<view>switch</view>
+	</view>
+	<view class="tip">
+		<view class="tip-content">
+			<image src="/assets/images/collection/shoukuan_ic_zhuyi.png"></image>
+			<view>收款人信息需与实名认证信息保持一致</view>
+		</view>
+		<view class="tip-content mg-30">
+			<image src="/assets/images/collection/shoukuan_ic_zhuyi.png"></image>
+			<view>账户最多绑定三个账户</view>
+		</view>
+	</view>
+	<view class="btn">
+		<vButton></vButton>
+	</view>
+</view>

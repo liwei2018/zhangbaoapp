@@ -1,0 +1,19 @@
+<view class="personal-authentication">
+	<view class="name-part">
+		<text class="name-text">姓名</text>
+		<input class="name-input" placeholder="请输入姓名"></input>
+	</view>
+	<view class="photo-part">
+		<view class="photo-title">请点击上传身份证件照片
+		</view>
+		<view class="photo">
+			<image src="../../assets/images/personal/shimingrenzheng_bg_zhengmian.png"></image>
+			<image src="../../assets/images/personal/shimingrenzheng_bg_fanmian.png"></image>
+		</view>
+		<view class="photo-btn">
+			<view class="btn">身份证正面照</view>
+			<view class="btn">身份证反面照</view>
+		</view>
+	</view>
+	<view class="bottom-btn">提交</view>
+</view>

@@ -1,8 +1,0 @@
-<!--index.wxml-->
-<view class="success">
-  <image src="../../assets/images/login/4.png" class="img" />
-  <view class="title">恭喜您，认证成功</view>
-  <navigator url="../bill/index" open-type="switchTab">
-  <button class="blue-btn">开始使用</button>
-  </navigator>
-</view>

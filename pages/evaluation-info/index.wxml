@@ -1,0 +1,47 @@
+<view class="eva">
+	<view class="tishi">
+		<image class="tishi-img" src="../../assets/images/evaluation/gujia_ic_down@2x.png" mode="widthFix" />
+		<view class="tishi-text">下滑在线估价 </view>
+	</view>
+	<view class="eva-title">
+		ECO回收寄卖流程
+	</view>
+	<view class="explain-item">
+		<image class="explain-item-img" src="../../assets/images/evaluation/gujia_ic_shangchuan@2x.png" mode="widthFix" />上传物品根据历史成交报价
+	</view>
+	<view class="explain-item">
+		<image class="explain-item-img" src="../../assets/images/evaluation/gujia_ic_youji@2x.png" mode="widthFix" />邮寄或门店上门获得专业鉴定担保
+	</view>
+	<view class="explain-item">
+		<image class="explain-item-img" src="../../assets/images/evaluation/gujia_ic_qianggou @2x.png" mode="widthFix" />商品上架1天内全国1000+商家抢购
+	</view>
+	<view class="explain-item">
+		<image class="explain-item-img" src="../../assets/images/evaluation/gujia_ic_queren@2x.png" mode="widthFix" />卖家确认价格满意后成交收款
+	</view>
+	<view class="eva-title">
+		ECO线下体验店
+	</view>
+	<view class="shop">
+		<view class="tabs">
+			<view class="tabs-item {{iscompany == 0?'select':''}}" bindtap="clickTab" data-iscompany="0">
+				周回顾</view>
+			<view class="line {{iscompany == 0||iscompany == 1?'hide':''}}"></view>
+			<view class="tabs-item {{iscompany == 1?'select':''}}" bindtap="clickTab" data-iscompany="1">
+				热门回顾</view>
+			<view class="line {{iscompany == 1||iscompany == 2?'hide':''}}"></view>
+			<view class="tabs-item {{iscompany == 2?'select':''}}" bindtap="clickTab" data-iscompany="2">
+				售卖中</view>
+		</view>
+		<view class="shop-img">
+			<image class="shop-img-item" src="../../assets/images/evaluation/gujia_ic_youji@2x.png" mode="widthFix" />
+		</view>
+		<view class="msg">
+			<view class="explain-item">
+				<image class="explain-item-img" src="../../assets/images/evaluation/gujia_list_ic_dizhi@2x.png" mode="widthFix" />地址：湖北武汉市洪山区珞喻路30号光谷国际大厦4号楼 1908室
+			</view>
+			<view class="explain-item">
+				<image class="explain-item-img" src="../../assets/images/evaluation/gujia_list_ic_dianhua @2x.png" mode="widthFix" />联系电话：400-89832323
+			</view>
+		</view>
+	</view>
+</view>
